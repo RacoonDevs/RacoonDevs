@@ -19,3 +19,37 @@ body {
 .carousel-fade .active.carousel-item-end {
     transition: opacity 0s 2.6s;
 }
+
+.slidein{
+    animation-duration: 2s;
+    animation-name: slidein;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+  .slidein-p{
+    animation-duration: 3s;
+    animation-name: slidein;
+  }
+  
+  @keyframes slidein-p {
+    from {
+        margin-left: 100%;
+        width: 100%
+      }
+    
+      to {
+        margin-left: 0%;
+        width: 100%;
+      }
+  }
