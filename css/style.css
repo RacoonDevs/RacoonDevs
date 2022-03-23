@@ -20,7 +20,7 @@ body {
     transition: opacity 0s 2.6s;
 }
 
-.slidein{
+.prueba{
     animation-duration: 2s;
     animation-name: slidein;
   }
@@ -37,7 +37,7 @@ body {
     }
   }
 
-  .slidein-p{
+  /* .slidein-p{
     animation-duration: 3s;
     animation-name: slidein;
   }
@@ -52,4 +52,4 @@ body {
         margin-left: 0%;
         width: 100%;
       }
-  }
+  } */
