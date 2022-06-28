@@ -1,10 +1,13 @@
 <?php
+    $correo = $_POST['correo'];
+    $comentarios = $_POST['comentarios'];
+
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
-    $from = "admin@racoondevs.com";
+    $from = $correo;
     $to = "contacto@racoondevs.com";
     $subject = "Checking PHP mail";
-    $message = "PHP mail works just fine";
+    $message = $comentarios;
     $headers = "From:" . $from;
     mail($to,$subject,$message, $headers);
     echo "The email message was sent.";
