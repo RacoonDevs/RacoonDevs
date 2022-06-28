@@ -29,7 +29,7 @@
     error_reporting( E_ALL );
 
     $from = 'admin@racoondevs.com';
-    $to = "contacto@racoondevs.com";
+    $to = "martinmartinezcamacho@hotmail.com";
     $subject = "Contacto RacoonDevs";
 
     $message = "NOMBRE : " . $nombre  . ",\r\n";
