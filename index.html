@@ -31,27 +31,110 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <a href="#">INICIO</a>
+        <a href="#">SERVICIOS</a>
+        <a href="#">PORTAFOLIO</a>
+        <a href="#">CONTACTO</a>
+      </nav>
+    </header>
     <!-- Main section -->
     <main id="inicio">
-      <h1>ALGO GRANDE SE ESTA CONSTRUYENDO AQUI DENTRO</h1>
-      <p>ESPERANOS...</p>
+      <h1>Agencia de marqueting Digital</h1>
+      <button>Contactanos</button>
     </main>
     <!-- End Main Section -->
 
     <!-- Servicios  -->
-    <section id="servicios"></section>
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <h3>Paginas web</h3>
+      <h3>Aplicaciones web</h3>
+      <h3>SEO</h3>
+      <h3>Fotografía y video</h3>
+      <h3>Diseño Grafico</h3>
+      <h3>Branding</h3>
+    </section>
     <!-- End Servicios  -->
 
     <!-- Servicios  -->
-    <section id="portafolio"></section>
+    <section id="portafolio">
+      <h2>Portafolio</h2>
+    </section>
     <!-- End Servicios  -->
 
     <!-- Servicios  -->
-    <section id="precios"></section>
+    <section id="precios">
+      <h2>Servicios web</h2>
+      <div>
+        <h3>Paquete basico</h3>
+        <p>costo total $9000.00 + iva</p>
+        <ul>
+          <li>Página web estática de 4 secciones</li>
+          <li>Formulario de contacto</li>
+          <li>Diseño responsivo</li>
+          <li>Hosting compartido</li>
+          <li>Dominio .COM</li>
+          <li>Posicionamiento inteligente SEO</li>
+          <li>Certificado SSL</li>
+          <li>2 cuentas de correo</li>
+        </ul>
+        <button>¡Lo quiero!</button>
+        
+      </div>
+      <div>
+        <h3>Paquete profesional</h3> 
+        <p>costo total $12000.00 + iva</p>
+        <ul>
+          <li>Paquete profesional</li>
+          <li>Pagina web estática de 6 secciones</li>
+          <li>Formulario de contacto</li>
+          <li>Diseño responsivo</li>
+          <li> Hosting individual</li>
+          <li>Dominio .COM</li>
+          <li>Posicionamiento SEO Inteligente</li>
+          <li>Certificado SSL</li>
+          <li>3 Cuentas de correo</li>
+          <li>10 Publicaciones para redes sociales</li>
+        </ul>
+        <button>¡Lo quiero!</button>
+      </div>
+      <div>
+        <h3>Paquete experto</h3>
+        <p>Cotización vía contacto</p>
+        <p>Creación de aplicaciones web o sitios personalizados se cotizan de acuerdo al tamaño y alcance del proyecto.</p>
+        <button>¡Lo quiero!</button>
+      </div>
+    </section>
     <!-- End Servicios  -->
 
     <!-- Servicios  -->
-    <section id="contacto"></section>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <form action="mail.php" method="post">
+        <label for="fname">Nombre completo</label>
+        <input type="text" id="fname" name="fname" required />
+        <label for="email">Correo electronico</label>
+        <input type="email" id="email" name="email" required />
+        <label for="tel">Teléfono</label>
+        <input
+          type="tel"
+          id="tel"
+          name="tel"
+          pattern="[0-9]{10}"
+          required
+        />
+        <label for="comentarios">Comentarios</label>
+        <textarea
+          name="comentarios"
+          id="comentarios"
+          rows="5"
+          required
+        ></textarea>
+        <button type="submit" name="submit">Enviar</button>
+      </form>
+    </section>
     <!-- End Servicios  -->
   </body>
 </html>
