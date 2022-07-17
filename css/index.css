@@ -19,7 +19,6 @@ body{
 }
 
 h1{
-    font-family: 'Righteous';
     font-size:  3.8rem;
 }
 h2{
@@ -30,7 +29,6 @@ h3{
 }
 h1,h2,h3{
     text-align: center;
-    color: var(--blanco);
 }
 .contacto{
     color:white;
@@ -39,16 +37,51 @@ h1,h2,h3{
     background-color: #2765DC;
     border-radius: 20px;
 }
+@media screen and (min-width: 768px) { 
+    .contacto{
+        padding: 1% 5%;
+        border-radius: 15px;
+    }
+}
 
-.inicio{
+.hero{
     background-image: url(../img/INICIO/BACKGROUND.webp);
     background-position-x: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /* display: flex; */
     height: 100vh;
-    position: absolute;
     width: 100%;
+
+}
+.content-hero{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content-hero h1{
+    font-family: 'Righteous';
+    color: var(--blanco);
+}
+.servicios{
+    background-image: url(../img/SERVICIOS/BG_SERVICIOS.png);
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+
+}
+.content-servicios{
+    height: 100%;
+    width: 100%;
+}
+.servicios h2{
+    /* text-align: center; */
+    color: var(--blanco);
 }
 
 
