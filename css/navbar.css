@@ -50,7 +50,7 @@
   width: 40px;
 }
 .nav_links {
-  background-color: var(--azulfuerte);
+  background-color: var(--azulbg);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -88,7 +88,7 @@
   width: 64px;
 }
 .sticky {
-  background-color: var(--azulfuerte);
+  background-color: var(--azulbg);
   padding: 10px 20px;
   width: 100%;
 }
