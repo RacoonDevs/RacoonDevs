@@ -1,17 +1,59 @@
 .servicios {
-  background-image: url(../img/SERVICIOS/BG_SERVICIOS.png);
+  background-image: url("./../img/SERVICIOS/BG_SERVICIOS.png");
   background-position-x: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+  /* background-repeat: no-repeat; */
+  background-size: contain;
+  min-height: 100vh;
   width: 100%;
   display: flex;
 }
 .content-servicios {
   height: 100%;
   width: 100%;
+  margin: 5%;
 }
-.servicios h2 {
-  /* text-align: center; */
-  color: var(--blanco);
+.content-servicios h2 {
+  font-family: "Righteous";
+  font-weight: bold;
+  color: var(--azulfuerte);
+}
+
+.content-servicios h3 {
+  color: var(--azulclaro);
+}
+.content-servicios p {
+  text-align: center;
+  padding-bottom: 2rem;
+  color: var(--azulfuerte);
+  font-weight: bold;
+}
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.servicios-item {
+  padding-top: 2rem;
+}
+.servicios-item img {
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .servicios {
+    background-image: url("./../img/SERVICIOS/BG_SERVICIOS_RESPONSIVE.png");
+  }
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .content-servicios h2 {
+    padding: 3rem 0 0;
+  }
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
