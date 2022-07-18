@@ -28,35 +28,113 @@
 
     <link rel="stylesheet" href="css/normalize.css" />
     <!-- fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- -------- -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
     <!-- fuentes -->
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/servicios.css" />
   </head>
 
   <body>
-    <header class="headerclass">
-      <nav>
-        <a href="#">INICIO</a>
-        <a href="#">SERVICIOS</a>
-        <a href="#">PORTAFOLIO</a>
-        <a href="#">CONTACTO</a>
+    <header class="header">
+      <!-- <nav class="navbar">
+        <div class="navbar-links">
+          <ul class="navbar-item">
+            <li>
+              <a href="#home">INICIO</a>
+            </li>
+            <li>
+              <a href="#servicios">SERVICIOS</a>
+            </li>
+            <li>
+              <a href="#portafolio">PORTAFOLIO</a>
+            </li>
+
+            <li>
+              <a href="#contacto">CONTACTO</a>
+            </li>
+          </ul>
+        </div>
+        <div class="brand-title">
+          <a href="/"><img src="./img/INICIO/LOGO_B&W.png" alt="logo.png" /></a>
+        </div>
+        <div class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="nav-right">
+          <div class="navbar-links">
+            <ul class="navbar-item">
+              <li>
+                <a href="#precio">PRECIOS</a>
+              </li>
+            </ul>
+            <div class="nav-language">
+              <img src="./img/INICIO/ENG.png" alt="icon_english" />
+            </div>
+          </div>
+        </div>
+      </nav> -->
+      <nav class="nav container" id="nav">
+        <h2 class="nav_logo">
+          <img src="./img/INICIO/LOGO_B&W.png" alt="logo.png" />
+        </h2>
+        <ul class="nav_links">
+          <!-- <li class="nav_item">
+            <a href="#" class="nav_link">INICIO</a>
+          </li> -->
+          <li class="nav_item">
+            <a href="#" class="nav_link">SERVICIOS</a>
+          </li>
+          <li class="nav_item">
+            <a href="#" class="nav_link">PORTAFOLIO</a>
+          </li>
+          <li class="nav_item">
+            <a href="#" class="nav_link">PRECIOS</a>
+          </li>
+          <li class="nav_item">
+            <a href="#" class="nav_link">CONTACTO</a>
+          </li>
+          <li class="nav_item">
+            <a href="#" class="nav_link"
+              ><img src="./img/INICIO/ENG.png" alt=""
+            /></a>
+          </li>
+        </ul>
+        <a href="#nav" class="nav_hamburger"
+          ><img class="nav_icon" src="./img/nav_menu.svg" alt="icon_hamburguer"
+        /></a>
+        <a href="#" class="nav_close"
+          ><img class="nav_icon" src="./img/nav_close.svg" alt="icon_close"
+        /></a>
       </nav>
-        
     </header>
     <!-- Main section -->
-    <main class="hero" id="inicio">
-      <div class="content-hero">
+    <main class="main" id="inicio">
+      <div class="main-contain">
         <h1>Agencia de Marketing Digital</h1>
-        <a href="#" class="contacto">Contactanos</a>
+        <p>
+          Haz crecer tu negocio a través del medio digital con ayuda de nuestra
+          variedad de servicios que tenemos para tí.
+        </p>
+        <a href="#" class="main-btn-contacto">Contactanos</a>
       </div>
     </main>
-    <!-- End Main Section -->  
+    <!-- End Main Section -->
 
     <!-- Servicios  -->
     <section class="servicios" id="servicios">
@@ -95,17 +173,16 @@
           <li>2 cuentas de correo</li>
         </ul>
         <button>¡Lo quiero!</button>
-        
       </div>
       <div>
-        <h3>Paquete profesional</h3> 
+        <h3>Paquete profesional</h3>
         <p>costo total $12000.00 + iva</p>
         <ul>
           <li>Paquete profesional</li>
           <li>Pagina web estática de 6 secciones</li>
           <li>Formulario de contacto</li>
           <li>Diseño responsivo</li>
-          <li> Hosting individual</li>
+          <li>Hosting individual</li>
           <li>Dominio .COM</li>
           <li>Posicionamiento SEO Inteligente</li>
           <li>Certificado SSL</li>
@@ -117,7 +194,10 @@
       <div>
         <h3>Paquete experto</h3>
         <p>Cotización vía contacto</p>
-        <p>Creación de aplicaciones web o sitios personalizados se cotizan de acuerdo al tamaño y alcance del proyecto.</p>
+        <p>
+          Creación de aplicaciones web o sitios personalizados se cotizan de
+          acuerdo al tamaño y alcance del proyecto.
+        </p>
         <button>¡Lo quiero!</button>
       </div>
     </section>
@@ -132,13 +212,7 @@
         <label for="email">Correo electronico</label>
         <input type="email" id="email" name="email" required />
         <label for="tel">Teléfono</label>
-        <input
-          type="tel"
-          id="tel"
-          name="tel"
-          pattern="[0-9]{10}"
-          required
-        />
+        <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" required />
         <label for="comentarios">Comentarios</label>
         <textarea
           name="comentarios"
@@ -153,18 +227,12 @@
 
     <!-- footer -->
     <footer>
-      <div class="contacto">
-      </div>
-      <div class="link">
-
-      </div>
-      <div class="siguenos">
-
-      </div>
-      <div class="powered">
-
-      </div>
+      <div class="contacto"></div>
+      <div class="link"></div>
+      <div class="siguenos"></div>
+      <div class="powered"></div>
     </footer>
     <!-- End footer -->
+    <script src="./js/navbar.js"></script>
   </body>
 </html>
