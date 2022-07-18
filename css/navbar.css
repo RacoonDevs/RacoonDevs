@@ -8,7 +8,7 @@
   margin: 0 auto;
   width: 90%;
   overflow: hidden;
-  transition: padding 0.4s ease-in-out, background-color 0.4s ease-in-out,
+  transition: padding 0.4s ease-in-out, background-color 0.1s ease-in-out,
     width 0.4s ease-in-out;
 }
 .nav {
