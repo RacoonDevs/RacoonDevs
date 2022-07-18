@@ -49,6 +49,7 @@
 .main-btn-contacto:hover {
   color: var(--azulclaro);
   background: var(--blanco);
+  font-size: 1rem;
   transform: scale(1.1);
 }
 @media screen and (min-width: 768px) {
