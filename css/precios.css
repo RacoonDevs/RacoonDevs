@@ -28,7 +28,7 @@
 }
 .card-body ul li::before {
   content: "\25A0";
-  color: var(--azulfuerte);
+  color: var(--azulclaro);
   font-weight: bold;
   display: inline-block;
   width: 1em;
