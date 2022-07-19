@@ -20,13 +20,15 @@
   padding-left: 5%;
   padding-top: 1rem;
   font-weight: bold;
+  color: var(--azulfuerte);
 }
 .form input,
 .form textarea {
   border: none;
-  border-radius: 10px;
-  background-color: #f0f0f0;
+  /* border-radius: 10px; */
+  background: none;
   padding-left: 5%;
+  border-bottom: 2px solid var(--azulfuerte);
 }
 .form input {
   height: 2rem;
