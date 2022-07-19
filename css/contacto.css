@@ -1,0 +1,47 @@
+.contacto-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+.header-contain {
+  padding-bottom: 5%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+.form label,
+.form input,
+.form textarea {
+  display: block;
+  text-align: left;
+}
+.form label {
+  padding-left: 5%;
+  padding-top: 1rem;
+  font-weight: bold;
+}
+.form input,
+.form textarea {
+  border: none;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  padding-left: 5%;
+}
+.form input {
+  height: 2rem;
+}
+.contacto-container iframe {
+  width: 100%;
+  height: 250px;
+}
+
+@media (min-width: 850px) {
+  .contacto-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contacto-container iframe {
+    width: 100%;
+    height: 400px;
+  }
+}

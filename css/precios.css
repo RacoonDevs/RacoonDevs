@@ -1,0 +1,65 @@
+.precios-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+.precios-card {
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin: 5% auto;
+  width: 90%;
+  text-align: center;
+}
+.card-header {
+  color: white;
+  background: linear-gradient(270deg, #0063c9 0%, #37cae6 100%);
+  box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 5% 0;
+  letter-spacing: 0px;
+}
+.card-header h3,
+.card-header p {
+  color: white;
+}
+.card-body ul {
+  text-align: left;
+  list-style: none;
+  margin: 10% 0;
+}
+.card-body ul li::before {
+  content: "\25A0";
+  color: var(--azulfuerte);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.card-body button {
+  font-weight: bold;
+  margin: 10% auto;
+  padding: 3% 8%;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(270deg, #0063c9 0%, #37cae6 100%);
+}
+.precio-experto {
+  margin: 10% 5%;
+}
+.precio-experto p {
+  color: #000;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .precios-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1023px) {
+  .precios-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

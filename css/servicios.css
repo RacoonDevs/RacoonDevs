@@ -1,16 +1,16 @@
 .servicios {
+  background: #fff;
   background-image: url("./../img/SERVICIOS/BG_SERVICIOS.png");
-  background-position-x: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-position-x: center; */
+  /* background-repeat: no-repeat; */
+  background-size: contain;
   min-height: 100vh;
   width: 100%;
-  display: flex;
 }
 .content-servicios {
   height: 100%;
   width: 100%;
-  margin: 5%;
+  padding: 5%;
 }
 .content-servicios h2 {
   font-family: "Righteous";
@@ -23,7 +23,6 @@
 }
 .content-servicios p {
   text-align: center;
-  padding-bottom: 2rem;
   color: var(--azulfuerte);
   font-weight: bold;
 }
@@ -34,6 +33,9 @@
 }
 .servicios-item {
   padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .servicios-item img {
   width: 100%;
@@ -50,12 +52,18 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .content-servicios h2 {
     padding: 3rem 0 0;
   }
   .servicios-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+  }
+  .servicios-item {
+    align-items: center;
+  }
+  .servicios-item img {
+    width: 75%;
   }
 }
