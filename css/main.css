@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding: 0 0 10%;
   align-items: center;
   font-family: "Righteous";
   color: var(--blanco);
@@ -41,7 +42,7 @@
   color: var(--blanco);
   text-decoration: none;
   padding: 3% 10%;
-  margin-top: 3%;
+  /* margin-top: 3%; */
   background-color: var(--azulfuerte);
   border-radius: 25px;
   font-size: 0.75rem;
