@@ -42,7 +42,12 @@
   color: white;
   border: none;
   border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
   background: linear-gradient(270deg, #0063c9 0%, #37cae6 100%);
+}
+.card-body button:hover {
+  font-size: 1.2rem;
 }
 .precio-experto {
   margin: 10% 5%;

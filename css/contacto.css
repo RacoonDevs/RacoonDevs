@@ -25,7 +25,6 @@
 .form input,
 .form textarea {
   border: none;
-  /* border-radius: 10px; */
   background: none;
   padding-left: 5%;
   border-bottom: 2px solid var(--azulfuerte);
