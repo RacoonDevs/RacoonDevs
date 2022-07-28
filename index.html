@@ -433,20 +433,28 @@
       <section id="contacto" class="content-servicios">
         <div>
           <div>
-            <h2>ESTÁS A UN PASO</h2>
-            <p>De transformar tu empresa</p>
+            <h2 data-section="form" data-value="title">ESTÁS A UN PASO</h2>
+            <p data-section="form" data-value="subtitle">
+              De transformar tu empresa
+            </p>
           </div>
           <div class="contacto-container">
             <div class="precios-card">
               <div class="card-header">
-                <h3>CONTÁCTANOS</h3>
+                <h3 data-section="form" data-value="f-title">CONTÁCTANOS</h3>
               </div>
               <form class="form card-body" action="mail.php" method="post">
-                <label for="name">Nombre completo</label>
+                <label for="name" data-section="form" data-value="f-name"
+                  >Nombre completo</label
+                >
                 <input type="text" id="name" name="name" required />
-                <label for="correo">Correo electrónico</label>
+                <label for="correo" data-section="form" data-value="f-email"
+                  >Correo electrónico</label
+                >
                 <input type="email" id="correo" name="correo" required />
-                <label for="tel">Teléfono</label>
+                <label for="tel" data-section="form" data-value="f-tel"
+                  >Teléfono</label
+                >
                 <input
                   type="tel"
                   id="tel"
@@ -454,19 +462,31 @@
                   pattern="[0-9]{10}"
                   required
                 />
-                <label for="comentarios">Comentarios</label>
+                <label
+                  for="comentarios"
+                  data-section="form"
+                  data-value="f-comments"
+                  >Comentarios</label
+                >
                 <textarea
                   name="comentarios"
                   id="comentarios"
                   rows="5"
                   required
                 ></textarea>
-                <button type="submit" name="submit">Enviar</button>
+                <button
+                  type="submit"
+                  name="submit"
+                  data-section="form"
+                  data-value="f-btn"
+                >
+                  Enviar
+                </button>
               </form>
             </div>
             <div class="precios-card">
               <div class="card-header">
-                <h3>VISÍTANOS</h3>
+                <h3 data-section="form" data-value="visitanos">VISÍTANOS</h3>
               </div>
               <div class="card-body">
                 <div class="precio-experto">
@@ -494,7 +514,10 @@
     <footer>
       <div class="footer-contain">
         <div class="footer-icons">
-          <h3>SIGUENOS</h3>
+          <h3 data-section="footer" data-value="fo-title">SIGUENOS</h3>
+          <p data-section="footer" data-value="fo-sub">
+            Agreganos a tus redes sociales
+          </p>
           <div>
             <a
               href="https://www.facebook.com/RacoonDevs"
@@ -514,27 +537,30 @@
               <img src="./img/FOOTER/linkedin.png" alt="icon_linkendin" />
             </a>
           </div>
-          <p>Agreganos a tus redes sociales</p>
         </div>
         <div class="footer-contacto">
-          <h3>CONTACTO</h3>
+          <h3 data-section="footer" data-value="c-title">CONTACTO</h3>
           <div class="footer-element">
-            <p>Email:</p>
+            <p data-section="footer" data-value="c-email">
+              Correo electrónico:
+            </p>
             <p>contacto@racoondevs.com</p>
           </div>
           <div class="footer-element">
-            <p>Teléfono:</p>
+            <p data-section="footer" data-value="c-tel">Teléfono:</p>
             <p>322 265 2650</p>
           </div>
           <div class="footer-element">
-            <p>Dirección:</p>
+            <p data-section="footer" data-value="c-direccion">Dirección:</p>
             <p>Relámpago 101, Vida Vallarta, 48318 Puerto Vallarta, Jal.</p>
           </div>
         </div>
         <div class="footer-racoon">
           <h3>POWERED BY</h3>
           <img src="./img/INICIO/LOGO_B&W.png" alt="logo_racoondevs" />
-          <p>Copyright 2022 Desarrollado por Racoon Devs</p>
+          <p data-section="footer" data-value="p-sub">
+            Copyright 2022 Desarrollado por Racoon Devs
+          </p>
         </div>
       </div>
     </footer>

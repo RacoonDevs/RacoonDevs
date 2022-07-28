@@ -55,5 +55,25 @@
     "pe-p": "Cuéntanos más acerca de tu proyecto, estamos ansiosos de poder ayudarte.<br/><br/>Creamos aplicaciones y sitios web personalizados a tus necesidades.",
     "pe-btn": "¡Contactar!",
     "p-btn": "¡Lo quiero!"
+  },
+  "form": {
+    "title": "ESTÁS A UN PASO",
+    "subtitle": "De transformar tu empresa",
+    "f-title": "CONTÁCTANOS",
+    "f-name": "Nombre completo",
+    "f-email": "Correo electrónico",
+    "f-tel": "Teléfono",
+    "f-comments": "Comentarios",
+    "f-btn": "Enviar",
+    "visitanos": "VISÍTANOS"
+  },
+  "footer": {
+    "f-title": "SIGUENOS",
+    "f-sub": "Agreganos a tus redes sociales",
+    "c-title": "CONTACTO",
+    "c-email": "Correo electrónico:",
+    "c-tel": "Teléfono:",
+    "c-direccion": "Dirección:",
+    "p-sub": "Copyright 2022 Desarrollado por Racoon Devs"
   }
 }

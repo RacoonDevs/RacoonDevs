@@ -55,5 +55,25 @@
     "pe-p": "Tell us more about your project, we are eager to help you.<br/><br/>We create applications and websites customized to your needs.",
     "pe-btn": "Contact!",
     "p-btn": "¡Choose!"
+  },
+  "form": {
+    "title": "YOU ARE ONE STEP AWAY",
+    "subtitle": "To transform your company",
+    "f-title": "CONTACT",
+    "f-name": "Full name",
+    "f-email": "Email",
+    "f-tel": "Telephone",
+    "f-comments": "Comments",
+    "f-btn": "Send",
+    "visitanos": "VISIT US"
+  },
+  "footer": {
+    "fo-title": "FOLLOW UP",
+    "fo-sub": "Add us to your social networks",
+    "c-title": "CONTACT",
+    "c-email": "Email:",
+    "c-tel": "Telephone:",
+    "c-direccion": "Address:",
+    "p-sub": "Copyright 2022 Powered by Racoon Devs"
   }
 }
