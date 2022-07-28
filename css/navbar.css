@@ -84,6 +84,9 @@
   color: var(--azulclaro);
   padding: 5%;
 }
+.flags__item {
+  cursor: pointer;
+}
 .nav_img img {
   width: 64px;
 }

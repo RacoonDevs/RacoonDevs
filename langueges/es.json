@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "inicio": "INICIO",
+    "servicios": "SERVICIOS",
+    "portafolio": "PROTAFOLIO",
+    "precios": "PRECIOS",
+    "contacto": "CONTACTO",
+    "language": "<img src='../img/ICON_EN.png' alt='icon_es' data-language='es'/>"
+  },
+  "main": {
+    "title": "Agencia de Marketing Digital",
+    "subtitle": "Haz crecer tu negocio a través del mundo digital con ayuda de nuestros servicios.",
+    "btn": "CONTACTANOS"
+  }
+}

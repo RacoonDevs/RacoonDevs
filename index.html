@@ -2,14 +2,18 @@
 <html lang="es">
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-235221463-1">
-    </script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-235221463-1"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'UA-235221463-1');
+      gtag("config", "UA-235221463-1");
     </script>
     <!-- END -- Global site tag (gtag.js) - Google Analytics -->
     <meta charset="UTF-8" />
@@ -71,29 +75,85 @@
         </a>
         <ul class="nav_links">
           <li class="nav_item">
-            <a href="/" class="nav_link">INICIO</a>
+            <a
+              href="/"
+              class="nav_link"
+              data-section="navbar"
+              data-value="inicio"
+              >INICIO</a
+            >
           </li>
           <li class="nav_item">
-            <a href="#servicios" class="nav_link">SERVICIOS</a>
+            <a
+              href="#servicios"
+              class="nav_link"
+              data-section="navbar"
+              data-value="servicios"
+              >SERVICIOS</a
+            >
           </li>
           <li class="nav_item">
-            <a href="#portafolio" class="nav_link">PORTAFOLIO</a>
+            <a
+              href="#portafolio"
+              class="nav_link"
+              data-section="navbar"
+              data-value="portafolio"
+              >PORTAFOLIO</a
+            >
           </li>
           <li class="nav_item">
-            <a href="#precios" class="nav_link">PRECIOS</a>
+            <a
+              href="#precios"
+              class="nav_link"
+              data-section="navbar"
+              data-value="precios"
+              >PRECIOS</a
+            >
           </li>
           <li class="nav_item">
-            <a href="#contacto" class="nav_link">CONTACTO</a>
+            <a
+              href="#contacto"
+              class="nav_link"
+              data-section="navbar"
+              data-value="contacto"
+              >CONTACTO</a
+            >
           </li>
           <li class="nav_item">
-            <a href="#" class="nav_link nav_img"
-              ><img src="./img/INICIO/ENG.png" alt=""
-            /></a>
+            <div id="flags" class="flags">
+              <div
+                class="nav_img flags__item"
+                data-section="navbar"
+                data-value="language"
+                data-language="es"
+                id="es"
+              >
+                <img src="./img/ICON_ES.png" alt="icon_es" />
+              </div>
+              <div
+                class="nav_img flags__item"
+                data-section="navbar"
+                data-value="language"
+                data-language="en"
+                id="en"
+              >
+                <img
+                  src="./img/ICON_EN.png"
+                  alt="icon_en"
+                  data-section="navbar"
+                  data-value="language"
+                />
+              </div>
+            </div>
           </li>
         </ul>
-        <a href="#nav" class="nav_hamburger"
-          ><img class="nav_icon" src="./img/nav_menu.svg" alt="icon_hamburguer"
-        /></a>
+        <a href="#nav" class="nav_hamburger">
+          <img
+            class="nav_icon"
+            src="./img/nav_menu.svg"
+            alt="icon_hamburguer"
+          />
+        </a>
         <a href="#" class="nav_close"
           ><img class="nav_icon" src="./img/nav_close.svg" alt="icon_close"
         /></a>
@@ -106,12 +166,20 @@
           <source src="./img/INICIO/bg_video_3.mp4" type="video/mp4" />
           <!-- <source src="./img/INICIO/bg_video.mp4" type="video/mp4" /> -->
         </video>
-        <h1>Agencia de Marketing Digital</h1>
-        <p>
+        <h1 data-section="main" data-value="title">
+          Agencia de Marketing Digital
+        </h1>
+        <p data-section="main" data-value="subtitle">
           Haz crecer tu negocio a través del mundo digital con ayuda de nuestros
           servicios.
         </p>
-        <a href="#contacto" class="main-btn-contacto">CONTACTANOS</a>
+        <a
+          href="#contacto"
+          class="main-btn-contacto"
+          data-section="main"
+          data-value="btn"
+          >CONTACTANOS</a
+        >
       </div>
       <div class="floating-icons">
         <a
@@ -419,5 +487,6 @@
     </footer>
     <!-- End footer -->
     <script src="./js/navbar.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>

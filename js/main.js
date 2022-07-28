@@ -1,63 +1,25 @@
-const API = "https://api.github.com/users/";
+const flagsElement = document.getElementById("flags");
 
+const textsToChange = document.querySelectorAll("[data-section]");
 
+const changeLanguage = async (language) => {
+  if (language == "es") {
+    document.getElementById("en").style.visibility = "visible";
+    document.getElementById("es").style.visibility = "hidden";
+  } else {
+    document.getElementById("es").style.visibility = "visible";
+    document.getElementById("en").style.visibility = "hidden";
+  }
+  const requestJSON = await fetch(`../langueges/${language}.json`);
+  const texts = await requestJSON.json();
 
-const app =  Vue.createApp({
-    data() {
-        return {
-            search: null,
-            result: null,
-            error: null,
-            favorites: new Map()
-        }
-    },
-    computed:{
-        isFavorite(){
-            return  this.favorites.has(this.result.id)
-        },
-        allFavorites(){
-            return Array.from(this.favorites.values())
-        }
-    },
-    created(){
-        const savedFavorites =  JSON.parse(window.localStorage.getItem("favorites"))
-        if (savedFavorites) {
-            const favorites = new Map(savedFavorites.map(favorite => [favorite.id, favorite]))
-            this.favorites = favorites
-        }
-    },
-    methods: {
-        async doSearch(){
-            
-            this.result =  this.error = null
-            try{
-                const response = await fetch(API + this.search)
-                if (!response.ok) throw new Error("User not found")
-                const data =  await response.json()
-                console.log(data)
-                this.result= data
-            }catch(error){
-                this.error = error
-            }finally{
-                this.search = null
-            }
-        },
-        addFavorite(){
-            this.favorites.set(this.result.id, this.result)
-            this.updateStorage()
-        },
-        removeFavorite(){
-            this.favorites.delete(this.result.id)
-            this.updateStorage()
-        },
-        showFavorite(favorite){
-            this.result = favorite
-        },
-        updateStorage(){
-            window.localStorage.setItem('favorites', JSON.stringify(this.allFavorites))
-        }
+  for (const textToChange of textsToChange) {
+    const section = textToChange.dataset.section;
+    const value = textToChange.dataset.value;
+    textToChange.innerHTML = texts[section][value];
+  }
+};
 
-    }
+flagsElement.addEventListener("click", (e) => {
+  changeLanguage(e.target.parentElement.dataset.language);
 });
-
-// const mountedApp = app.mount("#app")

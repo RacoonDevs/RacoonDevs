@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "inicio": "HOME",
+    "servicios": "SERVICES",
+    "portafolio": "OWR WORK",
+    "precios": "PRICE",
+    "contacto": "CONTACT",
+    "language": "<img src='../img/ICON_ES.png' alt='icon_es' />"
+  },
+  "main": {
+    "title": "Digital Marketing Agency",
+    "subtitle": "Grow your business through the digital world with the help of our services.",
+    "btn": "CONTACT US"
+  }
+}
