@@ -11,5 +11,49 @@
     "title": "Agencia de Marketing Digital",
     "subtitle": "Haz crecer tu negocio a través del mundo digital con ayuda de nuestros servicios.",
     "btn": "CONTACTANOS"
+  },
+  "servicios": {
+    "title": "SERVICIOS",
+    "subtitle": "Nos especializamos en:",
+    "pagina": "Páginas web",
+    "aplicacion": "Aplicaciones web",
+    "seo": "SEO",
+    "foto": "Fotografía y video",
+    "diseno": "Diseño Gráfico",
+    "branding": "Branding"
+  },
+  "portafolio": {
+    "title": "PORTAFOLIO",
+    "subtitle": "Un vistazo de nuestro trabajo:"
+  },
+  "price": {
+    "title": "SERVICIOS WEB",
+    "subtitle": "Tenemos un paquete diseñado para tí",
+    "pb": "Paquete Básico",
+    "pb-sub": "Costo total $9,000.00 + iva",
+    "pb-li-1": "Página web estática de 4 secciones",
+    "pb-li-2": "Formulario de contacto",
+    "pb-li-3": "Diseño responsivo",
+    "pb-li-4": "Hosting compartido",
+    "pb-li-5": "Dominio .COM",
+    "pb-li-6": "Posicionamiento inteligente SEO",
+    "pb-li-7": "Certificado SSL",
+    "pb-li-8": "2 cuentas de correo",
+    "pp": "Paquete Plus",
+    "pp-sub": "Costo total $12,000.00 + iva",
+    "pp-li-1": "Página web estática de 6 secciones",
+    "pp-li-2": "Formulario de contacto",
+    "pp-li-3": "Diseño responsivo",
+    "pp-li-4": "Hosting individual",
+    "pp-li-5": "Dominio .COM",
+    "pp-li-6": "Posicionamiento SEO Inteligente",
+    "pp-li-7": "Certificado SSL",
+    "pp-li-8": "3 cuentas de correo",
+    "pp-li-9": "2 cambios post entrega",
+    "pe": "Paquete Experto",
+    "pe-sub": "Cotización vía contacto",
+    "pe-p": "Cuéntanos más acerca de tu proyecto, estamos ansiosos de poder ayudarte.<br/><br/>Creamos aplicaciones y sitios web personalizados a tus necesidades.",
+    "pe-btn": "¡Contactar!",
+    "p-btn": "¡Lo quiero!"
   }
 }

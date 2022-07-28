@@ -11,5 +11,49 @@
     "title": "Digital Marketing Agency",
     "subtitle": "Grow your business through the digital world with the help of our services.",
     "btn": "CONTACT US"
+  },
+  "servicios": {
+    "title": "SERVICES",
+    "subtitle": "We specialize in:",
+    "pagina": "Web sites",
+    "aplicacion": "Web APPS",
+    "seo": "SEO",
+    "foto": "Photo and video",
+    "diseno": "Graphic design",
+    "branding": "Branding"
+  },
+  "portafolio": {
+    "title": "OWR WORK",
+    "subtitle": "A glimpse of our work:"
+  },
+  "price": {
+    "title": "WEB SERVICES",
+    "subtitle": "We have a package designed for you",
+    "pb": "Basic package",
+    "pb-sub": "Total cost $9,000.00 + VAT",
+    "pb-li-1": "4 section static website",
+    "pb-li-2": "Contact Form",
+    "pb-li-3": "Responsive design",
+    "pb-li-4": "Shared hosting",
+    "pb-li-5": "Domain .COM",
+    "pb-li-6": "Smart SEO positioning",
+    "pb-li-7": "SSL Certificate",
+    "pb-li-8": "2 email accounts",
+    "pp": "Plus Package",
+    "pp-sub": "Total cost $12,000.00 + VAT",
+    "pp-li-1": "6 section static website",
+    "pp-li-2": "Contact Form",
+    "pp-li-3": "Responsive design",
+    "pp-li-4": "Single hosting",
+    "pp-li-5": "Domain .COM",
+    "pp-li-6": "Smart SEO positioning",
+    "pp-li-7": "SSL Certificate",
+    "pp-li-8": "3 email accounto",
+    "pp-li-9": "2 post finished web changes",
+    "pe": "Expert Package",
+    "pe-sub": "Quote via contact",
+    "pe-p": "Tell us more about your project, we are eager to help you.<br/><br/>We create applications and websites customized to your needs.",
+    "pe-btn": "Contact!",
+    "p-btn": "¡Choose!"
   }
 }

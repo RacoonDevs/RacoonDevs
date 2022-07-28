@@ -4,11 +4,11 @@ const textsToChange = document.querySelectorAll("[data-section]");
 
 const changeLanguage = async (language) => {
   if (language == "es") {
-    document.getElementById("en").style.visibility = "visible";
-    document.getElementById("es").style.visibility = "hidden";
+    document.getElementById("en").style.display = "block";
+    document.getElementById("es").style.display = "none";
   } else {
-    document.getElementById("es").style.visibility = "visible";
-    document.getElementById("en").style.visibility = "hidden";
+    document.getElementById("es").style.display = "block";
+    document.getElementById("en").style.display = "none";
   }
   const requestJSON = await fetch(`../langueges/${language}.json`);
   const texts = await requestJSON.json();

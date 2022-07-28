@@ -127,6 +127,7 @@
                 data-value="language"
                 data-language="es"
                 id="es"
+                style="display: none"
               >
                 <img src="./img/ICON_ES.png" alt="icon_es" />
               </div>
@@ -196,34 +197,40 @@
     <!-- Servicios  -->
     <div class="servicios">
       <section class="content-servicios" id="servicios">
-        <h2>SERVICIOS</h2>
-        <p>Nos especializamos en:</p>
+        <h2 data-section="servicios" data-value="title">SERVICIOS</h2>
+        <p data-section="servicios" data-value="subtitle">
+          Nos especializamos en:
+        </p>
         <div class="servicios-grid">
           <div class="servicios-item">
-            <h3>Páginas web</h3>
+            <h3 data-section="servicios" data-value="pagina">Páginas web</h3>
             <img src="./img/SERVICIOS/IMG_PAGINAS.png" alt="IMG_PAGINAS" />
           </div>
           <div class="servicios-item">
-            <h3>Aplicaciones web</h3>
+            <h3 data-section="servicios" data-value="aplicacion">
+              Aplicaciones web
+            </h3>
             <img src="./img/SERVICIOS/IMG_APPS.png" alt="IMG_APPS" />
           </div>
           <div class="servicios-item">
-            <h3>SEO</h3>
+            <h3 data-section="servicios" data-value="seo">SEO</h3>
             <img src="./img/SERVICIOS/IMG_SEO.png" alt="IMG_SEO" />
           </div>
           <div class="servicios-item">
-            <h3>Fotografía y video</h3>
+            <h3 data-section="servicios" data-value="foto">
+              Fotografía y video
+            </h3>
             <img
               src="./img/SERVICIOS/IMG_FOTOGRAFIA.png"
               alt="IMG_FOTOGRAFIA"
             />
           </div>
           <div class="servicios-item">
-            <h3>Diseño Gráfico</h3>
+            <h3 data-section="servicios" data-value="diseno">Diseño Gráfico</h3>
             <img src="./img/SERVICIOS/IMG_DISENO.png" alt="IMG_DISENO" />
           </div>
           <div class="servicios-item">
-            <h3>Branding</h3>
+            <h3 data-section="servicios" data-value="branding">Branding</h3>
             <img src="./img/SERVICIOS/IMG_BRANDING.png" alt="IMG_BRANDING" />
           </div>
         </div>
@@ -234,8 +241,10 @@
       <!-- Servicios  -->
       <!-- <section id="portafolio" class="servicios"> -->
       <section class="content-servicios" id="portafolio">
-        <h2>PORTAFOLIO</h2>
-        <p>Un vistazo de nuestro trabajo:</p>
+        <h2 data-section="portafolio" data-value="title">PORTAFOLIO</h2>
+        <p data-section="portafolio" data-value="subtitle">
+          Un vistazo de nuestro trabajo:
+        </p>
         <div class="portafolio-grid">
           <div class="portafolio-item">
             <a
@@ -312,64 +321,108 @@
       <!-- Servicios  -->
       <section id="precios" class="content-servicios">
         <div>
-          <h2>SERVICIOS WEB</h2>
-          <p>Tenemos un paquete diseñado para tí</p>
+          <h2 data-section="price" data-value="title">SERVICIOS WEB</h2>
+          <p data-section="price" data-value="subtitle">
+            Tenemos un paquete diseñado para tí
+          </p>
         </div>
         <div class="precios-container">
           <div class="precios-card">
             <div class="card-header">
-              <h3>Paquete Básico</h3>
-              <p>Costo total $9,000.00 + iva</p>
+              <h3 data-section="price" data-value="pb">Paquete Básico</h3>
+              <p data-section="price" data-value="pb-sub">
+                Costo total $9,000.00 + iva
+              </p>
             </div>
             <div class="card-body">
               <ul>
-                <li>Página web estática de 4 secciones</li>
-                <li>Formulario de contacto</li>
-                <li>Diseño responsivo</li>
-                <li>Hosting compartido</li>
-                <li>Dominio .COM</li>
-                <li>Posicionamiento inteligente SEO</li>
-                <li>Certificado SSL</li>
-                <li>2 cuentas de correo</li>
+                <li data-section="price" data-value="pb-li-1">
+                  Página web estática de 4 secciones
+                </li>
+                <li data-section="price" data-value="pb-li-2">
+                  Formulario de contacto
+                </li>
+                <li data-section="price" data-value="pb-li-3">
+                  Diseño responsivo
+                </li>
+                <li data-section="price" data-value="pb-li-4">
+                  Hosting compartido
+                </li>
+                <li data-section="price" data-value="pb-li-5">Dominio .COM</li>
+                <li data-section="price" data-value="pb-li-6">
+                  Posicionamiento inteligente SEO
+                </li>
+                <li data-section="price" data-value="pb-li-7">
+                  Certificado SSL
+                </li>
+                <li data-section="price" data-value="pb-li-8">
+                  2 cuentas de correo
+                </li>
               </ul>
-              <button>¡Lo quiero!</button>
+              <button data-section="price" data-value="p-btn">
+                ¡Lo quiero!
+              </button>
             </div>
           </div>
           <div class="precios-card">
             <div class="card-header">
-              <h3>Paquete Plus</h3>
-              <p>Costo total $12,000.00 + iva</p>
+              <h3 data-section="price" data-value="pp">Paquete Plus</h3>
+              <p data-section="price" data-value="pp-sub">
+                Costo total $12,000.00 + iva
+              </p>
             </div>
             <div class="card-body">
               <ul>
-                <li>Paquete profesional</li>
-                <li>Pagina web estática de 6 secciones</li>
-                <li>Formulario de contacto</li>
-                <li>Diseño responsivo</li>
-                <li>Hosting individual</li>
-                <li>Dominio .COM</li>
-                <li>Posicionamiento SEO Inteligente</li>
-                <li>Certificado SSL</li>
-                <li>3 Cuentas de correo</li>
+                <li data-section="price" data-value="pp-li-1">
+                  Pagina web estática de 6 secciones
+                </li>
+                <li data-section="price" data-value="pp-li-2">
+                  Formulario de contacto
+                </li>
+                <li data-section="price" data-value="pp-li-3">
+                  Diseño responsivo
+                </li>
+                <li data-section="price" data-value="pp-li-4">
+                  Hosting individual
+                </li>
+                <li data-section="price" data-value="pp-li-5">Dominio .COM</li>
+                <li data-section="price" data-value="pp-li-6">
+                  Posicionamiento SEO Inteligente
+                </li>
+                <li data-section="price" data-value="pp-li-7">
+                  Certificado SSL
+                </li>
+                <li data-section="price" data-value="pp-li-8">
+                  3 Cuentas de correo
+                </li>
+                <li data-section="price" data-value="pp-li-9">
+                  2 Cambios post entrega
+                </li>
               </ul>
-              <button>¡Lo quiero!</button>
+              <button data-section="price" data-value="p-btn">
+                ¡Lo quiero!
+              </button>
             </div>
           </div>
           <div class="precios-card">
             <div class="card-header">
-              <h3>Paquete experto</h3>
-              <p>Cotización vía contacto</p>
+              <h3 data-section="price" data-value="pe">Paquete experto</h3>
+              <p data-section="price" data-value="pe-sub">
+                Cotización vía contacto
+              </p>
             </div>
             <div class="card-body">
               <div class="precio-experto">
-                <p>
+                <p data-section="price" data-value="pe-p">
                   Cuéntanos más acerca de tu proyecto, estamos ansiosos de poder
                   ayudarte.<br /><br />
                   Creamos aplicaciones y sitios web personalizados a tus
                   necesidades.
                 </p>
               </div>
-              <button>¡Contactar!</button>
+              <button data-section="price" data-value="pe-btn">
+                ¡Contactar!
+              </button>
             </div>
           </div>
         </div>
