@@ -39,6 +39,7 @@
 }
 .servicios-item img {
   width: 100%;
+  max-width: 300px;
 }
 
 @media (max-width: 1023px) {
