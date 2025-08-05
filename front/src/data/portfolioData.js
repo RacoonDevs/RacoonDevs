@@ -1,4 +1,12 @@
 // src/data/portfolioData.js
+
+// Import images
+import sinabeImage from "../assets/portafolio/sinabe.webp";
+import mycadImage from "../assets/portafolio/mycad.webp";
+import ntropiaImage from "../assets/portafolio/ntropia.webp";
+// Placeholder para las imágenes que no existen aún
+import placeholderImage from "../assets/portafolio/sinabe.webp"; // Usar una existente como placeholder
+
 export const portfolioStats = [
   {
     number: "50+",
@@ -29,7 +37,7 @@ export const featuredProjects = [
     subtitle: "Sistema de Inventarios",
     description:
       "Sistema integral de gestión de inventarios diseñado específicamente para el sector agroempresarial, facilitando el control de stocks, materiales y equipos agrícolas.",
-    image: "/src/assets/portafolio/sinabe.webp",
+    image: sinabeImage,
     category: "Software Development",
     year: "2023",
     client: "Privado",
@@ -56,7 +64,7 @@ export const featuredProjects = [
     subtitle: "Administración Integral de Flota Vehicular",
     description:
       "Plataforma completa de administración de flota vehicular que optimiza el control de vehículos con un sistema complejo de histórico y gestión automatizada.",
-    image: "/src/assets/portafolio/mycad.webp",
+    image: mycadImage,
     category: "Web Application",
     year: "2024",
     client: "Maquinaria y Conteras del Centro.",
@@ -86,7 +94,7 @@ export const allProjects = [
     subtitle: "Workspaces colaborativos en tiempo real",
     description:
       "Plataforma de trabajo colaborativo que permite a equipos interactuar en espacios virtuales con herramientas de productividad integradas.",
-    image: "/src/assets/portafolio/ntropia.webp", // Placeholder
+    image: ntropiaImage,
     category: "Mobile App",
     year: "2024",
     tags: [
@@ -107,7 +115,7 @@ export const allProjects = [
     subtitle: "Rebranding y Página Web",
     description:
       "Plataforma web optimizada para cadenas de suministro sustentables con análisis de huella de carbono integrado.",
-    image: "/src/assets/portafolio/logo-carnitas.webp", // Placeholder
+    image: placeholderImage, // Usar placeholder hasta tener la imagen real
     category: "Landing Page - Menú y Reservas",
     year: "2024",
     tags: ["Vite JS", "React JS", "Tailwind CSS", "Design"],
@@ -121,7 +129,7 @@ export const allProjects = [
     subtitle: "Página Web",
     description:
       "Sitio web corporativo para empresa de carpintería especializada, con catálogo de productos y sistema de cotizaciones.",
-    image: "/src/assets/portafolio/fg-carpinteria.webp", // Placeholder
+    image: placeholderImage, // Usar placeholder hasta tener la imagen real
     category: "Informational Website",
     year: "2024",
     tags: ["React JS", "Translator", "Design", "Tailwind CSS"],
@@ -135,7 +143,7 @@ export const allProjects = [
     subtitle: "Gestión de Competencias Deportivas",
     description:
       "Plataforma integral para la gestión de competencias deportivas en gimnasios, incluyendo registro, seguimiento y rankings.",
-    image: "/src/assets/portafolio/famcrossfit.webp", // Placeholder
+    image: placeholderImage, // Usar placeholder hasta tener la imagen real
     category: "Sports Platform",
     year: "2025",
     tags: ["React JS", "Node.js", "Prisma", "Mysql", "Vite JS"],
@@ -149,7 +157,7 @@ export const allProjects = [
     subtitle: "Rebranding y Página Web",
     description:
       "Proyecto de rebranding completo y desarrollo de sitio web para el reconocido restaurante Carnitas Joseles.",
-    image: "/src/assets/portafolio/carnitas-joseles.webp", // Placeholder
+    image: placeholderImage, // Usar placeholder hasta tener la imagen real
     category: "Branding & Web",
     year: "2025",
     tags: ["Branding", "React", "Design", "Marketing"],
