@@ -2,11 +2,34 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Rocket } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import Icon from "../../assets/RD_TRANS_W.webp";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navItems = ["Servicios", "Portfolio", "Proceso", "Contacto"];
+  const location = useLocation();
+
+  // Diferentes navegaciones para diferentes páginas
+  const getNavItems = () => {
+    if (location.pathname === "/portafolio") {
+      return [
+        { name: "Inicio", path: "/" },
+        { name: "Servicios", path: "/#servicios" },
+        { name: "Portfolio", path: "/portafolio" },
+        { name: "Contacto", path: "/#contacto" },
+      ];
+    }
+
+    // Navegación para la página principal
+    return [
+      { name: "Servicios", path: "#servicios", isAnchor: true },
+      { name: "Portfolio", path: "/portafolio", isAnchor: false },
+      { name: "Proceso", path: "#proceso", isAnchor: true },
+      { name: "Contacto", path: "#contacto", isAnchor: true },
+    ];
+  };
+
+  const navItems = getNavItems();
 
   // Cerrar menú al cambiar tamaño de pantalla
   useEffect(() => {
@@ -48,41 +71,77 @@ const Header = () => {
                 className="flex items-center space-x-3 sm:space-x-4 group"
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="relative">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-10 lg:h-10 bg-gradient-to-br from-cyan-400 via-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
-                    <img
-                      src={Icon}
-                      alt="Logo"
-                      className="w-6 h-6 sm:w-8 sm:h-8"
-                    />
+                <Link
+                  to="/"
+                  className="flex items-center space-x-3 sm:space-x-4"
+                >
+                  <div className="relative">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-10 lg:h-10 bg-gradient-to-br from-cyan-400 via-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
+                      <img
+                        src={Icon}
+                        alt="Logo"
+                        className="w-6 h-6 sm:w-8 sm:h-8"
+                      />
+                    </div>
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                   </div>
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-lg sm:text-xl lg:text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    Racoon Devs
-                  </span>
-                  <div className="text-xs text-gray-400 font-mono -mt-1 hidden sm:block">
-                    Digital Architects
+                  <div className="flex flex-col">
+                    <span className="text-lg sm:text-xl lg:text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      Racoon Devs
+                    </span>
+                    <div className="text-xs text-gray-400 font-mono -mt-1 hidden sm:block">
+                      Digital Architects
+                    </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
 
               {/* Desktop Navigation */}
               <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="relative text-gray-300 hover:text-white transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {item}
-                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 group-hover:w-3/4 transition-all duration-300" />
-                  </motion.a>
-                ))}
+                {navItems.map((item, index) => {
+                  if (item.isAnchor) {
+                    return (
+                      <motion.a
+                        key={item.name}
+                        href={item.path}
+                        className="relative text-gray-300 hover:text-white transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        {item.name}
+                        <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 group-hover:w-3/4 transition-all duration-300" />
+                      </motion.a>
+                    );
+                  } else {
+                    return (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <Link
+                          to={item.path}
+                          className={`relative transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base ${
+                            location.pathname === item.path
+                              ? "text-cyan-400"
+                              : "text-gray-300 hover:text-white"
+                          }`}
+                        >
+                          {item.name}
+                          <span
+                            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 transition-all duration-300 ${
+                              location.pathname === item.path
+                                ? "w-3/4"
+                                : "w-0 group-hover:w-3/4"
+                            }`}
+                          />
+                        </Link>
+                      </motion.div>
+                    );
+                  }
+                })}
                 <motion.button
                   className="ml-6 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white px-6 py-2.5 lg:px-8 lg:py-3 rounded-full font-medium text-sm lg:text-base transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105"
                   whileHover={{ scale: 1.05 }}
@@ -141,7 +200,7 @@ const Header = () => {
             <div className="flex flex-col h-full">
               {/* Sidebar Header */}
               <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <div className="flex items-center space-x-3">
+                <Link to="/" className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 via-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
                     <img src={Icon} alt="Logo" className="w-8 h-8" />
                   </div>
@@ -153,7 +212,7 @@ const Header = () => {
                       Digital Architects
                     </div>
                   </div>
-                </div>
+                </Link>
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   className="text-white hover:bg-white/10 p-2 rounded-lg transition-colors duration-200"
@@ -165,20 +224,46 @@ const Header = () => {
               {/* Navigation Links */}
               <div className="flex-1 px-6 py-8">
                 <nav className="space-y-2">
-                  {navItems.map((item, index) => (
-                    <motion.a
-                      key={item}
-                      href={`#${item.toLowerCase()}`}
-                      className="block text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium"
-                      onClick={() => setIsMenuOpen(false)}
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 + 0.2 }}
-                      whileHover={{ x: 5 }}
-                    >
-                      {item}
-                    </motion.a>
-                  ))}
+                  {navItems.map((item, index) => {
+                    if (item.isAnchor) {
+                      return (
+                        <motion.a
+                          key={item.name}
+                          href={item.path}
+                          className="block text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium"
+                          onClick={() => setIsMenuOpen(false)}
+                          initial={{ opacity: 0, x: 50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 + 0.2 }}
+                          whileHover={{ x: 5 }}
+                        >
+                          {item.name}
+                        </motion.a>
+                      );
+                    } else {
+                      return (
+                        <motion.div
+                          key={item.name}
+                          initial={{ opacity: 0, x: 50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 + 0.2 }}
+                          whileHover={{ x: 5 }}
+                        >
+                          <Link
+                            to={item.path}
+                            className={`block transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium ${
+                              location.pathname === item.path
+                                ? "text-cyan-400 bg-white/5"
+                                : "text-gray-300 hover:text-white hover:bg-white/5"
+                            }`}
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {item.name}
+                          </Link>
+                        </motion.div>
+                      );
+                    }
+                  })}
                 </nav>
               </div>
 

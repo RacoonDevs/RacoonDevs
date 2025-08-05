@@ -47,6 +47,15 @@ body {
   animation: gradient-shift 6s ease infinite;
 }
 
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Nueva animación de gradiente para TailwindCSS v4 */
 @keyframes gradient {
   0%,
