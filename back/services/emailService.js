@@ -200,12 +200,12 @@ export const sendContactEmail = async (emailData) => {
             
             <p>Mientras tanto, te invitamos a:</p>
             <ul>
-              <li>🌐 Visitar nuestro portfolio en <a href="https://racoondevs.com">racoondevs.com</a></li>
+              <li>🌐 Visitar nuestro portafolio en <a href="https://racoondevs.com">racoondevs.com</a></li>
               <li>📱 Seguirnos en nuestras redes sociales</li>
               <li>📞 Llamarnos directamente al +52 322 265 2650</li>
             </ul>
-            
-            <a href="https://racoondevs.com" class="cta-button">Ver nuestro Portfolio</a>
+
+            <a href="https://racoondevs.com" class="cta-button">Ver nuestro Portafolio</a>
           </div>
           <div class="footer">
             <p><strong>RacoonDevs</strong><br>

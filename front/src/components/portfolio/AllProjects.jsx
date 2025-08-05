@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { allProjects, projectCategories } from "../../data/portfolioData";
+import { Link } from "react-router-dom";
 
 const AllProjects = () => {
   const [selectedCategory, setSelectedCategory] = useState(
@@ -91,7 +92,11 @@ const AllProjects = () => {
                 {/* Project Image */}
                 <div className="relative mb-6 overflow-hidden rounded-2xl">
                   <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-4xl text-gray-600 group-hover:scale-110 transition-transform duration-500">
-                    {index % 3 === 0 ? "💻" : index % 3 === 1 ? "📱" : "🚀"}
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
 
                   {/* Overlay */}
@@ -156,11 +161,22 @@ const AllProjects = () => {
                       opacity: hoveredProject === project.id ? 1 : 0.7,
                     }}
                     transition={{ duration: 0.3 }}
-                    className="pt-2"
+                    className="pt-2 flex gap-4 justify-between"
                   >
-                    <button className="w-full py-2 border border-gray-600 rounded-xl font-medium text-gray-300 hover:bg-gray-800 hover:border-gray-500 transition-all duration-300 text-sm">
-                      Ver Detalles
-                    </button>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                    >
+                      Ver Proyecto
+                    </a>
+                    <Link
+                      to={project.caseStudy}
+                      className="px-6 py-3 border border-gray-600 rounded-xl font-semibold text-gray-300 hover:bg-gray-800 hover:border-gray-500 transition-all duration-300"
+                    >
+                      Caso de Estudio
+                    </Link>
                   </motion.div>
                 </div>
 
@@ -172,7 +188,7 @@ const AllProjects = () => {
         </AnimatePresence>
 
         {/* Load More Button */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -182,7 +198,7 @@ const AllProjects = () => {
           <button className="px-8 py-4 border border-gray-600 rounded-xl font-semibold text-gray-300 hover:bg-gray-800 hover:border-gray-500 transition-all duration-300 transform hover:scale-105">
             Cargar Más Proyectos
           </button>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

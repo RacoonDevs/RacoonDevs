@@ -1,5 +1,6 @@
 // src/components/sections/PortfolioSection.jsx
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   ExternalLink,
   Github,
@@ -17,9 +18,9 @@ const PortfolioSection = () => {
   const projects = [
     {
       name: "Sinabe",
-      tagline: "Gestión de inventarios para equipos aeroportuarios",
+      tagline: "Gestión de inventarios para equipos",
       description:
-        "Plataforma web que centraliza el control de stock, notificaciones y reportes en tiempo real para el aeropuerto.",
+        "Plataforma web que centraliza el control de stock, notificaciones y reportes en tiempo real.",
       image: sinabeImage,
       technologies: [
         "React",
@@ -32,7 +33,7 @@ const PortfolioSection = () => {
         "Docker",
       ],
       links: {
-        demo: "sinabe.tuempresa.com",
+        demo: "sinabe.racoondevs.com",
         github: "github.com/racoondevs/sinabe",
       },
       duration: "4 meses (Ene–Abr 2025)",
@@ -57,7 +58,7 @@ const PortfolioSection = () => {
         "MySQL",
       ],
       links: {
-        demo: "mycad.tuempresa.com",
+        demo: "mycad.racoondevs.com",
         github: "github.com/racoondevs/mycad",
       },
       duration: "3 meses (Abr–Jun 2025)",
@@ -80,7 +81,7 @@ const PortfolioSection = () => {
         "Framer Motion",
       ],
       links: {
-        demo: "ntropia.tuempresa.com",
+        demo: "ntropia.racoondevs.com",
         github: "github.com/racoondevs/ntropia",
       },
       duration: "2 meses (Jul–Ago 2025)",
@@ -116,7 +117,7 @@ const PortfolioSection = () => {
   return (
     <section
       className="py-12 sm:py-16 lg:py-20 relative overflow-hidden"
-      id="portfolio"
+      id="portafolio"
     >
       <div className="relative z-10 w-full flex justify-center">
         <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-10">
@@ -130,7 +131,7 @@ const PortfolioSection = () => {
           >
             <motion.h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 lg:mb-6">
               <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Portfolio
+                Portafolio
               </span>
             </motion.h2>
             <motion.p
@@ -281,16 +282,22 @@ const PortfolioSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <p className="text-gray-400 text-lg mb-6">
-              ¿Listo para que tu proyecto sea el siguiente en esta lista?
+              Esto es solo una muestra de nuestro trabajo. Cada proyecto es una
+              historia de innovación y dedicación.
             </p>
-            <motion.button
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
+            <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              className="inline-block"
             >
-              Crear Proyecto Juntos
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
+              <Link
+                to="/portafolio"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
+              >
+                Ver Todos los Proyectos
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>

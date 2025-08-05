@@ -294,27 +294,6 @@ const ProcessSection = () => {
               ))}
             </div>
           </motion.div>
-
-          {/* CTA */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <p className="text-gray-400 text-lg mb-6">
-              ¿Listo para comenzar tu transformación digital?
-            </p>
-            <motion.button
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Comenzar Proyecto
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
-          </motion.div>
         </div>
       </div>
     </section>

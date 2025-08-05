@@ -52,9 +52,9 @@ const PortfolioCTA = () => {
                 🚀 Crear un Proyecto
               </Link>
 
-              <button className="px-8 py-4 border border-gray-600 rounded-xl font-semibold text-gray-300 hover:bg-gray-800 hover:border-gray-500 transition-all duration-300 transform hover:scale-105">
+              {/* <button className="px-8 py-4 border border-gray-600 rounded-xl font-semibold text-gray-300 hover:bg-gray-800 hover:border-gray-500 transition-all duration-300 transform hover:scale-105">
                 📞 Ver Más Casos
-              </button>
+              </button> */}
             </motion.div>
 
             <motion.div

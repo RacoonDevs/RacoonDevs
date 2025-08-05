@@ -3,27 +3,29 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Rocket } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useNavigateToSection } from "../utils/NavigateToSection";
 import Icon from "../../assets/RD_TRANS_W.webp";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigateToSection = useNavigateToSection();
 
   // Diferentes navegaciones para diferentes páginas
   const getNavItems = () => {
     if (location.pathname === "/portafolio") {
       return [
-        { name: "Inicio", path: "/" },
-        { name: "Servicios", path: "/#servicios" },
-        { name: "Portfolio", path: "/portafolio" },
-        { name: "Contacto", path: "/#contacto" },
+        { name: "Inicio", path: "/", isAnchor: false },
+        { name: "Servicios", path: "/#servicios", isAnchor: false },
+        { name: "Portafolio", path: "/portafolio", isAnchor: false },
+        { name: "Contacto", path: "/#contacto", isAnchor: false },
       ];
     }
 
     // Navegación para la página principal
     return [
       { name: "Servicios", path: "#servicios", isAnchor: true },
-      { name: "Portfolio", path: "/portafolio", isAnchor: false },
+      { name: "Portafolio", path: "/portafolio", isAnchor: false },
       { name: "Proceso", path: "#proceso", isAnchor: true },
       { name: "Contacto", path: "#contacto", isAnchor: true },
     ];
@@ -101,17 +103,17 @@ const Header = () => {
                 {navItems.map((item, index) => {
                   if (item.isAnchor) {
                     return (
-                      <motion.a
+                      <motion.button
                         key={item.name}
-                        href={item.path}
-                        className="relative text-gray-300 hover:text-white transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base"
+                        onClick={() => navigateToSection(item.path)}
+                        className="relative text-gray-300 hover:text-white transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base cursor-pointer"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
                         {item.name}
                         <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 group-hover:w-3/4 transition-all duration-300" />
-                      </motion.a>
+                      </motion.button>
                     );
                   } else {
                     return (
@@ -121,10 +123,13 @@ const Header = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <Link
-                          to={item.path}
-                          className={`relative transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base ${
-                            location.pathname === item.path
+                        <button
+                          onClick={() => navigateToSection(item.path)}
+                          className={`relative transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base cursor-pointer ${
+                            location.pathname === item.path ||
+                            (item.path.startsWith("/#") &&
+                              location.pathname === "/" &&
+                              location.hash === item.path.replace("/", ""))
                               ? "text-cyan-400"
                               : "text-gray-300 hover:text-white"
                           }`}
@@ -132,23 +137,31 @@ const Header = () => {
                           {item.name}
                           <span
                             className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 transition-all duration-300 ${
-                              location.pathname === item.path
+                              location.pathname === item.path ||
+                              (item.path.startsWith("/#") &&
+                                location.pathname === "/" &&
+                                location.hash === item.path.replace("/", ""))
                                 ? "w-3/4"
                                 : "w-0 group-hover:w-3/4"
                             }`}
                           />
-                        </Link>
+                        </button>
                       </motion.div>
                     );
                   }
                 })}
                 <motion.button
-                  className="ml-6 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white px-6 py-2.5 lg:px-8 lg:py-3 rounded-full font-medium text-sm lg:text-base transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="inline-block"
                 >
-                  <Rocket className="w-4 h-4 mr-2 inline" />
-                  Crear Magia
+                  <Link
+                    to="/#contacto"
+                    className="ml-6 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white px-6 py-2.5 lg:px-8 lg:py-3 rounded-full font-medium text-sm lg:text-base transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105"
+                  >
+                    <Rocket className="w-4 h-4 mr-2 inline" />
+                    Crear Magia
+                  </Link>
                 </motion.button>
               </nav>
 
@@ -227,18 +240,20 @@ const Header = () => {
                   {navItems.map((item, index) => {
                     if (item.isAnchor) {
                       return (
-                        <motion.a
+                        <motion.button
                           key={item.name}
-                          href={item.path}
-                          className="block text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium"
-                          onClick={() => setIsMenuOpen(false)}
+                          onClick={() => {
+                            navigateToSection(item.path);
+                            setIsMenuOpen(false);
+                          }}
+                          className="block w-full text-left text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium"
                           initial={{ opacity: 0, x: 50 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 + 0.2 }}
                           whileHover={{ x: 5 }}
                         >
                           {item.name}
-                        </motion.a>
+                        </motion.button>
                       );
                     } else {
                       return (
@@ -249,17 +264,22 @@ const Header = () => {
                           transition={{ delay: index * 0.1 + 0.2 }}
                           whileHover={{ x: 5 }}
                         >
-                          <Link
-                            to={item.path}
-                            className={`block transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium ${
-                              location.pathname === item.path
+                          <button
+                            onClick={() => {
+                              navigateToSection(item.path);
+                              setIsMenuOpen(false);
+                            }}
+                            className={`block w-full text-left transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium ${
+                              location.pathname === item.path ||
+                              (item.path.startsWith("/#") &&
+                                location.pathname === "/" &&
+                                location.hash === item.path.replace("/", ""))
                                 ? "text-cyan-400 bg-white/5"
                                 : "text-gray-300 hover:text-white hover:bg-white/5"
                             }`}
-                            onClick={() => setIsMenuOpen(false)}
                           >
                             {item.name}
-                          </Link>
+                          </button>
                         </motion.div>
                       );
                     }

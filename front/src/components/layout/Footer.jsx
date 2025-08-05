@@ -21,7 +21,7 @@ import Icon from "../../assets/RD_TRANS_C.webp";
 const Footer = () => {
   const navigationLinks = [
     { label: "Servicios", href: "#servicios" },
-    { label: "Portfolio", href: "#portfolio" },
+    { label: "Portafolio", href: "#portafolio" },
     { label: "Proceso", href: "#proceso" },
     { label: "Contacto", href: "#contacto" },
   ];
@@ -36,7 +36,7 @@ const Footer = () => {
 
   const resources = [
     { label: "Blog", href: "#", external: true },
-    { label: "Casos de Estudio", href: "#portfolio" },
+    { label: "Casos de Estudio", href: "#portafolio" },
     { label: "Recursos Gratuitos", href: "#", external: true },
     { label: "Documentación", href: "#", external: true },
     { label: "API", href: "#", external: true },

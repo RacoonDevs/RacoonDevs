@@ -40,9 +40,14 @@ const FeaturedProjects = () => {
                 }`}
               >
                 <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 overflow-hidden group">
-                  <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center text-6xl text-gray-600 group-hover:scale-105 transition-transform duration-500">
+                  {/* <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center text-6xl text-gray-600 group-hover:scale-105 transition-transform duration-500">
                     📱
-                  </div>
+                  </div> */}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="aspect-video w-full h-full object-fit rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                  />
 
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

@@ -17,7 +17,7 @@ const PortfolioHero = () => {
             </span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
-              <span className="text-white">Portfolio que</span>
+              <span className="text-white">Portafolio que</span>
               <br />
               <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 Redefine Industrias
@@ -47,7 +47,7 @@ const PortfolioHero = () => {
               </div>
               <span className="w-px h-4 bg-gray-600"></span>
               <div className="flex items-center gap-2">
-                <span className="text-sm">🏆 +50 Proyectos</span>
+                <span className="text-sm">🏆 +10 Proyectos</span>
               </div>
               <span className="w-px h-4 bg-gray-600"></span>
               <div className="flex items-center gap-2">
