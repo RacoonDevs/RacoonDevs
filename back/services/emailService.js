@@ -7,7 +7,7 @@ dotenv.config();
 const createTransporter = () => {
   // Option 1: Gmail (recommended for development)
   if (process.env.EMAIL_SERVICE === "gmail") {
-    return nodemailer.createTransporter({
+    return nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
@@ -18,20 +18,23 @@ const createTransporter = () => {
 
   // Option 2: SMTP (for custom email providers)
   if (process.env.EMAIL_SERVICE === "smtp") {
-    return nodemailer.createTransporter({
+    return nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT || 587,
-      secure: process.env.SMTP_PORT == 465, // true for 465, false for other ports
+      port: parseInt(process.env.SMTP_PORT) || 587,
+      secure: false, // true for 465, false for other ports like 587
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false, // For development, accept self-signed certificates
       },
     });
   }
 
   // Option 3: SendGrid
   if (process.env.EMAIL_SERVICE === "sendgrid") {
-    return nodemailer.createTransporter({
+    return nodemailer.createTransport({
       service: "SendGrid",
       auth: {
         user: "apikey",
@@ -40,8 +43,17 @@ const createTransporter = () => {
     });
   }
 
+  // Option 4: Console logging (development)
+  if (process.env.EMAIL_SERVICE === "console") {
+    return nodemailer.createTransport({
+      streamTransport: true,
+      newline: "unix",
+      buffer: true,
+    });
+  }
+
   // Fallback: Log emails to console (development only)
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     streamTransport: true,
     newline: "unix",
     buffer: true,
@@ -208,7 +220,29 @@ export const sendContactEmail = async (emailData) => {
       `,
     };
 
-    // Send both emails
+    // Send both emails or log to console in development
+    if (process.env.EMAIL_SERVICE === "console") {
+      console.log("\n" + "=".repeat(80));
+      console.log("📧 EMAIL SIMULATION MODE - DEVELOPMENT");
+      console.log("=".repeat(80));
+      console.log("📤 Team Email:");
+      console.log(`   To: ${teamEmailContent.to}`);
+      console.log(`   Subject: ${teamEmailContent.subject}`);
+      console.log("📤 Client Email:");
+      console.log(`   To: ${clientEmailContent.to}`);
+      console.log(`   Subject: ${clientEmailContent.subject}`);
+      console.log("💬 Contact Data:");
+      console.log(`   Name: ${name}`);
+      console.log(`   Email: ${email}`);
+      console.log(`   Project: ${getProjectTypeLabel(projectType)}`);
+      console.log(`   Budget: ${getBudgetLabel(budget)}`);
+      console.log(`   Message: ${message}`);
+      console.log("=".repeat(80) + "\n");
+
+      console.log("✅ Emails simulated successfully (console mode)");
+      return true;
+    }
+
     const emailPromises = [
       transporter.sendMail(teamEmailContent),
       transporter.sendMail(clientEmailContent),

@@ -1,7 +1,7 @@
 // src/components/sections/ContactSection.jsx
 import { motion } from "framer-motion";
-import { useState, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useState, useCallback } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import {
   Mail,
   Phone,
@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 
 const ContactSection = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   // Form state
   const [formData, setFormData] = useState({
     name: "",
@@ -30,8 +32,6 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
-  const [recaptchaToken, setRecaptchaToken] = useState(null);
-  const recaptchaRef = useRef(null);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -42,25 +42,42 @@ const ContactSection = () => {
     }));
   };
 
-  // Handle reCAPTCHA
-  const handleRecaptchaChange = (token) => {
-    setRecaptchaToken(token);
-  };
+  // Handle reCAPTCHA v3 verification
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return null;
+    }
+
+    try {
+      const token = await executeRecaptcha("contact_form_submit");
+      return token;
+    } catch (error) {
+      console.error("reCAPTCHA verification failed:", error);
+      return null;
+    }
+  }, [executeRecaptcha]);
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!recaptchaToken) {
-      setSubmitStatus("error");
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Get reCAPTCHA token
+    const recaptchaToken = await handleReCaptchaVerify();
+
+    if (!recaptchaToken) {
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch("/api/contact", {
+      // vite app url
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${apiUrl}/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,8 +97,6 @@ const ContactSection = () => {
           budget: "",
           message: "",
         });
-        recaptchaRef.current?.reset();
-        setRecaptchaToken(null);
       } else {
         setSubmitStatus("error");
       }
@@ -242,8 +257,7 @@ const ContactSection = () => {
                     >
                       <AlertCircle className="w-5 h-5 text-red-400" />
                       <span className="text-red-400">
-                        Error al enviar el mensaje. Por favor, completa el
-                        reCAPTCHA e intenta de nuevo.
+                        Error al enviar el mensaje. Por favor, intenta de nuevo.
                       </span>
                     </motion.div>
                   )}
@@ -287,7 +301,13 @@ const ContactSection = () => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/50 focus:outline-none transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
+                      className="w-full px-4 py-3 pr-10 bg-white/5 border border-white/10 rounded-lg text-white focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/50 focus:outline-none transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white appearance-none"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                        backgroundPosition: "right 12px center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "16px",
+                      }}
                     >
                       <option value="" className="bg-gray-800 text-white">
                         Selecciona una opción
@@ -327,28 +347,34 @@ const ContactSection = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/50 focus:outline-none transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
+                      className="w-full px-4 py-3 pr-10 bg-white/5 border border-white/10 rounded-lg text-white focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/50 focus:outline-none transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white appearance-none"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                        backgroundPosition: "right 12px center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "16px",
+                      }}
                     >
                       <option value="" className="bg-gray-800 text-white">
                         Selecciona un rango
                       </option>
                       <option value="5k-15k" className="bg-gray-800 text-white">
-                        $5,000 - $15,000 USD
+                        $5,000 - $15,000 MXN
                       </option>
                       <option
                         value="15k-30k"
                         className="bg-gray-800 text-white"
                       >
-                        $15,000 - $30,000 USD
+                        $15,000 - $30,000 MXN
                       </option>
                       <option
                         value="30k-50k"
                         className="bg-gray-800 text-white"
                       >
-                        $30,000 - $50,000 USD
+                        $30,000 - $50,000 MXN
                       </option>
                       <option value="50k+" className="bg-gray-800 text-white">
-                        $50,000+ USD
+                        $50,000+ MXN
                       </option>
                       <option
                         value="discuss"
@@ -374,28 +400,12 @@ const ContactSection = () => {
                     ></textarea>
                   </div>
 
-                  {/* reCAPTCHA */}
-                  <div className="flex justify-center">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                      onChange={handleRecaptchaChange}
-                      theme="dark"
-                    />
-                  </div>
-
                   <motion.button
                     type="submit"
-                    disabled={isSubmitting || !recaptchaToken}
+                    disabled={isSubmitting}
                     className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 disabled:shadow-none"
-                    whileHover={
-                      !isSubmitting && recaptchaToken
-                        ? { scale: 1.02, y: -2 }
-                        : {}
-                    }
-                    whileTap={
-                      !isSubmitting && recaptchaToken ? { scale: 0.98 } : {}
-                    }
+                    whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
+                    whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                   >
                     {isSubmitting ? (
                       <>
