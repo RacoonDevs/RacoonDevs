@@ -36,13 +36,12 @@ const contactLimiter = rateLimit({
 app.use(limiter);
 
 // CORS configuration
+const APP_URL = process.env.APP_URL || "http://localhost:5173";
+
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? ["https://racoondevs.com", "https://www.racoondevs.com"]
-        : ["http://localhost:5173", "http://localhost:5174"],
-    credentials: true,
+    origin: APP_URL,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
