@@ -23,6 +23,7 @@ racoondevs/
 ## 🚀 Inicio Rápido
 
 ### 1. Instalar dependencias
+
 ```bash
 npm run install-all
 ```
@@ -30,11 +31,13 @@ npm run install-all
 ### 2. Configurar variables de entorno
 
 **Frontend (`front/.env`):**
+
 ```env
 VITE_RECAPTCHA_SITE_KEY=6LeOvJorAAAAADkhmpVoWZWHTTT4SLx-RgDMpguH
 ```
 
 **Backend (`back/.env`):**
+
 ```env
 PORT=3001
 NODE_ENV=development
@@ -47,24 +50,28 @@ EMAIL_SERVICE=gmail
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-app-password
 EMAIL_FROM=noreply@racoondevs.com
-EMAIL_TO=hola@racoondevs.com
+EMAIL_TO=admin@racoondevs.com
 ```
 
 ### 3. Ejecutar en desarrollo
+
 ```bash
 npm run dev
 ```
 
 Esto iniciará:
+
 - Frontend en `http://localhost:5173`
 - Backend en `http://localhost:3001`
 
 ## 📧 Configuración de Email
 
 ### Opción 1: Gmail (Recomendado para desarrollo)
+
 1. Activa la verificación en 2 pasos
 2. Genera una "Contraseña de aplicación"
 3. Configura en `back/.env`:
+
 ```env
 EMAIL_SERVICE=gmail
 EMAIL_USER=tu-email@gmail.com
@@ -72,6 +79,7 @@ EMAIL_PASS=tu-contraseña-de-app
 ```
 
 ### Opción 2: SMTP Personalizado
+
 ```env
 EMAIL_SERVICE=smtp
 SMTP_HOST=smtp.tu-proveedor.com
@@ -81,6 +89,7 @@ EMAIL_PASS=tu-contraseña
 ```
 
 ### Opción 3: SendGrid
+
 ```env
 EMAIL_SERVICE=sendgrid
 SENDGRID_API_KEY=tu-api-key
@@ -120,6 +129,7 @@ npm start
 ## 📂 Características
 
 ### Frontend
+
 - ⚡ **Vite** - Build tool ultra rápido
 - ⚛️ **React 19** - Última versión con hooks
 - 🎨 **TailwindCSS v4** - Estilos modernos
@@ -128,6 +138,7 @@ npm start
 - 🛡️ **reCAPTCHA v2** - Protección anti-spam
 
 ### Backend
+
 - 🚀 **Express.js** - Framework minimalista
 - 🛡️ **Helmet** - Seguridad HTTP
 - ⏱️ **Rate Limiting** - Protección contra spam
@@ -138,15 +149,18 @@ npm start
 ## 🚀 Despliegue
 
 ### Frontend
+
 - **Vercel**: Conecta tu repo y despliega automáticamente
 - **Netlify**: Build command: `npm run build`, Publish dir: `front/dist`
 
 ### Backend
+
 - **Railway**: Conecta tu repo, detecta Express automáticamente
 - **Render**: Dockerfile o Node.js deployment
 - **Heroku**: Agrega buildpack de Node.js
 
 ### Variables de Entorno en Producción
+
 Asegúrate de configurar todas las variables de `.env` en tu plataforma de hosting.
 
 ## 🤝 Contribuir
@@ -164,7 +178,7 @@ Este proyecto está bajo la licencia MIT - ver [LICENSE.md](LICENSE.md) para det
 ## 👥 Equipo RacoonDevs
 
 - **Website**: [racoondevs.com](https://racoondevs.com)
-- **Email**: hola@racoondevs.com
+- **Email**: admin@racoondevs.com
 - **Teléfono**: +52 322 265 2650
 - **Ubicación**: Puerto Vallarta, Jalisco, México
 

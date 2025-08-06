@@ -111,8 +111,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "hola@racoondevs.com",
-      href: "mailto:hola@racoondevs.com",
+      value: "admin@racoondevs.com",
+      href: "mailto:admin@racoondevs.com",
       gradient: "from-cyan-500/20 to-blue-500/20",
       borderGradient: "from-cyan-500/50 to-blue-500/50",
       accentColor: "text-cyan-400",

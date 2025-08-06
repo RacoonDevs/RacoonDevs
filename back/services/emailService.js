@@ -92,7 +92,7 @@ export const sendContactEmail = async (emailData) => {
     // Email to RacoonDevs team
     const teamEmailContent = {
       from: process.env.EMAIL_FROM || "noreply@racoondevs.com",
-      to: process.env.EMAIL_TO || "hola@racoondevs.com",
+      to: process.env.EMAIL_TO || "admin@racoondevs.com",
       subject: `🚀 Nuevo Lead: ${name} - ${getProjectTypeLabel(projectType)}`,
       html: `
         <!DOCTYPE html>
@@ -210,7 +210,7 @@ export const sendContactEmail = async (emailData) => {
           <div class="footer">
             <p><strong>RacoonDevs</strong><br>
             🌎 Puerto Vallarta, Jalisco, México<br>
-            📧 hola@racoondevs.com | 📞 +52 322 265 2650</p>
+            📧 admin@racoondevs.com | 📞 +52 322 265 2650</p>
             <p style="font-size: 12px; color: #6b7280;">
               Si no solicitaste este correo, puedes ignorarlo de forma segura.
             </p>

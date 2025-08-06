@@ -73,8 +73,8 @@ const Footer = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "hola@racoondevs.com",
-      href: "mailto:hola@racoondevs.com",
+      value: "admin@racoondevs.com",
+      href: "mailto:admin@racoondevs.com",
     },
     {
       icon: Phone,

@@ -4,8 +4,10 @@
 import sinabeImage from "../assets/portafolio/sinabe.webp";
 import mycadImage from "../assets/portafolio/mycad.webp";
 import ntropiaImage from "../assets/portafolio/ntropia.webp";
-// Placeholder para las imágenes que no existen aún
-import placeholderImage from "../assets/portafolio/sinabe.webp"; // Usar una existente como placeholder
+import carnitasJoselesImage from "../assets/portafolio/carnitas-joseles.webp";
+import fgCarpinteriaImage from "../assets/portafolio/fg-carpinteria.webp";
+import familiaCrossfitImage from "../assets/portafolio/famcrossfit.webp";
+import carnitasElPitillalImage from "../assets/portafolio/logo-carnitas.webp";
 
 export const portfolioStats = [
   {
@@ -115,7 +117,7 @@ export const allProjects = [
     subtitle: "Rebranding y Página Web",
     description:
       "Plataforma web optimizada para cadenas de suministro sustentables con análisis de huella de carbono integrado.",
-    image: placeholderImage, // Usar placeholder hasta tener la imagen real
+    image: carnitasElPitillalImage,
     category: "Landing Page - Menú y Reservas",
     year: "2024",
     tags: ["Vite JS", "React JS", "Tailwind CSS", "Design"],
@@ -129,7 +131,7 @@ export const allProjects = [
     subtitle: "Página Web",
     description:
       "Sitio web corporativo para empresa de carpintería especializada, con catálogo de productos y sistema de cotizaciones.",
-    image: placeholderImage, // Usar placeholder hasta tener la imagen real
+    image: fgCarpinteriaImage,
     category: "Informational Website",
     year: "2024",
     tags: ["React JS", "Translator", "Design", "Tailwind CSS"],
@@ -143,7 +145,7 @@ export const allProjects = [
     subtitle: "Gestión de Competencias Deportivas",
     description:
       "Plataforma integral para la gestión de competencias deportivas en gimnasios, incluyendo registro, seguimiento y rankings.",
-    image: placeholderImage, // Usar placeholder hasta tener la imagen real
+    image: familiaCrossfitImage,
     category: "Sports Platform",
     year: "2025",
     tags: ["React JS", "Node.js", "Prisma", "Mysql", "Vite JS"],
@@ -157,7 +159,7 @@ export const allProjects = [
     subtitle: "Rebranding y Página Web",
     description:
       "Proyecto de rebranding completo y desarrollo de sitio web para el reconocido restaurante Carnitas Joseles.",
-    image: placeholderImage, // Usar placeholder hasta tener la imagen real
+    image: carnitasJoselesImage,
     category: "Branding & Web",
     year: "2025",
     tags: ["Branding", "React", "Design", "Marketing"],
