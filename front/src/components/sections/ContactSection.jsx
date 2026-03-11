@@ -18,6 +18,7 @@ import {
   Loader2,
   AlertCircle,
 } from "lucide-react";
+import { submitContactForm } from "../../services/contactFormClient";
 
 const ContactSection = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -32,6 +33,7 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  const [submitMessage, setSubmitMessage] = useState("");
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -64,45 +66,45 @@ const ContactSection = () => {
 
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setSubmitMessage("");
 
     // Get reCAPTCHA token
     const recaptchaToken = await handleReCaptchaVerify();
 
     if (!recaptchaToken) {
       setSubmitStatus("error");
+      setSubmitMessage(
+        "No se pudo validar reCAPTCHA. Recarga la pagina e intenta de nuevo."
+      );
       setIsSubmitting(false);
       return;
     }
 
     try {
-      // vite app url
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const response = await fetch(`${apiUrl}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          recaptchaToken,
-        }),
+      const response = await submitContactForm({
+        formData,
+        recaptchaToken,
       });
 
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          projectType: "",
-          budget: "",
-          message: "",
-        });
-      } else {
-        setSubmitStatus("error");
-      }
+      setSubmitStatus("success");
+      setSubmitMessage(response.message);
+      setFormData({
+        name: "",
+        email: "",
+        projectType: "",
+        budget: "",
+        message: "",
+      });
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
+      const detailMessage =
+        Array.isArray(error?.details) && error.details.length > 0
+          ? ` ${error.details.join(" ")}`
+          : "";
+      setSubmitMessage(
+        `${error?.message || "Error al enviar el mensaje. Por favor, intenta de nuevo."}${detailMessage}`
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -244,7 +246,8 @@ const ContactSection = () => {
                     >
                       <CheckCircle className="w-5 h-5 text-green-400" />
                       <span className="text-green-400">
-                        ¡Mensaje enviado exitosamente! Te contactaremos pronto.
+                        {submitMessage ||
+                          "Mensaje enviado exitosamente. Te contactaremos pronto."}
                       </span>
                     </motion.div>
                   )}
@@ -257,17 +260,22 @@ const ContactSection = () => {
                     >
                       <AlertCircle className="w-5 h-5 text-red-400" />
                       <span className="text-red-400">
-                        Error al enviar el mensaje. Por favor, intenta de nuevo.
+                        {submitMessage ||
+                          "Error al enviar el mensaje. Por favor, intenta de nuevo."}
                       </span>
                     </motion.div>
                   )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-gray-300 text-sm font-medium mb-2">
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-gray-300 text-sm font-medium mb-2"
+                      >
                         Nombre *
                       </label>
                       <input
+                        id="contact-name"
                         type="text"
                         name="name"
                         value={formData.name}
@@ -278,10 +286,14 @@ const ContactSection = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-gray-300 text-sm font-medium mb-2">
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-gray-300 text-sm font-medium mb-2"
+                      >
                         Email *
                       </label>
                       <input
+                        id="contact-email"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -294,10 +306,14 @@ const ContactSection = () => {
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                    <label
+                      htmlFor="contact-project-type"
+                      className="block text-gray-300 text-sm font-medium mb-2"
+                    >
                       Tipo de Proyecto
                     </label>
                     <select
+                      id="contact-project-type"
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
@@ -340,10 +356,14 @@ const ContactSection = () => {
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                    <label
+                      htmlFor="contact-budget"
+                      className="block text-gray-300 text-sm font-medium mb-2"
+                    >
                       Presupuesto Estimado
                     </label>
                     <select
+                      id="contact-budget"
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
@@ -386,10 +406,14 @@ const ContactSection = () => {
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-gray-300 text-sm font-medium mb-2"
+                    >
                       Mensaje *
                     </label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
@@ -439,7 +463,7 @@ const ContactSection = () => {
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
                     <motion.a
-                      key={index}
+                      key={info.label}
                       href={info.href}
                       className={`flex items-center gap-4 p-4 rounded-xl bg-gradient-to-br ${info.gradient} backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 group`}
                       whileHover={{ scale: 1.02 }}
@@ -477,7 +501,7 @@ const ContactSection = () => {
                 <div className="space-y-4">
                   {features.map((feature, index) => (
                     <motion.div
-                      key={index}
+                      key={feature.title}
                       className="flex items-start gap-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -507,7 +531,7 @@ const ContactSection = () => {
                 <div className="flex gap-4">
                   {socialLinks.map((social, index) => (
                     <motion.a
-                      key={index}
+                      key={social.label}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
