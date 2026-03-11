@@ -7,6 +7,7 @@ import {
   Cloud,
   Plug,
 } from "lucide-react";
+import { ease, staggerContainer, staggerChild } from "../../utils/motion";
 
 const techFeatures = [
   {
@@ -47,6 +48,24 @@ const techFeatures = [
   },
 ];
 
+const stack = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Express",
+  "Prisma",
+  "PostgreSQL",
+  "MySQL",
+  "Redis",
+  "Docker",
+  "Vite",
+  "Tailwind CSS",
+  "Framer Motion",
+  "AWS",
+  "Vercel",
+];
+
 const TechnologySection = () => {
   return (
     <section
@@ -60,12 +79,18 @@ const TechnologySection = () => {
             className="text-center mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: ease.out }}
           >
-            <p className="text-sm tracking-widest uppercase text-gray-500 mb-4">
+            <motion.p
+              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: ease.out }}
+            >
               Tecnología & Escalabilidad
-            </p>
+            </motion.p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-3xl mx-auto leading-tight">
               Construimos productos que{" "}
               <span className="text-gray-400">escalan con tu negocio</span>
@@ -76,29 +101,37 @@ const TechnologySection = () => {
             </p>
           </motion.div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-            {techFeatures.map((feature, index) => (
+          {/* Grid — staggered */}
+          <motion.div
+            {...staggerContainer(0.1)}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5"
+          >
+            {techFeatures.map((feature) => (
               <motion.div
                 key={feature.title}
-                className="group relative p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.5 }}
+                variants={staggerChild}
+                className="group relative p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-colors duration-500"
+                whileHover={{
+                  y: -4,
+                  transition: { duration: 0.3, ease: ease.smooth },
+                }}
               >
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:border-white/20 transition-colors duration-300">
-                  <feature.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="relative z-10">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300">
+                    <feature.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Stack Bar */}
           <motion.div
@@ -106,37 +139,41 @@ const TechnologySection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: ease.out }}
           >
             <p className="text-sm text-gray-500 tracking-widest uppercase mb-6 text-center">
               Stack que dominamos
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "React",
-                "Next.js",
-                "TypeScript",
-                "Node.js",
-                "Express",
-                "Prisma",
-                "PostgreSQL",
-                "MySQL",
-                "Redis",
-                "Docker",
-                "Vite",
-                "Tailwind CSS",
-                "Framer Motion",
-                "AWS",
-                "Vercel",
-              ].map((tech) => (
-                <span
+            <motion.div
+              className="flex flex-wrap justify-center gap-3"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.03, delayChildren: 0.2 },
+                },
+              }}
+            >
+              {stack.map((tech) => (
+                <motion.span
                   key={tech}
-                  className="px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.03] text-gray-300 text-sm font-medium hover:border-white/20 hover:text-white transition-all duration-300"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.8 },
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      transition: { duration: 0.4, ease: ease.out },
+                    },
+                  }}
+                  className="px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.03] text-gray-300 text-sm font-medium hover:border-white/20 hover:text-white hover:bg-white/[0.06] transition-all duration-300"
+                  whileHover={{ scale: 1.06 }}
                 >
                   {tech}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

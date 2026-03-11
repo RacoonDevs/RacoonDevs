@@ -7,6 +7,7 @@ import {
   Briefcase,
   ShieldCheck,
 } from "lucide-react";
+import { ease, staggerContainer, staggerChild } from "../../utils/motion";
 
 const differentiators = [
   {
@@ -63,12 +64,18 @@ const CapabilitiesSection = () => {
             className="mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: ease.out }}
           >
-            <p className="text-sm tracking-widest uppercase text-gray-500 mb-4">
+            <motion.p
+              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              initial={{ opacity: 0, x: -15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: ease.out }}
+            >
               Por qué Racoon Devs
-            </p>
+            </motion.p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-2xl leading-tight">
               No somos una fábrica de código.{" "}
               <span className="text-gray-400">
@@ -77,29 +84,38 @@ const CapabilitiesSection = () => {
             </h2>
           </motion.div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
-            {differentiators.map((item, index) => (
+          {/* Bento Grid — staggered */}
+          <motion.div
+            {...staggerContainer(0.1)}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5"
+          >
+            {differentiators.map((item) => (
               <motion.div
                 key={item.title}
-                className={`group relative p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500 ${item.className}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.5 }}
+                variants={staggerChild}
+                className={`group relative p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-colors duration-500 ${item.className}`}
+                whileHover={{
+                  y: -4,
+                  transition: { duration: 0.3, ease: ease.smooth },
+                }}
               >
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:border-white/20 transition-colors duration-300">
-                  <item.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                {/* Hover glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="relative z-10">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300">
+                    <item.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-                  {item.description}
-                </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

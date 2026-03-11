@@ -5,6 +5,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigateToSection } from "../utils/NavigateToSection";
 import Icon from "../../assets/RD_TRANS_W.webp";
+import { ease } from "../../utils/motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,10 +56,13 @@ const Header = () => {
   return (
     <>
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-black/80 backdrop-blur-xl" : "bg-transparent"
+        transition={{ duration: 0.8, delay: 0.1, ease: ease.out }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "bg-[#050505]/70 backdrop-blur-2xl backdrop-saturate-150"
+            : "bg-transparent"
         }`}
       >
         <div className="w-full flex justify-center">
@@ -66,13 +70,17 @@ const Header = () => {
             <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
               {/* Logo */}
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 flex items-center justify-center">
+                <motion.div
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 flex items-center justify-center"
+                  whileHover={{ scale: 1.08, rotate: 2 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <img
                     src={Icon}
                     alt="Racoon Devs"
                     className="w-6 h-6 sm:w-7 sm:h-7"
                   />
-                </div>
+                </motion.div>
                 <div className="flex flex-col">
                   <span className="text-lg font-semibold text-white tracking-tight">
                     Racoon Devs
@@ -88,25 +96,30 @@ const Header = () => {
                 {navItems.map((item) => (
                   <button
                     key={item.name}
-                    onClick={() =>
-                      navigateToSection(item.isAnchor ? item.path : item.path)
-                    }
-                    className={`px-4 py-2 rounded-lg text-sm transition-colors duration-200 cursor-pointer ${
+                    onClick={() => navigateToSection(item.path)}
+                    className={`relative px-4 py-2 rounded-lg text-sm transition-colors duration-200 cursor-pointer group ${
                       location.pathname === item.path
                         ? "text-white"
-                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                        : "text-gray-400 hover:text-white"
                     }`}
                   >
                     {item.name}
+                    {/* Hover underline */}
+                    <span className="absolute bottom-0.5 left-4 right-4 h-px bg-white/0 group-hover:bg-white/30 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left" />
                   </button>
                 ))}
-                <button
+                <motion.button
                   onClick={() => navigateToSection("#contacto")}
-                  className="ml-4 inline-flex items-center gap-2 px-5 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
+                  className="ml-4 inline-flex items-center gap-2 px-5 py-2 bg-white text-black rounded-full text-sm font-medium cursor-pointer overflow-hidden relative"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  Iniciar Proyecto
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                  <span className="relative z-10 flex items-center gap-2">
+                    Iniciar Proyecto
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </motion.button>
               </nav>
 
               {/* Mobile menu button */}
@@ -133,6 +146,7 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
             onClick={() => setIsMenuOpen(false)}
           />

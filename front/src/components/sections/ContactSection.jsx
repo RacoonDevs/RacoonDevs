@@ -13,6 +13,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { submitContactForm } from "../../services/contactFormClient";
+import { ease } from "../../utils/motion";
 
 const ContactSection = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -101,6 +102,16 @@ const ContactSection = () => {
     },
   ];
 
+  const inputClass =
+    "w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:border-white/25 focus:bg-white/[0.05] focus:ring-0 focus:outline-none transition-all duration-300";
+
+  const selectStyle = {
+    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234b5563' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+    backgroundPosition: "right 12px center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "16px",
+  };
+
   return (
     <section
       className="py-20 sm:py-24 lg:py-32 relative border-t border-white/5"
@@ -113,12 +124,18 @@ const ContactSection = () => {
             className="text-center mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: ease.out }}
           >
-            <p className="text-sm tracking-widest uppercase text-gray-500 mb-4">
+            <motion.p
+              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: ease.out }}
+            >
               Hablemos
-            </p>
+            </motion.p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-2xl mx-auto leading-tight">
               Construyamos algo{" "}
               <span className="text-gray-400">a tu medida.</span>
@@ -136,8 +153,8 @@ const ContactSection = () => {
               className="lg:col-span-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: 0.2, duration: 0.7, ease: ease.out }}
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Status Messages */}
@@ -145,6 +162,7 @@ const ContactSection = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, ease: ease.out }}
                     className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center gap-3"
                   >
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
@@ -159,6 +177,7 @@ const ContactSection = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, ease: ease.out }}
                     className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center gap-3"
                   >
                     <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
@@ -183,7 +202,7 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:border-white/25 focus:ring-0 focus:outline-none transition-colors duration-300"
+                      className={inputClass}
                       placeholder="Tu nombre"
                     />
                   </div>
@@ -201,7 +220,7 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:border-white/25 focus:ring-0 focus:outline-none transition-colors duration-300"
+                      className={inputClass}
                       placeholder="tu@email.com"
                     />
                   </div>
@@ -220,13 +239,8 @@ const ContactSection = () => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white focus:border-white/25 focus:ring-0 focus:outline-none transition-colors duration-300 [&>option]:bg-gray-900 [&>option]:text-white appearance-none"
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234b5563' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-                        backgroundPosition: "right 12px center",
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "16px",
-                      }}
+                      className={`${inputClass} [&>option]:bg-gray-900 [&>option]:text-white appearance-none`}
+                      style={selectStyle}
                     >
                       <option value="">Selecciona</option>
                       <option value="web">Desarrollo Web</option>
@@ -249,13 +263,8 @@ const ContactSection = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white focus:border-white/25 focus:ring-0 focus:outline-none transition-colors duration-300 [&>option]:bg-gray-900 [&>option]:text-white appearance-none"
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234b5563' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-                        backgroundPosition: "right 12px center",
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "16px",
-                      }}
+                      className={`${inputClass} [&>option]:bg-gray-900 [&>option]:text-white appearance-none`}
+                      style={selectStyle}
                     >
                       <option value="">Selecciona un rango</option>
                       <option value="5k-15k">$5,000 - $15,000 MXN</option>
@@ -281,28 +290,37 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:border-white/25 focus:ring-0 focus:outline-none transition-colors duration-300 resize-none"
+                    className={`${inputClass} resize-none`}
                     placeholder="Tu proyecto, objetivos, timeline estimado..."
                   />
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-black rounded-full font-semibold text-base hover:bg-gray-100 disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed transition-all duration-300"
+                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-black rounded-full font-semibold text-base overflow-hidden disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed"
+                  whileHover={!isSubmitting ? { scale: 1.03 } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.97 } : {}}
+                  transition={{ duration: 0.2 }}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      Enviar Mensaje
-                      <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
-                    </>
+                  {/* Hover shimmer */}
+                  {!isSubmitting && (
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                   )}
-                </button>
+                  <span className="relative z-10 flex items-center gap-3">
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        Enviar Mensaje
+                        <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+                      </>
+                    )}
+                  </span>
+                </motion.button>
               </form>
             </motion.div>
 
@@ -311,8 +329,8 @@ const ContactSection = () => {
               className="lg:col-span-2 space-y-10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: 0.3, duration: 0.7, ease: ease.out }}
             >
               <div>
                 <h3 className="text-white font-semibold text-lg mb-6">
@@ -325,9 +343,9 @@ const ContactSection = () => {
                       <Wrapper
                         key={detail.label}
                         {...(detail.href && { href: detail.href })}
-                        className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300"
+                        className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300 group"
                       >
-                        <detail.icon className="w-4 h-4 text-gray-500" />
+                        <detail.icon className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors duration-300" />
                         <span className="text-sm">{detail.label}</span>
                       </Wrapper>
                     );
@@ -335,7 +353,13 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <motion.div
+                className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 transition-colors duration-500"
+                whileHover={{
+                  y: -2,
+                  transition: { duration: 0.3, ease: ease.smooth },
+                }}
+              >
                 <h4 className="text-white font-semibold mb-3">
                   ¿Prefieres una llamada?
                 </h4>
@@ -345,12 +369,12 @@ const ContactSection = () => {
                 </p>
                 <a
                   href="tel:+523222652650"
-                  className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-gray-300 transition-colors duration-300"
+                  className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-gray-300 transition-colors duration-300 group"
                 >
                   Agendar Llamada
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
-              </div>
+              </motion.div>
 
               <div>
                 <p className="text-gray-500 text-sm leading-relaxed">

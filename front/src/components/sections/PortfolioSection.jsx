@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { ease, staggerContainer, staggerChild } from "../../utils/motion";
 
 import sinabeImage from "../../assets/portafolio/sinabe.webp";
 import mycadImage from "../../assets/portafolio/mycad.webp";
@@ -59,12 +60,18 @@ const PortfolioSection = () => {
             className="mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: ease.out }}
           >
-            <p className="text-sm tracking-widest uppercase text-gray-500 mb-4">
+            <motion.p
+              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              initial={{ opacity: 0, x: -15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: ease.out }}
+            >
               Trabajo Seleccionado
-            </p>
+            </motion.p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-tight">
               Proyectos reales,{" "}
               <span className="text-gray-400">resultados medibles.</span>
@@ -72,25 +79,31 @@ const PortfolioSection = () => {
           </motion.div>
 
           {/* Case Studies */}
-          <div className="space-y-6 lg:space-y-8">
-            {caseStudies.map((project, index) => (
+          <motion.div
+            {...staggerContainer(0.15)}
+            className="space-y-6 lg:space-y-8"
+          >
+            {caseStudies.map((project) => (
               <motion.div
                 key={project.name}
-                className="group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500 overflow-hidden"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15, duration: 0.6 }}
+                variants={staggerChild}
+                className="group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-colors duration-500 overflow-hidden"
+                whileHover={{
+                  y: -2,
+                  transition: { duration: 0.3, ease: ease.smooth },
+                }}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   {/* Image */}
                   <div className="relative aspect-video lg:aspect-auto overflow-hidden">
-                    <img
+                    <motion.img
                       src={project.image}
                       alt={`${project.name} — ${project.type}`}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.7, ease: ease.smooth }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/60" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/60 pointer-events-none" />
                   </div>
 
                   {/* Content */}
@@ -133,16 +146,19 @@ const PortfolioSection = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-gray-300 transition-colors duration-300"
+                      className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-gray-300 transition-colors duration-300 group/link"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      Ver proyecto en vivo
+                      <span>Ver proyecto en vivo</span>
+                      <span className="inline-block group-hover/link:translate-x-1 transition-transform duration-200">
+                        →
+                      </span>
                     </a>
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* CTA */}
           <motion.div
@@ -150,7 +166,7 @@ const PortfolioSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2, duration: 0.6, ease: ease.out }}
           >
             <Link
               to="/portafolio"
