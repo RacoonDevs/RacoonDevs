@@ -31,7 +31,16 @@ front/functions/contact-form/
 
 ### SendGrid
 
-- `SENDGRID_API_KEY`
+- `SENDGRID_API_KEY` (solo si `EMAIL_SERVICE=sendgrid`)
+
+Si vas a usar IONOS SMTP (`EMAIL_SERVICE=smtp`), deja `SENDGRID_API_KEY` vacio.
+No se usa en ese modo.
+
+### API key de Appwrite (opcional)
+
+- `APPWRITE_API_KEY` (solo si la function llamara servicios internos de Appwrite).
+- Se crea en `Appwrite Console > Project > API Keys`.
+- Asigna scopes minimos (principio de minimo privilegio).
 
 ### Seguridad y comportamiento
 

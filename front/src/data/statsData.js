@@ -1,9 +1,9 @@
 // src/data/statsData.js
-import { Rocket, Heart, Coffee, Lightbulb } from "lucide-react";
+import { FolderCode, Users, Clock, Repeat } from "lucide-react";
 
 export const statsData = [
-  { number: "10+", label: "Proyectos Épicos", icon: Rocket },
-  { number: "98%", label: "Clientes Enamorados", icon: Heart },
-  { number: "24/7", label: "Obsesión por Calidad", icon: Coffee },
-  { number: "∞", label: "Límites Rotos", icon: Lightbulb },
+  { number: "10+", label: "Proyectos Entregados", icon: FolderCode },
+  { number: "100%", label: "Clientes Satisfechos", icon: Users },
+  { number: "<24h", label: "Tiempo de Respuesta", icon: Clock },
+  { number: "Ongoing", label: "Soporte Continuo", icon: Repeat },
 ];

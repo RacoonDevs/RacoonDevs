@@ -1,17 +1,17 @@
 // src/components/layout/Header.jsx
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Rocket } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigateToSection } from "../utils/NavigateToSection";
 import Icon from "../../assets/RD_TRANS_W.webp";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigateToSection = useNavigateToSection();
 
-  // Diferentes navegaciones para diferentes páginas
   const getNavItems = () => {
     if (location.pathname === "/portafolio") {
       return [
@@ -21,8 +21,6 @@ const Header = () => {
         { name: "Contacto", path: "/#contacto", isAnchor: false },
       ];
     }
-
-    // Navegación para la página principal
     return [
       { name: "Servicios", path: "#servicios", isAnchor: true },
       { name: "Portafolio", path: "/portafolio", isAnchor: false },
@@ -33,26 +31,22 @@ const Header = () => {
 
   const navItems = getNavItems();
 
-  // Cerrar menú al cambiar tamaño de pantalla
   useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsMenuOpen(false);
-      }
+      if (window.innerWidth >= 1024) setIsMenuOpen(false);
     };
 
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  // Evitar scroll cuando el menú está abierto
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -63,144 +57,89 @@ const Header = () => {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-white/10"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? "bg-black/80 backdrop-blur-xl" : "bg-transparent"
+        }`}
       >
         <div className="w-full flex justify-center">
-          <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-10">
-            <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20 px-2">
+          <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
+            <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
               {/* Logo */}
-              <motion.div
-                className="flex items-center space-x-3 sm:space-x-4 group"
-                whileHover={{ scale: 1.02 }}
-              >
-                <Link
-                  to="/"
-                  className="flex items-center space-x-3 sm:space-x-4"
-                >
-                  <div className="relative">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-10 lg:h-10 bg-gradient-to-br from-cyan-400 via-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
-                      <img
-                        src={Icon}
-                        alt="Logo"
-                        className="w-6 h-6 sm:w-8 sm:h-8"
-                      />
-                    </div>
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-lg sm:text-xl lg:text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                      Racoon Devs
-                    </span>
-                    <div className="text-xs text-gray-400 font-mono -mt-1 hidden sm:block">
-                      Digital Architects
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
+              <Link to="/" className="flex items-center gap-3 group">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 flex items-center justify-center">
+                  <img
+                    src={Icon}
+                    alt="Racoon Devs"
+                    className="w-6 h-6 sm:w-7 sm:h-7"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-lg font-semibold text-white tracking-tight">
+                    Racoon Devs
+                  </span>
+                  <span className="text-[10px] text-gray-500 -mt-0.5 tracking-wider uppercase">
+                    Software Studio
+                  </span>
+                </div>
+              </Link>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-                {navItems.map((item, index) => {
-                  if (item.isAnchor) {
-                    return (
-                      <motion.button
-                        key={item.name}
-                        onClick={() => navigateToSection(item.path)}
-                        className="relative text-gray-300 hover:text-white transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base cursor-pointer"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        {item.name}
-                        <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 group-hover:w-3/4 transition-all duration-300" />
-                      </motion.button>
-                    );
-                  } else {
-                    return (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <button
-                          onClick={() => navigateToSection(item.path)}
-                          className={`relative transition-colors duration-300 group px-4 py-2 rounded-lg hover:bg-white/5 text-sm xl:text-base cursor-pointer ${
-                            location.pathname === item.path ||
-                            (item.path.startsWith("/#") &&
-                              location.pathname === "/" &&
-                              location.hash === item.path.replace("/", ""))
-                              ? "text-cyan-400"
-                              : "text-gray-300 hover:text-white"
-                          }`}
-                        >
-                          {item.name}
-                          <span
-                            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 transition-all duration-300 ${
-                              location.pathname === item.path ||
-                              (item.path.startsWith("/#") &&
-                                location.pathname === "/" &&
-                                location.hash === item.path.replace("/", ""))
-                                ? "w-3/4"
-                                : "w-0 group-hover:w-3/4"
-                            }`}
-                          />
-                        </button>
-                      </motion.div>
-                    );
-                  }
-                })}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-block"
-                >
-                  <Link
-                    to="/#contacto"
-                    className="ml-6 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white px-6 py-2.5 lg:px-8 lg:py-3 rounded-full font-medium text-sm lg:text-base transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105"
+              {/* Desktop Nav */}
+              <nav className="hidden lg:flex items-center gap-1">
+                {navItems.map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={() =>
+                      navigateToSection(item.isAnchor ? item.path : item.path)
+                    }
+                    className={`px-4 py-2 rounded-lg text-sm transition-colors duration-200 cursor-pointer ${
+                      location.pathname === item.path
+                        ? "text-white"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
                   >
-                    <Rocket className="w-4 h-4 mr-2 inline" />
-                    Crear Magia
-                  </Link>
-                </motion.button>
+                    {item.name}
+                  </button>
+                ))}
+                <button
+                  onClick={() => navigateToSection("#contacto")}
+                  className="ml-4 inline-flex items-center gap-2 px-5 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
+                >
+                  Iniciar Proyecto
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </nav>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile menu button */}
               <button
-                className="lg:hidden text-white hover:bg-white/10 p-2 rounded-lg transition-colors duration-200 relative z-[60]"
+                className="lg:hidden text-white p-2 rounded-lg hover:bg-white/5 transition-colors duration-200 relative z-[60]"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
               >
-                <motion.div
-                  animate={isMenuOpen ? { rotate: 180 } : { rotate: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {isMenuOpen ? (
-                    <X className="h-5 w-5" />
-                  ) : (
-                    <Menu className="h-5 w-5" />
-                  )}
-                </motion.div>
+                {isMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
               </button>
             </div>
           </div>
         </div>
       </motion.header>
 
-      {/* Mobile Sidebar Overlay */}
+      {/* Mobile overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
       </AnimatePresence>
 
-      {/* Mobile Sidebar */}
+      {/* Mobile sidebar */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -208,99 +147,60 @@ const Header = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black/95 backdrop-blur-xl border-l border-white/10 z-50 lg:hidden"
+            className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#0a0a0a] border-l border-white/[0.06] z-50 lg:hidden"
           >
             <div className="flex flex-col h-full">
-              {/* Sidebar Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <Link to="/" className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 via-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
-                    <img src={Icon} alt="Logo" className="w-8 h-8" />
+              {/* Sidebar header */}
+              <div className="flex items-center justify-between p-6 border-b border-white/[0.06]">
+                <Link to="/" className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center">
+                    <img src={Icon} alt="Logo" className="w-7 h-7" />
                   </div>
-                  <div>
-                    <span className="text-lg font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                      Racoon Devs
-                    </span>
-                    <div className="text-xs text-gray-400 font-mono -mt-1">
-                      Digital Architects
-                    </div>
-                  </div>
+                  <span className="text-lg font-semibold text-white">
+                    Racoon Devs
+                  </span>
                 </Link>
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-white hover:bg-white/10 p-2 rounded-lg transition-colors duration-200"
+                  className="text-white p-2 rounded-lg hover:bg-white/5"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              {/* Navigation Links */}
+              {/* Nav links */}
               <div className="flex-1 px-6 py-8">
-                <nav className="space-y-2">
-                  {navItems.map((item, index) => {
-                    if (item.isAnchor) {
-                      return (
-                        <motion.button
-                          key={item.name}
-                          onClick={() => {
-                            navigateToSection(item.path);
-                            setIsMenuOpen(false);
-                          }}
-                          className="block w-full text-left text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium"
-                          initial={{ opacity: 0, x: 50 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 + 0.2 }}
-                          whileHover={{ x: 5 }}
-                        >
-                          {item.name}
-                        </motion.button>
-                      );
-                    } else {
-                      return (
-                        <motion.div
-                          key={item.name}
-                          initial={{ opacity: 0, x: 50 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 + 0.2 }}
-                          whileHover={{ x: 5 }}
-                        >
-                          <button
-                            onClick={() => {
-                              navigateToSection(item.path);
-                              setIsMenuOpen(false);
-                            }}
-                            className={`block w-full text-left transition-all duration-300 py-4 px-4 rounded-lg text-lg font-medium ${
-                              location.pathname === item.path ||
-                              (item.path.startsWith("/#") &&
-                                location.pathname === "/" &&
-                                location.hash === item.path.replace("/", ""))
-                                ? "text-cyan-400 bg-white/5"
-                                : "text-gray-300 hover:text-white hover:bg-white/5"
-                            }`}
-                          >
-                            {item.name}
-                          </button>
-                        </motion.div>
-                      );
-                    }
-                  })}
+                <nav className="space-y-1">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.name}
+                      onClick={() => {
+                        navigateToSection(item.path);
+                        setIsMenuOpen(false);
+                      }}
+                      className="block w-full text-left text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 py-3 px-4 rounded-lg text-lg"
+                      initial={{ opacity: 0, x: 30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 + 0.1 }}
+                    >
+                      {item.name}
+                    </motion.button>
+                  ))}
                 </nav>
               </div>
 
-              {/* CTA Button */}
-              <div className="p-6 border-t border-white/10">
-                <motion.button
-                  className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white px-6 py-4 rounded-xl font-medium text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
-                  onClick={() => setIsMenuOpen(false)}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+              {/* CTA */}
+              <div className="p-6 border-t border-white/[0.06]">
+                <button
+                  onClick={() => {
+                    navigateToSection("#contacto");
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-white text-black rounded-full font-medium text-base"
                 >
-                  <Rocket className="w-5 h-5 mr-3 inline" />
-                  Crear Magia
-                </motion.button>
+                  Iniciar Proyecto
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </motion.div>
@@ -309,4 +209,5 @@ const Header = () => {
     </>
   );
 };
+
 export default Header;

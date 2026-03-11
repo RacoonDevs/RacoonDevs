@@ -1,6 +1,5 @@
 // src/data/portfolioData.js
 
-// Import images
 import sinabeImage from "../assets/portafolio/sinabe.webp";
 import mycadImage from "../assets/portafolio/mycad.webp";
 import ntropiaImage from "../assets/portafolio/ntropia.webp";
@@ -10,54 +9,30 @@ import familiaCrossfitImage from "../assets/portafolio/famcrossfit.webp";
 import carnitasElPitillalImage from "../assets/portafolio/logo-carnitas.webp";
 
 export const portfolioStats = [
-  {
-    number: "50+",
-    label: "Proyectos Completados",
-    icon: "📊",
-  },
-  {
-    number: "98%",
-    label: "Tasa de Satisfacción",
-    icon: "⭐",
-  },
-  {
-    number: "2M+",
-    label: "Usuarios Impactados",
-    icon: "👥",
-  },
-  {
-    number: "24/7",
-    label: "Soporte Disponible",
-    icon: "🕐",
-  },
+  { number: "10+", label: "Proyectos Entregados" },
+  { number: "98%", label: "Clientes Satisfechos" },
+  { number: "6+", label: "Industrias Atendidas" },
+  { number: "3+", label: "Años de Experiencia" },
 ];
 
 export const featuredProjects = [
   {
     id: "sinabe",
     title: "Sinabe",
-    subtitle: "Sistema de Inventarios",
+    subtitle: "Sistema de Inventarios Agroempresarial",
     description:
-      "Sistema integral de gestión de inventarios diseñado específicamente para el sector agroempresarial, facilitando el control de stocks, materiales y equipos agrícolas.",
+      "Sistema integral de gestión de inventarios para el sector agroempresarial. Control de stocks, materiales y equipos agrícolas con reportes automatizados y alertas inteligentes.",
+    challenge:
+      "La gestión manual de más de 4,000 artículos generaba errores constantes, pérdidas de inventario y retrasos en la operación diaria.",
+    solution:
+      "Desarrollamos una plataforma web y móvil con inventario en tiempo real, gestión de proveedores integrada y un sistema de alertas automatizado.",
+    result:
+      "+95% de eficiencia operativa y control total sobre más de 4,000 artículos de inventario.",
     image: sinabeImage,
-    category: "Software Development",
+    category: "Software a la Medida",
     year: "2023",
-    client: "Privado",
     tags: ["React", "Node.js", "Express", "MySQL", "Docker", "Capacitor"],
-    metrics: {
-      eficiencia: "+95%",
-      inventarios: "4,000+",
-      satisfaction: "98.5%",
-      "tiempo de actividad": "4.9/5",
-    },
-    features: [
-      "Control de inventarios en tiempo real",
-      "Gestión de proveedores integrada",
-      "Reportes automáticos avanzados",
-      "Sistema de alertas inteligente",
-    ],
     link: "https://sinabe.racoondevs.com",
-    liveDemo: "https://sinabe.racoondevs.com",
     caseStudy: "/portafolio/sinabe",
   },
   {
@@ -65,26 +40,18 @@ export const featuredProjects = [
     title: "MyCAD",
     subtitle: "Administración Integral de Flota Vehicular",
     description:
-      "Plataforma completa de administración de flota vehicular que optimiza el control de vehículos con un sistema complejo de histórico y gestión automatizada.",
+      "Plataforma de administración de flota vehicular con sistema complejo de histórico, gestión automatizada de mantenimientos y análisis de costos operativos.",
+    challenge:
+      "El control manual de 50+ vehículos generaba costos ocultos, mantenimientos olvidados y falta de visibilidad sobre el estado real de la flota.",
+    solution:
+      "Plataforma con seguimiento en tiempo real, mantenimiento predictivo, análisis de combustible y reportes personalizables para gerencia.",
+    result:
+      "+120% de eficiencia operativa y -40% en costos de mantenimiento correctivo.",
     image: mycadImage,
-    category: "Web Application",
+    category: "Aplicación Web",
     year: "2024",
-    client: "Maquinaria y Conteras del Centro.",
     tags: ["React", "TypeScript", "Prisma", "PostgreSQL", "Redis"],
-    metrics: {
-      vehiculos: "50+",
-      eficiencia: "+120%",
-      "reducción de costos": "-40%",
-      calificación: "4.8/5",
-    },
-    features: [
-      "Seguimiento GPS en tiempo real",
-      "Mantenimiento predictivo",
-      "Análisis de combustible avanzado",
-      "Reportes personalizables",
-    ],
     link: "https://mycad.racoondevs.com",
-    liveDemo: "https://mycad.racoondevs.com",
     caseStudy: "/portafolio/mycad",
   },
 ];
@@ -93,20 +60,13 @@ export const allProjects = [
   {
     id: "ntropia",
     title: "Ntropia",
-    subtitle: "Workspaces colaborativos en tiempo real",
+    subtitle: "Workspaces Colaborativos en Tiempo Real",
     description:
       "Plataforma de trabajo colaborativo que permite a equipos interactuar en espacios virtuales con herramientas de productividad integradas.",
     image: ntropiaImage,
-    category: "Mobile App",
+    category: "Aplicación Web",
     year: "2024",
-    tags: [
-      "React JS",
-      "Socket.io",
-      "Docker",
-      "Directus",
-      "Vite JS",
-      "Tailwind CSS",
-    ],
+    tags: ["React", "Socket.io", "Docker", "Directus", "Vite", "Tailwind CSS"],
     status: "Finalizado",
     link: "https://ntropia.racoondevs.com",
     caseStudy: "/portafolio/ntropia",
@@ -114,13 +74,13 @@ export const allProjects = [
   {
     id: "carnitas-el-pitillal",
     title: "Carnitas El Pitillal",
-    subtitle: "Rebranding y Página Web",
+    subtitle: "Rebranding y Sitio Web",
     description:
-      "Plataforma web optimizada para cadenas de suministro sustentables con análisis de huella de carbono integrado.",
+      "Sitio web con menú digital, sistema de reservas y estrategia de marca renovada para restaurante local establecido.",
     image: carnitasElPitillalImage,
-    category: "Landing Page - Menú y Reservas",
+    category: "Landing Page",
     year: "2024",
-    tags: ["Vite JS", "React JS", "Tailwind CSS", "Design"],
+    tags: ["Vite", "React", "Tailwind CSS", "Diseño"],
     status: "Finalizado",
     link: "https://carnitaselpitillal.pvj.mx",
     caseStudy: "/portafolio/carnitas-el-pitillal",
@@ -128,13 +88,13 @@ export const allProjects = [
   {
     id: "fg-carpinteria",
     title: "FG Carpintería",
-    subtitle: "Página Web",
+    subtitle: "Sitio Web Corporativo",
     description:
-      "Sitio web corporativo para empresa de carpintería especializada, con catálogo de productos y sistema de cotizaciones.",
+      "Sitio web corporativo bilingüe con catálogo de productos y sistema de cotizaciones para empresa de carpintería especializada.",
     image: fgCarpinteriaImage,
-    category: "Informational Website",
+    category: "Sitio Web",
     year: "2024",
-    tags: ["React JS", "Translator", "Design", "Tailwind CSS"],
+    tags: ["React", "i18n", "Diseño", "Tailwind CSS"],
     status: "Finalizado",
     link: "https://fgcarpinteria.pvj.mx",
     caseStudy: "/portafolio/fg-carpinteria",
@@ -144,11 +104,11 @@ export const allProjects = [
     title: "Familia CrossFit",
     subtitle: "Gestión de Competencias Deportivas",
     description:
-      "Plataforma integral para la gestión de competencias deportivas en gimnasios, incluyendo registro, seguimiento y rankings.",
+      "Plataforma para gestión de competencias deportivas en gimnasios: registro de atletas, seguimiento de resultados y rankings en tiempo real.",
     image: familiaCrossfitImage,
-    category: "Sports Platform",
+    category: "Plataforma Deportiva",
     year: "2025",
-    tags: ["React JS", "Node.js", "Prisma", "Mysql", "Vite JS"],
+    tags: ["React", "Node.js", "Prisma", "MySQL", "Vite"],
     status: "En Desarrollo",
     link: "https://famcrossfit.racoondevs.com",
     caseStudy: "/portafolio/familia-crossfit",
@@ -156,13 +116,13 @@ export const allProjects = [
   {
     id: "carnitas-joseles",
     title: "Carnitas Joseles",
-    subtitle: "Rebranding y Página Web",
+    subtitle: "Rebranding y Sitio Web",
     description:
-      "Proyecto de rebranding completo y desarrollo de sitio web para el reconocido restaurante Carnitas Joseles.",
+      "Proyecto de rebranding completo y desarrollo de sitio web para restaurante reconocido con presencia local consolidada.",
     image: carnitasJoselesImage,
     category: "Branding & Web",
     year: "2025",
-    tags: ["Branding", "React", "Design", "Marketing"],
+    tags: ["Branding", "React", "Diseño", "Marketing"],
     status: "En Desarrollo",
     link: "https://carnitasjoseles.pvj.mx",
     caseStudy: "/portafolio/carnitas-joseles",
@@ -170,14 +130,11 @@ export const allProjects = [
 ];
 
 export const projectCategories = [
-  "Todos los Proyectos",
-  "Software Development",
-  "Web Application",
-  "Mobile App",
-  "Web Platform",
-  "Healthcare App",
-  "Sports Platform",
+  "Todos",
+  "Software a la Medida",
+  "Aplicación Web",
+  "Landing Page",
+  "Sitio Web",
+  "Plataforma Deportiva",
   "Branding & Web",
-  "Corporate Website",
-  "IoT Platform",
 ];

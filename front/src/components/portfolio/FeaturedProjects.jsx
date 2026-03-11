@@ -1,133 +1,120 @@
-// src/components/portfolio/FeaturedProjects.jsx
 import { motion } from "framer-motion";
 import { featuredProjects } from "../../data/portfolioData";
+import { ArrowUpRight } from "lucide-react";
 
 const FeaturedProjects = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Revoluciones Digitales
-          </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Proyectos que han transformado industrias y redefinido estándares
+          <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-4">
+            Casos Destacados
           </p>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white">
+            Proyectos seleccionados
+          </h2>
         </motion.div>
 
-        <div className="space-y-20">
+        <div className="space-y-24">
           {featuredProjects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className={`grid lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-              }`}
+              className="grid lg:grid-cols-2 gap-12 items-start"
             >
-              {/* Project Image */}
-              <div
-                className={`relative ${
-                  index % 2 === 1 ? "lg:col-start-2" : ""
-                }`}
-              >
-                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 overflow-hidden group">
-                  {/* <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center text-6xl text-gray-600 group-hover:scale-105 transition-transform duration-500">
-                    📱
-                  </div> */}
+              {/* Image */}
+              <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
+                <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="aspect-video w-full h-full object-fit rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                    className="aspect-video w-full object-cover"
                   />
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                  {/* Floating elements */}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-blue-500/20 rounded-full text-xs text-blue-300 font-medium">
-                    {project.category}
-                  </div>
                 </div>
               </div>
 
-              {/* Project Content */}
+              {/* Content */}
               <div
-                className={`space-y-6 ${
-                  index % 2 === 1 ? "lg:col-start-1" : ""
-                }`}
+                className={`space-y-6 ${index % 2 === 1 ? "lg:order-1" : ""}`}
               >
                 <div>
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full text-xs font-medium text-blue-300 border border-blue-500/30">
-                      ⭐ Destacado
+                    <span className="text-xs tracking-[0.2em] uppercase text-white/40">
+                      {project.category}
                     </span>
-                    <span className="text-gray-400 text-sm">
+                    <span className="w-px h-3 bg-white/10" />
+                    <span className="text-xs text-white/30">
                       {project.year}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                  <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-1">
                     {project.title}
                   </h3>
-
-                  <h4 className="text-lg text-blue-400 font-medium mb-4">
-                    {project.subtitle}
-                  </h4>
-
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    {project.description}
-                  </p>
+                  <p className="text-white/50 mb-4">{project.subtitle}</p>
                 </div>
 
-                {/* Metrics */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  {Object.entries(project.metrics).map(([key, value]) => (
-                    <div
-                      key={key}
-                      className="text-center p-3 bg-gray-800/50 rounded-xl border border-gray-700/50"
-                    >
-                      <div className="text-lg font-bold text-white">
-                        {value}
-                      </div>
-                      <div className="text-xs text-gray-400 capitalize">
-                        {key.replace("_", " ")}
-                      </div>
-                    </div>
-                  ))}
+                {/* Challenge / Solution / Result */}
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-xs tracking-[0.2em] uppercase text-white/30 mb-1">
+                      Desafío
+                    </p>
+                    <p className="text-sm text-white/60 leading-relaxed">
+                      {project.challenge}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs tracking-[0.2em] uppercase text-white/30 mb-1">
+                      Lo que construimos
+                    </p>
+                    <p className="text-sm text-white/60 leading-relaxed">
+                      {project.solution}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs tracking-[0.2em] uppercase text-white/30 mb-1">
+                      Resultado
+                    </p>
+                    <p className="text-sm text-white/80 leading-relaxed font-medium">
+                      {project.result}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 pt-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-gray-800 text-gray-300 rounded-lg text-sm font-medium border border-gray-700"
+                      className="px-3 py-1 text-xs text-white/50 border border-white/[0.08] rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* Actions */}
-                <div className="flex gap-4">
-                  <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                    Ver Proyecto
-                  </button>
-                  <button className="px-6 py-3 border border-gray-600 rounded-xl font-semibold text-gray-300 hover:bg-gray-800 hover:border-gray-500 transition-all duration-300">
-                    Caso de Estudio
-                  </button>
-                </div>
+                {/* Link */}
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors duration-200 pt-2"
+                >
+                  Ver proyecto
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

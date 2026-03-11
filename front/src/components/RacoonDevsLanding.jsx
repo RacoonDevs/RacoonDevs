@@ -1,38 +1,29 @@
 // src/components/RacoonDevsLanding.jsx
-import { useState, useEffect } from "react";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import HeroSection from "./sections/HeroSection";
+import TrustStrip from "./sections/TrustStrip";
 import ServicesSection from "./sections/ServicesSection";
+import CapabilitiesSection from "./sections/CapabilitiesSection";
 import PortfolioSection from "./sections/PortfolioSection";
 import ProcessSection from "./sections/ProcessSection";
+import TechnologySection from "./sections/TechnologySection";
 import ContactSection from "./sections/ContactSection";
 import AnimatedBackground from "./layout/AnimatedBackground";
 
 const RacoonDevsLanding = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
-      <AnimatedBackground mousePosition={mousePosition} />
+    <div className="min-h-screen bg-[#050505] text-white relative overflow-x-hidden">
+      <AnimatedBackground />
       <Header />
       <main className="relative z-10 pt-16 sm:pt-18 lg:pt-20">
         <HeroSection />
+        <TrustStrip />
         <ServicesSection />
+        <CapabilitiesSection />
         <PortfolioSection />
         <ProcessSection />
+        <TechnologySection />
         <ContactSection />
       </main>
       <Footer />

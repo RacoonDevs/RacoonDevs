@@ -1,42 +1,22 @@
 // src/components/layout/AnimatedBackground.jsx
-import { motion } from "framer-motion";
 
-const AnimatedBackground = ({ mousePosition }) => {
+const AnimatedBackground = () => {
   return (
     <div className="fixed inset-0 z-0">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900"></div>
+      {/* Base */}
+      <div className="absolute inset-0 bg-[#050505]" />
 
-      {/* Mouse tracking effect */}
+      {/* Subtle noise texture via CSS */}
       <div
-        className="absolute inset-0 opacity-30 transition-all duration-300"
+        className="absolute inset-0 opacity-[0.015]"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(14, 165, 233, 0.15), transparent 40%)`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Subtle ambient gradient */}
+      <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-gradient-to-bl from-white/[0.015] via-transparent to-transparent" />
+      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-gradient-to-tr from-white/[0.01] via-transparent to-transparent" />
     </div>
   );
 };
