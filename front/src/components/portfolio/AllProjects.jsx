@@ -21,10 +21,10 @@ const AllProjects = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-4">
+          <p className="text-xs tracking-[0.3em] uppercase text-txt/40 mb-4">
             Todos los Proyectos
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-white">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-txt">
             Más trabajo seleccionado
           </h2>
         </motion.div>
@@ -37,8 +37,8 @@ const AllProjects = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 text-xs tracking-wide rounded-full border transition-colors duration-200 ${
                 selectedCategory === cat
-                  ? "bg-white text-black border-white"
-                  : "bg-transparent text-white/50 border-white/[0.08] hover:border-white/20 hover:text-white/70"
+                  ? "bg-ink text-ink-inv border-ink"
+                  : "bg-transparent text-txt/50 border-ink/[0.08] hover:border-ink/20 hover:text-txt/70"
               }`}
             >
               {cat}
@@ -65,7 +65,7 @@ const AllProjects = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group block rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden hover:border-white/[0.12] transition-colors duration-300"
+                className="group block rounded-2xl border border-ink/[0.06] bg-ink/[0.02] overflow-hidden hover:border-ink/[0.12] transition-colors duration-300"
               >
                 {/* Image */}
                 <div className="relative overflow-hidden">
@@ -80,8 +80,8 @@ const AllProjects = () => {
                     <span
                       className={`px-2.5 py-1 text-[10px] tracking-wide uppercase rounded-full backdrop-blur-sm ${
                         project.status === "Finalizado"
-                          ? "bg-white/10 text-white/60"
-                          : "bg-white/10 text-amber-300/80"
+                          ? "bg-ink/10 text-txt/60"
+                          : "bg-ink/10 text-amber-300/80"
                       }`}
                     >
                       {project.status}
@@ -92,23 +92,23 @@ const AllProjects = () => {
                 {/* Content */}
                 <div className="p-5 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-white/30">
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-txt/30">
                       {project.category}
                     </span>
-                    <span className="text-[10px] text-white/20">
+                    <span className="text-[10px] text-txt/20">
                       {project.year}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-0.5 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-txt mb-0.5 flex items-center gap-2">
                       {project.title}
-                      <ArrowUpRight className="w-4 h-4 text-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                      <ArrowUpRight className="w-4 h-4 text-txt/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     </h3>
-                    <p className="text-sm text-white/40">{project.subtitle}</p>
+                    <p className="text-sm text-txt/40">{project.subtitle}</p>
                   </div>
 
-                  <p className="text-sm text-white/50 leading-relaxed line-clamp-2">
+                  <p className="text-sm text-txt/50 leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
 
@@ -117,13 +117,13 @@ const AllProjects = () => {
                     {project.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 text-[10px] text-white/40 border border-white/[0.06] rounded"
+                        className="px-2 py-0.5 text-[10px] text-txt/40 border border-ink/[0.06] rounded"
                       >
                         {tag}
                       </span>
                     ))}
                     {project.tags.length > 3 && (
-                      <span className="px-2 py-0.5 text-[10px] text-white/30">
+                      <span className="px-2 py-0.5 text-[10px] text-txt/30">
                         +{project.tags.length - 3}
                       </span>
                     )}

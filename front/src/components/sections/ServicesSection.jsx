@@ -52,23 +52,23 @@ const ServiceCard = ({ service, index }) => {
   return (
     <motion.div
       variants={staggerChild}
-      className="group relative p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-colors duration-500"
+      className="group relative p-6 sm:p-8 rounded-2xl bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/15 hover:bg-ink/[0.04] transition-colors duration-500 glass-panel"
       whileHover={{ y: -4, transition: { duration: 0.3, ease: ease.smooth } }}
     >
       {/* Subtle glow on hover */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-ink/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div className="relative z-10">
         {/* Icon */}
-        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300">
-          <service.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+        <div className="w-10 h-10 rounded-xl bg-ink/5 border border-ink/10 flex items-center justify-center mb-5 group-hover:border-ink/20 group-hover:bg-ink/[0.08] transition-all duration-300">
+          <service.icon className="w-5 h-5 text-txt-2 group-hover:text-txt transition-colors duration-300" />
         </div>
 
         {/* Content */}
-        <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
+        <h3 className="text-lg sm:text-xl font-semibold text-txt mb-3">
           {service.title}
         </h3>
-        <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+        <p className="text-txt-2 text-sm sm:text-base leading-relaxed">
           {service.description}
         </p>
       </div>
@@ -90,7 +90,7 @@ const ServicesSection = () => {
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <motion.p
-              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              className="text-sm tracking-widest uppercase text-txt-3 mb-4"
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -98,9 +98,9 @@ const ServicesSection = () => {
             >
               Servicios
             </motion.p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt max-w-3xl leading-tight">
               Todo lo que necesitas para{" "}
-              <span className="text-gray-400">
+              <span className="text-txt-2">
                 lanzar, escalar y dominar tu presencia digital.
               </span>
             </h2>

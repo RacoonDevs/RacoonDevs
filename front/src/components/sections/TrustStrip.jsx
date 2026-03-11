@@ -28,11 +28,11 @@ const capabilities = [
 
 const TrustStrip = () => {
   return (
-    <section className="relative py-16 sm:py-20 border-y border-white/5">
+    <section className="relative py-16 sm:py-20 border-y border-ink/5">
       <div className="w-full flex justify-center">
         <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
           <motion.p
-            className="text-center text-gray-500 text-sm tracking-widest uppercase mb-10"
+            className="text-center text-txt-3 text-sm tracking-widest uppercase mb-10"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -56,7 +56,7 @@ const TrustStrip = () => {
             {capabilities.map((item) => (
               <motion.div
                 key={item.label}
-                className="group relative flex flex-col items-center text-center p-4 rounded-xl border border-white/[0.06] bg-white/[0.015] hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500"
+                className="group relative flex flex-col items-center text-center p-4 rounded-xl border border-ink/[0.06] bg-ink/[0.015] hover:border-ink/15 hover:bg-ink/[0.04] transition-all duration-500 glass-panel"
                 variants={{
                   hidden: { opacity: 0, y: 16, scale: 0.95 },
                   visible: {
@@ -72,16 +72,16 @@ const TrustStrip = () => {
                 }}
               >
                 {/* Glow */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-ink/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2.5 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300">
-                    <item.icon className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors duration-300" />
+                  <div className="w-8 h-8 rounded-lg bg-ink/[0.04] border border-ink/[0.08] flex items-center justify-center mb-2.5 group-hover:border-ink/20 group-hover:bg-ink/[0.08] transition-all duration-300">
+                    <item.icon className="w-4 h-4 text-txt-3 group-hover:text-txt transition-colors duration-300" />
                   </div>
-                  <p className="text-[13px] font-medium text-gray-300 group-hover:text-white transition-colors duration-300 leading-tight mb-0.5">
+                  <p className="text-[13px] font-medium text-txt-2 group-hover:text-txt transition-colors duration-300 leading-tight mb-0.5">
                     {item.label}
                   </p>
-                  <p className="text-[10px] text-gray-600 group-hover:text-gray-400 transition-colors duration-300">
+                  <p className="text-[10px] text-txt-4 group-hover:text-txt-2 transition-colors duration-300">
                     {item.mini}
                   </p>
                 </div>

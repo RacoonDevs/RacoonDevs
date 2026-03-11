@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const StatCard = ({ stat, index, delay }) => {
   return (
     <motion.div
-      className="text-center group p-6 sm:p-8 rounded-xl hover:bg-white/5 transition-all duration-300"
+      className="text-center group p-6 sm:p-8 rounded-xl hover:bg-ink/5 transition-all duration-300"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
@@ -16,7 +16,7 @@ const StatCard = ({ stat, index, delay }) => {
       <div className="text-2xl sm:text-3xl lg:text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2 sm:mb-3">
         {stat.number}
       </div>
-      <div className="text-gray-400 font-medium text-sm sm:text-base lg:text-base">
+      <div className="text-txt-2 font-medium text-sm sm:text-base lg:text-base">
         {stat.label}
       </div>
     </motion.div>

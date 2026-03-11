@@ -105,18 +105,18 @@ const previousWork = [
 const FeaturedCard = ({ project }) => {
   return (
     <motion.div variants={staggerChild} className="group relative">
-      <div className="relative rounded-xl overflow-hidden bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500">
+      <div className="relative rounded-xl overflow-hidden bg-ink/[0.02] border border-ink/[0.08] hover:border-ink/[0.15] transition-all duration-500 glass-panel">
         {/* Full-width image */}
         <div className="relative">
-          <div className="flex items-center gap-1.5 px-3 py-2 bg-[#0a0a0a] border-b border-white/[0.06]">
+          <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-alt border-b border-ink/[0.06]">
             <div className="flex gap-1">
-              <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
-              <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
-              <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+              <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
+              <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
+              <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
             </div>
             <div className="ml-2 flex-1 max-w-[220px]">
-              <div className="h-4 rounded bg-white/[0.04] border border-white/[0.06] flex items-center px-2">
-                <span className="text-[9px] text-gray-600 truncate">
+              <div className="h-4 rounded bg-ink/[0.04] border border-ink/[0.06] flex items-center px-2">
+                <span className="text-[9px] text-txt-4 truncate">
                   {(project.demoLink || project.link).replace("https://", "")}
                 </span>
               </div>
@@ -130,7 +130,7 @@ const FeaturedCard = ({ project }) => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.8, ease: ease.smooth }}
             />
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface-deep via-surface-deep/50 to-transparent pointer-events-none" />
           </div>
         </div>
 
@@ -140,26 +140,26 @@ const FeaturedCard = ({ project }) => {
             {/* Left: Title + meta */}
             <div>
               <div className="flex items-center gap-2.5 mb-1.5">
-                <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                <h3 className="text-2xl sm:text-3xl font-bold text-txt">
                   {project.name}
                 </h3>
-                <span className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-[10px] text-gray-500 font-medium">
+                <span className="px-1.5 py-0.5 rounded bg-ink/[0.06] border border-ink/[0.08] text-[10px] text-txt-3 font-medium">
                   {project.year}
                 </span>
                 {project.isNew && (
-                  <span className="px-2 py-0.5 rounded-full bg-white/[0.10] border border-white/[0.15] text-[10px] text-white font-semibold uppercase tracking-wider">
+                  <span className="px-2 py-0.5 rounded-full bg-ink/[0.10] border border-ink/[0.15] text-[10px] text-txt font-semibold uppercase tracking-wider">
                     Nuevo
                   </span>
                 )}
               </div>
-              <p className="text-xs text-gray-500 tracking-wide uppercase mb-5">
+              <p className="text-xs text-txt-3 tracking-wide uppercase mb-5">
                 {project.type}
               </p>
               <div className="flex flex-wrap gap-1.5 mb-5">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-white/[0.03] border border-white/[0.07] text-gray-500"
+                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-ink/[0.03] border border-ink/[0.07] text-txt-3"
                   >
                     {tag}
                   </span>
@@ -170,7 +170,7 @@ const FeaturedCard = ({ project }) => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/[0.08] border border-white/[0.12] text-xs text-white font-medium hover:bg-white/[0.12] transition-all duration-300 group/proj"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-ink/[0.08] border border-ink/[0.12] text-xs text-txt font-medium hover:bg-ink/[0.12] transition-all duration-300 group/proj"
                 >
                   Ver proyecto
                   <ExternalLink className="w-3 h-3 opacity-60 group-hover/proj:opacity-100 transition-opacity" />
@@ -180,7 +180,7 @@ const FeaturedCard = ({ project }) => {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-400 font-medium hover:text-white hover:border-white/[0.15] transition-all duration-300 group/demo"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-ink/[0.08] text-xs text-txt-2 font-medium hover:text-txt hover:border-ink/[0.15] transition-all duration-300 group/demo"
                   >
                     Ver demo
                     <ArrowRight className="w-3 h-3 group-hover/demo:translate-x-0.5 transition-transform duration-300" />
@@ -191,27 +191,27 @@ const FeaturedCard = ({ project }) => {
 
             {/* Right: Details */}
             <div className="space-y-3">
-              <div className="pl-3 border-l border-white/[0.08]">
-                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+              <div className="pl-3 border-l border-ink/[0.08]">
+                <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
                   Desafío
                 </p>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-txt-2 text-sm leading-relaxed">
                   {project.challenge}
                 </p>
               </div>
-              <div className="pl-3 border-l border-white/[0.08]">
-                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+              <div className="pl-3 border-l border-ink/[0.08]">
+                <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
                   Solución
                 </p>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-txt-2 text-sm leading-relaxed">
                   {project.built}
                 </p>
               </div>
-              <div className="pl-3 border-l border-white/[0.10]">
-                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+              <div className="pl-3 border-l border-ink/[0.10]">
+                <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
                   Resultado
                 </p>
-                <p className="text-gray-300 text-sm font-medium leading-relaxed">
+                <p className="text-txt-2 text-sm font-medium leading-relaxed">
                   {project.outcome}
                 </p>
               </div>
@@ -226,19 +226,19 @@ const FeaturedCard = ({ project }) => {
 const CaseStudyCard = ({ project }) => {
   return (
     <motion.div variants={staggerChild} className="group relative">
-      <div className="relative rounded-xl overflow-hidden bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500">
+      <div className="relative rounded-xl overflow-hidden bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/[0.12] transition-all duration-500 glass-panel">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr]">
           {/* Left: Image in browser-chrome mockup */}
           <div className="relative">
-            <div className="flex items-center gap-1.5 px-3 py-2 bg-[#0a0a0a] border-b border-white/[0.06]">
+            <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-alt border-b border-ink/[0.06]">
               <div className="flex gap-1">
-                <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
-                <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
-                <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+                <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
+                <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
+                <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
               </div>
               <div className="ml-2 flex-1 max-w-[180px]">
-                <div className="h-4 rounded bg-white/[0.04] border border-white/[0.06] flex items-center px-2">
-                  <span className="text-[9px] text-gray-600 truncate">
+                <div className="h-4 rounded bg-ink/[0.04] border border-ink/[0.06] flex items-center px-2">
+                  <span className="text-[9px] text-txt-4 truncate">
                     {project.link.replace("https://", "")}
                   </span>
                 </div>
@@ -253,7 +253,7 @@ const CaseStudyCard = ({ project }) => {
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.8, ease: ease.smooth }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/40 to-transparent pointer-events-none lg:bg-gradient-to-r lg:from-transparent lg:to-[#080808]/50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface-deep/40 to-transparent pointer-events-none lg:bg-gradient-to-r lg:from-transparent lg:to-surface-deep/50" />
             </div>
           </div>
 
@@ -262,14 +262,14 @@ const CaseStudyCard = ({ project }) => {
             <div>
               <div className="flex items-center justify-between gap-3 mb-1">
                 <div className="flex items-center gap-2.5">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold text-txt">
                     {project.name}
                   </h3>
-                  <span className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-[10px] text-gray-500 font-medium">
+                  <span className="px-1.5 py-0.5 rounded bg-ink/[0.06] border border-ink/[0.08] text-[10px] text-txt-3 font-medium">
                     {project.year}
                   </span>
                   {project.isNew && (
-                    <span className="px-1.5 py-0.5 rounded-full bg-white/[0.10] border border-white/[0.15] text-[9px] text-white font-semibold uppercase tracking-wider">
+                    <span className="px-1.5 py-0.5 rounded-full bg-ink/[0.10] border border-ink/[0.15] text-[9px] text-txt font-semibold uppercase tracking-wider">
                       Nuevo
                     </span>
                   )}
@@ -278,49 +278,49 @@ const CaseStudyCard = ({ project }) => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/[0.08] transition-all duration-300"
+                  className="flex-shrink-0 w-8 h-8 rounded-lg bg-ink/[0.04] border border-ink/[0.08] flex items-center justify-center text-txt-3 hover:text-txt hover:bg-ink/[0.08] transition-all duration-300"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
-              <p className="text-xs text-gray-500 tracking-wide uppercase mb-4">
+              <p className="text-xs text-txt-3 tracking-wide uppercase mb-4">
                 {project.type}
               </p>
 
               <div className="space-y-3 mb-4">
-                <div className="pl-2.5 border-l border-white/[0.08]">
-                  <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                <div className="pl-2.5 border-l border-ink/[0.08]">
+                  <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
                     Desafío
                   </p>
-                  <p className="text-gray-400 text-xs leading-relaxed">
+                  <p className="text-txt-2 text-xs leading-relaxed">
                     {project.challenge}
                   </p>
                 </div>
-                <div className="pl-2.5 border-l border-white/[0.08]">
-                  <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                <div className="pl-2.5 border-l border-ink/[0.08]">
+                  <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
                     Solución
                   </p>
-                  <p className="text-gray-400 text-xs leading-relaxed">
+                  <p className="text-txt-2 text-xs leading-relaxed">
                     {project.built}
                   </p>
                 </div>
-                <div className="pl-2.5 border-l border-white/[0.10]">
-                  <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                <div className="pl-2.5 border-l border-ink/[0.10]">
+                  <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
                     Resultado
                   </p>
-                  <p className="text-gray-300 text-xs font-medium leading-relaxed">
+                  <p className="text-txt-2 text-xs font-medium leading-relaxed">
                     {project.outcome}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/[0.05]">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-ink/[0.05]">
               <div className="flex flex-wrap gap-1">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-white/[0.03] border border-white/[0.07] text-gray-500"
+                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-ink/[0.03] border border-ink/[0.07] text-txt-3"
                   >
                     {tag}
                   </span>
@@ -330,7 +330,7 @@ const CaseStudyCard = ({ project }) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors duration-300 group/link font-medium"
+                className="inline-flex items-center gap-1.5 text-xs text-txt-2 hover:text-txt transition-colors duration-300 group/link font-medium"
               >
                 Ver en vivo
                 <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform duration-300" />
@@ -346,7 +346,7 @@ const CaseStudyCard = ({ project }) => {
 const PortfolioSection = () => {
   return (
     <section
-      className="py-20 sm:py-24 lg:py-32 relative border-t border-white/5"
+      className="py-20 sm:py-24 lg:py-32 relative border-t border-ink/5"
       id="portafolio"
     >
       <div className="relative z-10 w-full flex justify-center">
@@ -360,7 +360,7 @@ const PortfolioSection = () => {
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <motion.p
-              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              className="text-sm tracking-widest uppercase text-txt-3 mb-4"
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -368,9 +368,9 @@ const PortfolioSection = () => {
             >
               Trabajo Seleccionado
             </motion.p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt max-w-3xl leading-tight">
               Proyectos reales,{" "}
-              <span className="text-gray-400">resultados medibles.</span>
+              <span className="text-txt-2">resultados medibles.</span>
             </h2>
           </motion.div>
 
@@ -396,7 +396,7 @@ const PortfolioSection = () => {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: ease.out }}
           >
-            <p className="text-xs tracking-widest uppercase text-gray-600 mb-5">
+            <p className="text-xs tracking-widest uppercase text-txt-4 mb-5">
               Trabajo Anterior
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -406,7 +406,7 @@ const PortfolioSection = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-400 overflow-hidden"
+                  className="group rounded-lg bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/[0.12] transition-all duration-400 overflow-hidden"
                 >
                   <div className="aspect-[16/9] overflow-hidden">
                     <img
@@ -417,21 +417,21 @@ const PortfolioSection = () => {
                   </div>
                   <div className="p-3">
                     <div className="flex items-center justify-between mb-1">
-                      <h4 className="text-sm font-semibold text-white">
+                      <h4 className="text-sm font-semibold text-txt">
                         {project.name}
                       </h4>
-                      <span className="text-[10px] text-gray-600">
+                      <span className="text-[10px] text-txt-4">
                         {project.year}
                       </span>
                     </div>
-                    <p className="text-[11px] text-gray-500 mb-2">
+                    <p className="text-[11px] text-txt-3 mb-2">
                       {project.type}
                     </p>
                     <div className="flex flex-wrap gap-1">
                       {project.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-1.5 py-0.5 rounded text-[9px] bg-white/[0.03] border border-white/[0.06] text-gray-600"
+                          className="px-1.5 py-0.5 rounded text-[9px] bg-ink/[0.03] border border-ink/[0.06] text-txt-4"
                         >
                           {tag}
                         </span>
@@ -453,7 +453,7 @@ const PortfolioSection = () => {
           >
             <Link
               to="/portafolio"
-              className="inline-flex items-center gap-3 text-white font-medium hover:text-gray-300 transition-colors duration-300 group"
+              className="inline-flex items-center gap-3 text-txt font-medium hover:text-txt-2 transition-colors duration-300 group"
             >
               Ver todos los proyectos
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

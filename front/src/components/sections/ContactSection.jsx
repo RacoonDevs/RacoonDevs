@@ -103,7 +103,7 @@ const ContactSection = () => {
   ];
 
   const inputClass =
-    "w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:border-white/25 focus:bg-white/[0.05] focus:ring-0 focus:outline-none transition-all duration-300";
+    "w-full px-4 py-3 bg-ink/[0.03] border border-ink/10 rounded-xl text-txt placeholder-txt-4 focus:border-ink/25 focus:bg-ink/[0.05] focus:ring-0 focus:outline-none transition-all duration-300 glass-input";
 
   const selectStyle = {
     backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234b5563' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
@@ -114,7 +114,7 @@ const ContactSection = () => {
 
   return (
     <section
-      className="py-20 sm:py-24 lg:py-32 relative border-t border-white/5"
+      className="py-20 sm:py-24 lg:py-32 relative border-t border-ink/5"
       id="contacto"
     >
       <div className="relative z-10 w-full flex justify-center">
@@ -128,7 +128,7 @@ const ContactSection = () => {
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <motion.p
-              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              className="text-sm tracking-widest uppercase text-txt-3 mb-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -136,11 +136,10 @@ const ContactSection = () => {
             >
               Hablemos
             </motion.p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-2xl mx-auto leading-tight">
-              Construyamos algo{" "}
-              <span className="text-gray-400">a tu medida.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt mb-6 max-w-2xl mx-auto leading-tight">
+              Construyamos algo <span className="text-txt-2">a tu medida.</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-xl mx-auto leading-relaxed">
+            <p className="text-txt-2 text-lg max-w-xl mx-auto leading-relaxed">
               Cuéntanos sobre tu proyecto y te responderemos en menos de 24
               horas con una propuesta inicial.
             </p>
@@ -191,7 +190,7 @@ const ContactSection = () => {
                   <div>
                     <label
                       htmlFor="contact-name"
-                      className="block text-gray-400 text-sm mb-2"
+                      className="block text-txt-2 text-sm mb-2"
                     >
                       Nombre *
                     </label>
@@ -209,7 +208,7 @@ const ContactSection = () => {
                   <div>
                     <label
                       htmlFor="contact-email"
-                      className="block text-gray-400 text-sm mb-2"
+                      className="block text-txt-2 text-sm mb-2"
                     >
                       Email *
                     </label>
@@ -230,7 +229,7 @@ const ContactSection = () => {
                   <div>
                     <label
                       htmlFor="contact-project-type"
-                      className="block text-gray-400 text-sm mb-2"
+                      className="block text-txt-2 text-sm mb-2"
                     >
                       Tipo de Proyecto
                     </label>
@@ -239,7 +238,7 @@ const ContactSection = () => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className={`${inputClass} [&>option]:bg-gray-900 [&>option]:text-white appearance-none`}
+                      className={`${inputClass} [&>option]:bg-surface-alt [&>option]:text-txt appearance-none`}
                       style={selectStyle}
                     >
                       <option value="">Selecciona</option>
@@ -254,7 +253,7 @@ const ContactSection = () => {
                   <div>
                     <label
                       htmlFor="contact-budget"
-                      className="block text-gray-400 text-sm mb-2"
+                      className="block text-txt-2 text-sm mb-2"
                     >
                       Presupuesto Estimado
                     </label>
@@ -263,7 +262,7 @@ const ContactSection = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className={`${inputClass} [&>option]:bg-gray-900 [&>option]:text-white appearance-none`}
+                      className={`${inputClass} [&>option]:bg-surface-alt [&>option]:text-txt appearance-none`}
                       style={selectStyle}
                     >
                       <option value="">Selecciona un rango</option>
@@ -279,7 +278,7 @@ const ContactSection = () => {
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="block text-gray-400 text-sm mb-2"
+                    className="block text-txt-2 text-sm mb-2"
                   >
                     Cuéntanos sobre tu proyecto *
                   </label>
@@ -298,7 +297,7 @@ const ContactSection = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-black rounded-full font-semibold text-base overflow-hidden disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed"
+                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-ink text-ink-inv rounded-full font-semibold text-base overflow-hidden disabled:bg-txt-4 disabled:text-txt-2 disabled:cursor-not-allowed"
                   whileHover={!isSubmitting ? { scale: 1.03 } : {}}
                   whileTap={!isSubmitting ? { scale: 0.97 } : {}}
                   transition={{ duration: 0.2 }}
@@ -333,7 +332,7 @@ const ContactSection = () => {
               transition={{ delay: 0.3, duration: 0.7, ease: ease.out }}
             >
               <div>
-                <h3 className="text-white font-semibold text-lg mb-6">
+                <h3 className="text-txt font-semibold text-lg mb-6">
                   Contacto directo
                 </h3>
                 <div className="space-y-4">
@@ -343,9 +342,9 @@ const ContactSection = () => {
                       <Wrapper
                         key={detail.label}
                         {...(detail.href && { href: detail.href })}
-                        className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300 group"
+                        className="flex items-center gap-3 text-txt-2 hover:text-txt transition-colors duration-300 group"
                       >
-                        <detail.icon className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors duration-300" />
+                        <detail.icon className="w-4 h-4 text-txt-3 group-hover:text-txt transition-colors duration-300" />
                         <span className="text-sm">{detail.label}</span>
                       </Wrapper>
                     );
@@ -354,22 +353,22 @@ const ContactSection = () => {
               </div>
 
               <motion.div
-                className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 transition-colors duration-500"
+                className="p-6 rounded-2xl bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/15 transition-colors duration-500"
                 whileHover={{
                   y: -2,
                   transition: { duration: 0.3, ease: ease.smooth },
                 }}
               >
-                <h4 className="text-white font-semibold mb-3">
+                <h4 className="text-txt font-semibold mb-3">
                   ¿Prefieres una llamada?
                 </h4>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                <p className="text-txt-2 text-sm mb-4 leading-relaxed">
                   Agenda una videollamada de 30 minutos para discutir tu
                   proyecto en detalle.
                 </p>
                 <a
                   href="tel:+523222652650"
-                  className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-gray-300 transition-colors duration-300 group"
+                  className="inline-flex items-center gap-2 text-txt text-sm font-medium hover:text-txt-2 transition-colors duration-300 group"
                 >
                   Agendar Llamada
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -377,7 +376,7 @@ const ContactSection = () => {
               </motion.div>
 
               <div>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <p className="text-txt-3 text-sm leading-relaxed">
                   Respondemos en menos de 24 horas. Sin compromiso. Primera
                   consulta gratuita.
                 </p>

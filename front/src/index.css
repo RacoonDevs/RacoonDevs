@@ -1,6 +1,85 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
+/* ─── Dark mode via class strategy ─── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Theme color tokens registered in Tailwind ─── */
+@theme inline {
+  --color-surface: var(--theme-surface);
+  --color-surface-alt: var(--theme-surface-alt);
+  --color-surface-deep: var(--theme-surface-deep);
+  --color-ink: var(--theme-ink);
+  --color-ink-inv: var(--theme-ink-inv);
+  --color-txt: var(--theme-text);
+  --color-txt-2: var(--theme-text-2);
+  --color-txt-3: var(--theme-text-3);
+  --color-txt-4: var(--theme-text-4);
+}
+
+/* ─── Light mode (default, no .dark class) ─── */
+:root {
+  --theme-surface: #fafafa;
+  --theme-surface-alt: #f0f0f0;
+  --theme-surface-deep: #ffffff;
+  --theme-ink: #000000;
+  --theme-ink-inv: #ffffff;
+  --theme-text: #111111;
+  --theme-text-2: #64748b;
+  --theme-text-3: #6b7280;
+  --theme-text-4: #9ca3af;
+  --ink-rgb: 0 0 0;
+  --surface-rgb: 250 250 250;
+}
+
+/* ─── Dark mode (.dark class on <html>) ─── */
+:root.dark {
+  --theme-surface: #050505;
+  --theme-surface-alt: #0a0a0a;
+  --theme-surface-deep: #080808;
+  --theme-ink: #ffffff;
+  --theme-ink-inv: #000000;
+  --theme-text: #ffffff;
+  --theme-text-2: #9ca3af;
+  --theme-text-3: #6b7280;
+  --theme-text-4: #4b5563;
+  --ink-rgb: 255 255 255;
+  --surface-rgb: 5 5 5;
+}
+
+/* ─── Light-mode glassmorphism ─── */
+:root:not(.dark) .glass-panel {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+:root:not(.dark) .glass-panel:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root:not(.dark) .glass-input {
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+:root:not(.dark) .glass-input:focus {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -15,8 +94,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background-color: #050505;
-  color: #fff;
+  background-color: var(--theme-surface);
+  color: var(--theme-text);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 /* Custom scrollbar — minimal */
@@ -25,22 +107,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: var(--theme-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(var(--ink-rgb) / 0.1);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(var(--ink-rgb) / 0.2);
 }
 
 /* Selection */
 ::selection {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  background: rgb(var(--ink-rgb) / 0.15);
+  color: var(--theme-text);
 }
 
 /* Line clamp utility */

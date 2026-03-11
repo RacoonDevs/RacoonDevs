@@ -33,7 +33,12 @@ const AnimatedBackground = () => {
   return (
     <div ref={containerRef} className="fixed inset-0 z-0 overflow-hidden">
       {/* Base */}
-      <div className="absolute inset-0 bg-[#050505]" />
+      <div className="absolute inset-0 bg-surface" />
+
+      {/* Light-mode color mesh — soft blobs behind glass panels */}
+      <div className="absolute top-[-15%] right-[-10%] w-[700px] h-[700px] rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/20 blur-3xl dark:opacity-0 transition-opacity duration-700" />
+      <div className="absolute bottom-[-10%] left-[-15%] w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-indigo-100/25 to-cyan-100/20 blur-3xl dark:opacity-0 transition-opacity duration-700" />
+      <div className="absolute top-[30%] left-[50%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-violet-100/20 to-pink-100/15 blur-3xl dark:opacity-0 transition-opacity duration-700" />
 
       {/* Animated noise / grain */}
       <div className="absolute inset-0 opacity-[0.025] animate-grain" />
@@ -43,7 +48,7 @@ const AnimatedBackground = () => {
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            "linear-gradient(rgb(var(--ink-rgb) / 0.04) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--ink-rgb) / 0.04) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
         }}
       />
@@ -53,7 +58,7 @@ const AnimatedBackground = () => {
         className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)",
+            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.03) 0%, transparent 70%)",
           x: smoothX,
           y: smoothY,
           left: "-300px",
@@ -71,7 +76,7 @@ const AnimatedBackground = () => {
         className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 60%)",
+            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.025) 0%, transparent 60%)",
         }}
         animate={{
           x: [0, 30, -20, 0],
@@ -89,7 +94,7 @@ const AnimatedBackground = () => {
         className="absolute bottom-[-15%] left-[-10%] w-[600px] h-[600px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,255,255,0.018) 0%, transparent 60%)",
+            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.018) 0%, transparent 60%)",
         }}
         animate={{
           x: [0, -25, 15, 0],
@@ -107,7 +112,7 @@ const AnimatedBackground = () => {
         className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,255,255,0.012) 0%, transparent 60%)",
+            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.012) 0%, transparent 60%)",
         }}
         animate={{
           x: [0, 40, -30, 0],
@@ -121,7 +126,13 @@ const AnimatedBackground = () => {
       />
 
       {/* Vignette overlay for depth */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#050505_100%)]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 40%, rgb(var(--surface-rgb)) 100%)",
+        }}
+      />
     </div>
   );
 };

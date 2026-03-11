@@ -14,7 +14,7 @@ import AnimatedBackground from "./layout/AnimatedBackground";
 
 const RacoonDevsLanding = () => {
   return (
-    <div className="min-h-screen bg-[#050505] text-white relative overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-txt relative overflow-x-hidden">
       <AnimatedBackground />
       <Header />
       <main className="relative z-10 pt-16 sm:pt-18 lg:pt-20">

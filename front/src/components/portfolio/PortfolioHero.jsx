@@ -10,15 +10,15 @@ const PortfolioHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-6">
+          <p className="text-xs tracking-[0.3em] uppercase text-txt/40 mb-6">
             Portafolio
           </p>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] mb-6 max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-txt leading-[1.1] mb-6 max-w-3xl">
             Proyectos que resuelven problemas reales de negocio
           </h1>
 
-          <p className="text-lg text-white/50 max-w-2xl leading-relaxed mb-12">
+          <p className="text-lg text-txt/50 max-w-2xl leading-relaxed mb-12">
             Software a la medida, plataformas web y productos digitales que
             ayudan a nuestros clientes a operar mejor, crecer más rápido y
             escalar con confianza.
@@ -29,12 +29,12 @@ const PortfolioHero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex items-center gap-8 text-sm text-white/40"
+          className="flex items-center gap-8 text-sm text-txt/40"
         >
           <span>10+ proyectos entregados</span>
-          <span className="w-px h-4 bg-white/10" />
+          <span className="w-px h-4 bg-ink/10" />
           <span>6+ industrias</span>
-          <span className="w-px h-4 bg-white/10" />
+          <span className="w-px h-4 bg-ink/10" />
           <span>98% satisfacción</span>
         </motion.div>
 
@@ -44,7 +44,7 @@ const PortfolioHero = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16"
         >
-          <ArrowDown className="w-5 h-5 text-white/20 animate-bounce" />
+          <ArrowDown className="w-5 h-5 text-txt/20 animate-bounce" />
         </motion.div>
       </div>
     </section>

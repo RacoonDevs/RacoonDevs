@@ -71,7 +71,7 @@ const TechnologySection = () => {
   return (
     <section
       id="tecnologia"
-      className="relative py-20 sm:py-24 lg:py-32 border-t border-white/5"
+      className="relative py-20 sm:py-24 lg:py-32 border-t border-ink/5"
     >
       <div className="w-full flex justify-center">
         <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12 relative z-10">
@@ -84,7 +84,7 @@ const TechnologySection = () => {
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <motion.p
-              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              className="text-sm tracking-widest uppercase text-txt-3 mb-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -92,11 +92,11 @@ const TechnologySection = () => {
             >
               Tecnología & Escalabilidad
             </motion.p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-3xl mx-auto leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt mb-6 max-w-3xl mx-auto leading-tight">
               Construimos productos que{" "}
-              <span className="text-gray-400">escalan con tu negocio</span>
+              <span className="text-txt-2">escalan con tu negocio</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-txt-2 text-lg max-w-2xl mx-auto leading-relaxed">
               Cada decisión técnica está orientada a que tu producto sea rápido,
               mantenible y preparado para crecer.
             </p>
@@ -111,22 +111,22 @@ const TechnologySection = () => {
               <motion.div
                 key={feature.title}
                 variants={staggerChild}
-                className="group relative p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-colors duration-500"
+                className="group relative p-6 sm:p-8 rounded-2xl bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/15 hover:bg-ink/[0.04] transition-colors duration-500 glass-panel"
                 whileHover={{
                   y: -4,
                   transition: { duration: 0.3, ease: ease.smooth },
                 }}
               >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-ink/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300">
-                    <feature.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  <div className="w-10 h-10 rounded-xl bg-ink/5 border border-ink/10 flex items-center justify-center mb-5 group-hover:border-ink/20 group-hover:bg-ink/[0.08] transition-all duration-300">
+                    <feature.icon className="w-5 h-5 text-txt-2 group-hover:text-txt transition-colors duration-300" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
+                  <h3 className="text-lg font-semibold text-txt mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-txt-2 text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -136,13 +136,13 @@ const TechnologySection = () => {
 
           {/* Stack Bar */}
           <motion.div
-            className="mt-16 p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06]"
+            className="mt-16 p-6 sm:p-8 rounded-2xl bg-ink/[0.02] border border-ink/[0.06] glass-panel"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.7, ease: ease.out }}
           >
-            <p className="text-sm text-gray-500 tracking-widest uppercase mb-6 text-center">
+            <p className="text-sm text-txt-3 tracking-widest uppercase mb-6 text-center">
               Stack que dominamos
             </p>
             <motion.div
@@ -168,7 +168,7 @@ const TechnologySection = () => {
                       transition: { duration: 0.4, ease: ease.out },
                     },
                   }}
-                  className="px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.03] text-gray-300 text-sm font-medium hover:border-white/20 hover:text-white hover:bg-white/[0.06] transition-all duration-300"
+                  className="px-3 py-1.5 rounded-lg border border-ink/10 bg-ink/[0.03] text-txt-2 text-sm font-medium hover:border-ink/20 hover:text-txt hover:bg-ink/[0.06] transition-all duration-300"
                   whileHover={{ scale: 1.06 }}
                 >
                   {tech}

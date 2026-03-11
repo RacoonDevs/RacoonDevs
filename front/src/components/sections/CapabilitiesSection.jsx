@@ -18,13 +18,13 @@ const PersonalizedVisual = () => (
       <div key={step} className="flex items-center gap-1.5">
         <div
           className={`w-6 h-6 rounded-lg flex items-center justify-center text-[7px] font-semibold ${
-            i === 0 ? "bg-white/12 text-white" : "bg-white/[0.04] text-gray-500"
+            i === 0 ? "bg-ink/12 text-txt" : "bg-ink/[0.04] text-txt-3"
           }`}
         >
           {i + 1}
         </div>
-        <span className="text-[8px] text-gray-500">{step}</span>
-        {i < 2 && <div className="w-4 h-px bg-white/[0.08]" />}
+        <span className="text-[8px] text-txt-3">{step}</span>
+        {i < 2 && <div className="w-4 h-px bg-ink/[0.08]" />}
       </div>
     ))}
   </div>
@@ -34,25 +34,25 @@ const DesignEngVisual = () => (
   <div className="mt-4 space-y-2">
     {/* Layered UI/code representation */}
     <div className="flex gap-2">
-      <div className="flex-1 rounded-md border border-white/[0.08] bg-white/[0.03] p-1.5">
-        <div className="text-[6px] text-gray-500 mb-1">UI Design</div>
+      <div className="flex-1 rounded-md border border-ink/[0.08] bg-ink/[0.03] p-1.5">
+        <div className="text-[6px] text-txt-3 mb-1">UI Design</div>
         <div className="flex gap-0.5">
-          <div className="w-3 h-5 rounded-sm bg-white/10" />
+          <div className="w-3 h-5 rounded-sm bg-ink/10" />
           <div className="flex-1 flex flex-col gap-0.5">
-            <div className="h-1 bg-white/[0.08] rounded-full" />
-            <div className="h-1 w-3/4 bg-white/[0.05] rounded-full" />
-            <div className="h-2 bg-white/[0.04] rounded-sm" />
+            <div className="h-1 bg-ink/[0.08] rounded-full" />
+            <div className="h-1 w-3/4 bg-ink/[0.05] rounded-full" />
+            <div className="h-2 bg-ink/[0.04] rounded-sm" />
           </div>
         </div>
       </div>
-      <div className="flex-1 rounded-md border border-white/[0.08] bg-white/[0.03] p-1.5">
-        <div className="text-[6px] text-gray-500 mb-1">Code</div>
+      <div className="flex-1 rounded-md border border-ink/[0.08] bg-ink/[0.03] p-1.5">
+        <div className="text-[6px] text-txt-3 mb-1">Code</div>
         <div className="space-y-0.5">
           {[
-            { w: "w-full", c: "bg-white/[0.08]" },
-            { w: "w-3/4", c: "bg-white/[0.06]" },
-            { w: "w-5/6", c: "bg-white/[0.05]" },
-            { w: "w-2/3", c: "bg-white/[0.04]" },
+            { w: "w-full", c: "bg-ink/[0.08]" },
+            { w: "w-3/4", c: "bg-ink/[0.06]" },
+            { w: "w-5/6", c: "bg-ink/[0.05]" },
+            { w: "w-2/3", c: "bg-ink/[0.04]" },
           ].map((line, i) => (
             <div key={i} className={`h-0.5 ${line.w} ${line.c} rounded-full`} />
           ))}
@@ -61,11 +61,11 @@ const DesignEngVisual = () => (
     </div>
     {/* Connector */}
     <div className="flex items-center justify-center gap-1">
-      <div className="h-px flex-1 bg-white/[0.06]" />
-      <div className="w-4 h-4 rounded-full border border-white/10 flex items-center justify-center">
-        <div className="w-1.5 h-1.5 rounded-full bg-white/15" />
+      <div className="h-px flex-1 bg-ink/[0.06]" />
+      <div className="w-4 h-4 rounded-full border border-ink/10 flex items-center justify-center">
+        <div className="w-1.5 h-1.5 rounded-full bg-ink/15" />
       </div>
-      <div className="h-px flex-1 bg-white/[0.06]" />
+      <div className="h-px flex-1 bg-ink/[0.06]" />
     </div>
   </div>
 );
@@ -73,28 +73,28 @@ const DesignEngVisual = () => (
 const ResponsiveVisual = () => (
   <div className="mt-4 flex items-end gap-2 justify-center">
     {/* Desktop */}
-    <div className="w-16 h-10 rounded-md border border-white/[0.1] bg-white/[0.03] p-0.5">
+    <div className="w-16 h-10 rounded-md border border-ink/[0.1] bg-ink/[0.03] p-0.5">
       <div className="w-full h-full flex gap-0.5">
-        <div className="w-3 bg-white/[0.06] rounded-sm" />
+        <div className="w-3 bg-ink/[0.06] rounded-sm" />
         <div className="flex-1 flex flex-col gap-0.5">
-          <div className="h-1 bg-white/[0.08] rounded-full" />
-          <div className="flex-1 bg-white/[0.04] rounded-sm" />
+          <div className="h-1 bg-ink/[0.08] rounded-full" />
+          <div className="flex-1 bg-ink/[0.04] rounded-sm" />
         </div>
       </div>
     </div>
     {/* Tablet */}
-    <div className="w-9 h-12 rounded-md border border-white/[0.1] bg-white/[0.03] p-0.5">
+    <div className="w-9 h-12 rounded-md border border-ink/[0.1] bg-ink/[0.03] p-0.5">
       <div className="w-full h-full flex flex-col gap-0.5">
-        <div className="h-1.5 bg-white/[0.06] rounded-sm" />
-        <div className="flex-1 bg-white/[0.04] rounded-sm" />
-        <div className="h-1 bg-white/[0.05] rounded-sm" />
+        <div className="h-1.5 bg-ink/[0.06] rounded-sm" />
+        <div className="flex-1 bg-ink/[0.04] rounded-sm" />
+        <div className="h-1 bg-ink/[0.05] rounded-sm" />
       </div>
     </div>
     {/* Mobile */}
-    <div className="w-5 h-9 rounded-md border border-white/[0.1] bg-white/[0.03] p-0.5">
+    <div className="w-5 h-9 rounded-md border border-ink/[0.1] bg-ink/[0.03] p-0.5">
       <div className="w-full h-full flex flex-col gap-0.5">
-        <div className="h-1 bg-white/[0.06] rounded-sm" />
-        <div className="flex-1 bg-white/[0.04] rounded-sm" />
+        <div className="h-1 bg-ink/[0.06] rounded-sm" />
+        <div className="flex-1 bg-ink/[0.04] rounded-sm" />
       </div>
     </div>
   </div>
@@ -110,17 +110,17 @@ const PerformanceVisual = () => (
         { label: "FID", score: "8ms", pct: 96 },
       ].map((m) => (
         <div key={m.label} className="flex items-center gap-2">
-          <span className="text-[7px] text-gray-500 w-12">{m.label}</span>
-          <div className="flex-1 h-1 bg-white/[0.04] rounded-full overflow-hidden">
+          <span className="text-[7px] text-txt-3 w-12">{m.label}</span>
+          <div className="flex-1 h-1 bg-ink/[0.04] rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-white/20 rounded-full"
+              className="h-full bg-ink/20 rounded-full"
               initial={{ width: 0 }}
               whileInView={{ width: `${m.pct}%` }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.8, ease: ease.out }}
             />
           </div>
-          <span className="text-[7px] text-white/60 w-6 text-right">
+          <span className="text-[7px] text-txt/60 w-6 text-right">
             {m.score}
           </span>
         </div>
@@ -133,19 +133,19 @@ const ScalableVisual = () => (
   <div className="mt-4 flex items-center gap-3">
     {/* Architecture blocks */}
     <div className="flex flex-col gap-1 items-center">
-      <div className="w-8 h-5 rounded border border-white/[0.1] bg-white/[0.04] flex items-center justify-center">
-        <span className="text-[5px] text-gray-500">Frontend</span>
+      <div className="w-8 h-5 rounded border border-ink/[0.1] bg-ink/[0.04] flex items-center justify-center">
+        <span className="text-[5px] text-txt-3">Frontend</span>
       </div>
-      <div className="w-px h-2 bg-white/[0.08]" />
-      <div className="w-8 h-5 rounded border border-white/[0.1] bg-white/[0.04] flex items-center justify-center">
-        <span className="text-[5px] text-gray-500">API</span>
+      <div className="w-px h-2 bg-ink/[0.08]" />
+      <div className="w-8 h-5 rounded border border-ink/[0.1] bg-ink/[0.04] flex items-center justify-center">
+        <span className="text-[5px] text-txt-3">API</span>
       </div>
-      <div className="w-px h-2 bg-white/[0.08]" />
-      <div className="w-8 h-5 rounded border border-white/[0.1] bg-white/[0.04] flex items-center justify-center">
-        <span className="text-[5px] text-gray-500">DB</span>
+      <div className="w-px h-2 bg-ink/[0.08]" />
+      <div className="w-8 h-5 rounded border border-ink/[0.1] bg-ink/[0.04] flex items-center justify-center">
+        <span className="text-[5px] text-txt-3">DB</span>
       </div>
     </div>
-    <div className="flex-1 flex flex-col gap-0.5 text-[6px] text-gray-600">
+    <div className="flex-1 flex flex-col gap-0.5 text-[6px] text-txt-4">
       <span>→ Modular</span>
       <span>→ Documentado</span>
       <span>→ Testeable</span>
@@ -219,7 +219,7 @@ const CapabilitiesSection = () => {
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <motion.p
-              className="text-sm tracking-widest uppercase text-gray-500 mb-4"
+              className="text-sm tracking-widest uppercase text-txt-3 mb-4"
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -227,9 +227,9 @@ const CapabilitiesSection = () => {
             >
               Por qué Racoon Devs
             </motion.p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-2xl leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt max-w-2xl leading-tight">
               No somos una fábrica de código.{" "}
-              <span className="text-gray-400">
+              <span className="text-txt-2">
                 Somos tu equipo de producto digital.
               </span>
             </h2>
@@ -244,23 +244,23 @@ const CapabilitiesSection = () => {
               <motion.div
                 key={item.title}
                 variants={staggerChild}
-                className={`group relative p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-colors duration-500 ${item.className}`}
+                className={`group relative p-6 sm:p-8 rounded-2xl bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/15 hover:bg-ink/[0.04] transition-colors duration-500 glass-panel ${item.className}`}
                 whileHover={{
                   y: -4,
                   transition: { duration: 0.3, ease: ease.smooth },
                 }}
               >
                 {/* Hover glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-ink/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300">
-                    <item.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  <div className="w-10 h-10 rounded-xl bg-ink/5 border border-ink/10 flex items-center justify-center mb-5 group-hover:border-ink/20 group-hover:bg-ink/[0.08] transition-all duration-300">
+                    <item.icon className="w-5 h-5 text-txt-2 group-hover:text-txt transition-colors duration-300" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold text-txt mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                  <p className="text-txt-2 text-sm sm:text-base leading-relaxed">
                     {item.description}
                   </p>
                   {/* Visual composition */}
