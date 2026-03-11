@@ -7,15 +7,104 @@ import carnitasJoselesImage from "../assets/portafolio/carnitas-joseles.webp";
 import fgCarpinteriaImage from "../assets/portafolio/fg-carpinteria.webp";
 import familiaCrossfitImage from "../assets/portafolio/famcrossfit.webp";
 import carnitasElPitillalImage from "../assets/portafolio/logo-carnitas.webp";
+import inmoboImage from "../assets/portafolio/inmobo.webp";
+import flotaproImage from "../assets/portafolio/flotapro.webp";
+import catalogyImage from "../assets/portafolio/catalogy.webp";
+import agendaproImage from "../assets/portafolio/agendapro.webp";
 
 export const portfolioStats = [
-  { number: "10+", label: "Proyectos Entregados" },
+  { number: "15+", label: "Proyectos Entregados" },
   { number: "98%", label: "Clientes Satisfechos" },
-  { number: "6+", label: "Industrias Atendidas" },
+  { number: "8+", label: "Industrias Atendidas" },
   { number: "3+", label: "Años de Experiencia" },
 ];
 
 export const featuredProjects = [
+  {
+    id: "inmobo",
+    title: "Inmobo",
+    subtitle: "Plataforma de Reservaciones & Marketplace Multi-Recurso",
+    description:
+      "Marketplace multi-recurso para publicar y reservar propiedades, vehículos, servicios, venues y experiencias. Panel administrativo completo, booking online con Stripe, gestión de leads, chat en vivo, vouchers y soporte multi-idioma.",
+    challenge:
+      "Negocios de renta vacacional, bienes raíces, vehículos y servicios necesitaban una plataforma unificada para publicar, reservar y gestionar múltiples tipos de recursos con personalización por cliente.",
+    solution:
+      "Marketplace con booking directo vía Stripe e indirecto por contacto, wizard de publicación unificado, landing pública personalizable, panel admin con gestión de anuncios/personal/permisos y soporte ES/EN.",
+    result:
+      "Plataforma escalable con flujos de reserva directa e indirecta, arquitectura lista para múltiples modelos de negocio y personalización total de servicios.",
+    image: inmoboImage,
+    category: "Plataforma SaaS",
+    year: "2026",
+    tags: [
+      "React",
+      "Appwrite",
+      "Stripe",
+      "PWA",
+      "i18n",
+      "Vite",
+      "Tailwind CSS",
+    ],
+    link: "https://inmobo-crm.site.racoondevs.com",
+    demoLink: "https://inmobo.site.racoondevs.com",
+    caseStudy: "/portafolio/inmobo",
+  },
+  {
+    id: "flotapro",
+    title: "FlotaPro",
+    subtitle: "Sistema de Control de Flota & Gestión de Personal",
+    description:
+      "Plataforma integral para control de flota vehicular con gestión de personal, choferes, documentación, reportes de servicio y reparaciones con sistema RBAC de permisos.",
+    challenge:
+      "Empresas con flotas vehiculares necesitaban centralizar el control de vehículos, choferes, documentación y reportes con permisos granulares por rol.",
+    solution:
+      "Sistema con gestión integral de flota, personal, documentación vehicular, reportes de servicio/reparación y sistema RBAC completo con permisos por usuarios y roles.",
+    result:
+      "Control total de flota con visibilidad en tiempo real, reducción de costos operativos y gestión de personal centralizada.",
+    image: flotaproImage,
+    category: "Aplicación Web",
+    year: "2025",
+    tags: ["React", "TypeScript", "Vite", "PWA", "Tailwind CSS"],
+    link: "https://dev.mycad.mx",
+    caseStudy: "/portafolio/flotapro",
+  },
+  {
+    id: "catalogy",
+    title: "Catalogy",
+    subtitle: "Catálogos en Línea Multi-Tenant",
+    description:
+      "Plataforma gratuita multi-tenant para catálogos en línea con subdominios personalizados, plantillas predefinidas, gestión de stock y pedidos directos por WhatsApp.",
+    challenge:
+      "Pequeños negocios necesitaban una forma accesible de tener un catálogo en línea profesional sin la complejidad de un e-commerce completo.",
+    solution:
+      "Sistema multi-tenant con catálogos por subdominio, plantillas predefinidas, carrito ficticio, gestión de stock y comunicación directa por WhatsApp para pedidos.",
+    result:
+      "Sistema escalable por tenant con branding personalizable, experiencia e-commerce simplificada y comunicación directa con clientes.",
+    image: catalogyImage,
+    category: "Plataforma SaaS",
+    year: "2026",
+    tags: ["React", "Appwrite", "Vite", "PWA", "Tailwind CSS"],
+    link: "https://catalogy.racoondevs.com",
+    caseStudy: "/portafolio/catalogy",
+  },
+  {
+    id: "agendapro",
+    title: "AgendaPro",
+    subtitle: "Agenda Colaborativa & Productividad",
+    description:
+      "PWA mobile-first para agendas grupales compartidas con invitaciones por email, gestión de roles y permisos sobre calendarios y experiencia optimizada para uso diario.",
+    challenge:
+      "Equipos y grupos necesitaban una herramienta moderna para compartir calendarios, coordinar eventos y gestionar agendas grupales con control de permisos.",
+    solution:
+      "App SaaS/PWA con agendas grupales, invitaciones por email, roles y permisos sobre calendarios, diseño responsivo e instalable desde cualquier dispositivo.",
+    result:
+      "App con experiencia rápida, instalable, flujos claros de calendario y productividad adaptable a uso diario desde móvil o escritorio.",
+    image: agendaproImage,
+    category: "Aplicación Web",
+    year: "2025",
+    tags: ["React", "Vite", "PWA", "Tailwind CSS"],
+    link: "https://agendapro.racoondevs.com",
+    caseStudy: "/portafolio/agendapro",
+  },
   {
     id: "sinabe",
     title: "Sinabe",
@@ -131,6 +220,7 @@ export const allProjects = [
 
 export const projectCategories = [
   "Todos",
+  "Plataforma SaaS",
   "Software a la Medida",
   "Aplicación Web",
   "Landing Page",

@@ -62,6 +62,7 @@ const stack = [
   "Vite",
   "Tailwind CSS",
   "Framer Motion",
+  "Appwrite",
   "AWS",
   "Vercel",
 ];

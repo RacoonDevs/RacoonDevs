@@ -7,45 +7,341 @@ import { ease, staggerContainer, staggerChild } from "../../utils/motion";
 import sinabeImage from "../../assets/portafolio/sinabe.webp";
 import mycadImage from "../../assets/portafolio/mycad.webp";
 import ntropiaImage from "../../assets/portafolio/ntropia.webp";
+import inmoboImage from "../../assets/portafolio/inmobo.webp";
+import flotaproImage from "../../assets/portafolio/flotapro.webp";
+import catalogyImage from "../../assets/portafolio/catalogy.webp";
+import agendaproImage from "../../assets/portafolio/agendapro.webp";
 
 const caseStudies = [
   {
+    name: "Inmobo",
+    type: "Plataforma de Reservaciones & Marketplace",
+    challenge:
+      "Negocios de renta vacacional, bienes raíces, vehículos y servicios necesitaban una plataforma unificada para publicar, reservar y gestionar múltiples tipos de recursos con personalización por cliente.",
+    built:
+      "Marketplace multi-recurso con booking online vía Stripe, panel administrativo completo, gestión de leads, chat en vivo, vouchers, personalización de servicios, landing pública y soporte multi-idioma (ES/EN).",
+    outcome:
+      "Plataforma escalable con flujos de reserva directa e indirecta, wizard de publicación unificado y arquitectura lista para múltiples modelos de negocio.",
+    image: inmoboImage,
+    link: "https://inmobo-crm.site.racoondevs.com",
+    demoLink: "https://inmobo.site.racoondevs.com",
+    tags: ["React", "Appwrite", "Stripe", "PWA", "i18n"],
+    year: "2026",
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    name: "FlotaPro",
+    type: "Sistema de Control de Flota & Personal",
+    challenge:
+      "Empresas con flotas vehiculares necesitaban centralizar el control de vehículos, choferes, documentación, reportes de servicio y reparaciones con permisos granulares por rol.",
+    built:
+      "Plataforma con gestión integral de flota, personal, documentación vehicular, reportes de servicio/reparación y sistema RBAC completo con permisos por usuarios y roles.",
+    outcome:
+      "Control total de flota con visibilidad en tiempo real, reducción de costos operativos y gestión de personal centralizada.",
+    image: flotaproImage,
+    link: "https://dev.mycad.mx",
+    tags: ["React", "TypeScript", "Vite", "PWA"],
+    year: "2025",
+  },
+  {
+    name: "Catalogy",
+    type: "Catálogos en Línea Multi-Tenant",
+    challenge:
+      "Pequeños negocios necesitaban una forma accesible de tener un catálogo en línea profesional para anunciar productos, sin la complejidad de un e-commerce completo.",
+    built:
+      "Plataforma gratuita multi-tenant con catálogos por subdominio, plantillas predefinidas, gestión de stock, carrito ficticio y pedidos directos por WhatsApp.",
+    outcome:
+      "Sistema escalable por tenant con branding personalizable, experiencia e-commerce simplificada y comunicación directa con clientes.",
+    image: catalogyImage,
+    link: "https://catalogy.racoondevs.com",
+    tags: ["React", "Appwrite", "Vite", "PWA"],
+    year: "2026",
+    isNew: true,
+  },
+  {
+    name: "AgendaPro",
+    type: "Agenda Colaborativa & Productividad",
+    challenge:
+      "Equipos y grupos necesitaban una herramienta moderna para compartir calendarios, coordinar eventos y gestionar agendas grupales con control de permisos.",
+    built:
+      "PWA mobile-first con agendas grupales compartidas, invitaciones por email, gestión de roles y permisos sobre calendarios, diseño responsivo y experiencia optimizada para uso diario.",
+    outcome:
+      "App SaaS/PWA con experiencia rápida, instalable desde cualquier dispositivo y flujos claros de calendario y productividad.",
+    image: agendaproImage,
+    link: "https://agendapro.racoondevs.com",
+    tags: ["React", "Vite", "PWA", "Tailwind"],
+    year: "2025",
+  },
+];
+
+const previousWork = [
+  {
     name: "Sinabe",
     type: "Sistema de Inventarios",
-    challenge:
-      "Una empresa agroempresarial necesitaba centralizar el control de miles de artículos, materiales y equipos dispersos en múltiples ubicaciones.",
-    built:
-      "Plataforma web completa con gestión de inventarios en tiempo real, alertas automáticas, reportes avanzados y gestión de proveedores.",
-    outcome:
-      "Control centralizado de +4,000 artículos con eficiencia operativa del 95%.",
     image: sinabeImage,
     link: "https://sinabe.racoondevs.com",
+    tags: ["React", "Node.js", "MySQL", "Docker"],
+    year: "2023",
   },
   {
     name: "MyCAD",
-    type: "Dashboard de Administración de Flota",
-    challenge:
-      "Gestionar más de 50 vehículos con historial de mantenimiento, rentas, condiciones y costos operativos era manual y propenso a errores.",
-    built:
-      "Panel de administración integral con historial de vehículos, seguimiento de mantenimiento, análisis de costos y reportes personalizables.",
-    outcome:
-      "Reducción de 40% en costos operativos y visibilidad total de la flota.",
+    type: "Dashboard de Flota Vehicular",
     image: mycadImage,
     link: "https://mycad.racoondevs.com",
+    tags: ["React", "TypeScript", "Prisma", "PostgreSQL"],
+    year: "2024",
   },
   {
     name: "Ntropia",
-    type: "Plataforma Colaborativa en Tiempo Real",
-    challenge:
-      "Equipos distribuidos necesitaban un espacio de trabajo compartido con edición simultánea y comunicación en tiempo real.",
-    built:
-      "Canvas colaborativo con WebSockets, chat integrado, edición simultánea de elementos y sistema de notificaciones en tiempo real.",
-    outcome:
-      "Colaboración fluida entre equipos con latencia mínima y edición concurrente.",
+    type: "Colaboración en Tiempo Real",
     image: ntropiaImage,
     link: "https://ntropia.racoondevs.com",
+    tags: ["React", "Socket.io", "Docker", "Directus"],
+    year: "2024",
   },
 ];
+
+const FeaturedCard = ({ project }) => {
+  return (
+    <motion.div variants={staggerChild} className="group relative">
+      <div className="relative rounded-xl overflow-hidden bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500">
+        {/* Full-width image */}
+        <div className="relative">
+          <div className="flex items-center gap-1.5 px-3 py-2 bg-[#0a0a0a] border-b border-white/[0.06]">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+              <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+              <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+            </div>
+            <div className="ml-2 flex-1 max-w-[220px]">
+              <div className="h-4 rounded bg-white/[0.04] border border-white/[0.06] flex items-center px-2">
+                <span className="text-[9px] text-gray-600 truncate">
+                  {(project.demoLink || project.link).replace("https://", "")}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="relative aspect-[2.2/1] overflow-hidden">
+            <motion.img
+              src={project.image}
+              alt={`${project.name} — ${project.type}`}
+              className="w-full h-full object-cover object-center"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.8, ease: ease.smooth }}
+            />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-5 sm:p-6 lg:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-6 lg:gap-10">
+            {/* Left: Title + meta */}
+            <div>
+              <div className="flex items-center gap-2.5 mb-1.5">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                  {project.name}
+                </h3>
+                <span className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-[10px] text-gray-500 font-medium">
+                  {project.year}
+                </span>
+                {project.isNew && (
+                  <span className="px-2 py-0.5 rounded-full bg-white/[0.10] border border-white/[0.15] text-[10px] text-white font-semibold uppercase tracking-wider">
+                    Nuevo
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-gray-500 tracking-wide uppercase mb-5">
+                {project.type}
+              </p>
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-white/[0.03] border border-white/[0.07] text-gray-500"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/[0.08] border border-white/[0.12] text-xs text-white font-medium hover:bg-white/[0.12] transition-all duration-300 group/proj"
+                >
+                  Ver proyecto
+                  <ExternalLink className="w-3 h-3 opacity-60 group-hover/proj:opacity-100 transition-opacity" />
+                </a>
+                {project.demoLink && (
+                  <a
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-400 font-medium hover:text-white hover:border-white/[0.15] transition-all duration-300 group/demo"
+                  >
+                    Ver demo
+                    <ArrowRight className="w-3 h-3 group-hover/demo:translate-x-0.5 transition-transform duration-300" />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Right: Details */}
+            <div className="space-y-3">
+              <div className="pl-3 border-l border-white/[0.08]">
+                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                  Desafío
+                </p>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {project.challenge}
+                </p>
+              </div>
+              <div className="pl-3 border-l border-white/[0.08]">
+                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                  Solución
+                </p>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {project.built}
+                </p>
+              </div>
+              <div className="pl-3 border-l border-white/[0.10]">
+                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                  Resultado
+                </p>
+                <p className="text-gray-300 text-sm font-medium leading-relaxed">
+                  {project.outcome}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const CaseStudyCard = ({ project }) => {
+  return (
+    <motion.div variants={staggerChild} className="group relative">
+      <div className="relative rounded-xl overflow-hidden bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr]">
+          {/* Left: Image in browser-chrome mockup */}
+          <div className="relative">
+            <div className="flex items-center gap-1.5 px-3 py-2 bg-[#0a0a0a] border-b border-white/[0.06]">
+              <div className="flex gap-1">
+                <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+                <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+                <div className="w-2 h-2 rounded-full bg-white/[0.08]" />
+              </div>
+              <div className="ml-2 flex-1 max-w-[180px]">
+                <div className="h-4 rounded bg-white/[0.04] border border-white/[0.06] flex items-center px-2">
+                  <span className="text-[9px] text-gray-600 truncate">
+                    {project.link.replace("https://", "")}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <motion.img
+                src={project.image}
+                alt={`${project.name} — ${project.type}`}
+                className="w-full h-full object-cover object-top"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.8, ease: ease.smooth }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/40 to-transparent pointer-events-none lg:bg-gradient-to-r lg:from-transparent lg:to-[#080808]/50" />
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div className="p-4 sm:p-5 lg:p-6 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-1">
+                <div className="flex items-center gap-2.5">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    {project.name}
+                  </h3>
+                  <span className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-[10px] text-gray-500 font-medium">
+                    {project.year}
+                  </span>
+                  {project.isNew && (
+                    <span className="px-1.5 py-0.5 rounded-full bg-white/[0.10] border border-white/[0.15] text-[9px] text-white font-semibold uppercase tracking-wider">
+                      Nuevo
+                    </span>
+                  )}
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/[0.08] transition-all duration-300"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+              <p className="text-xs text-gray-500 tracking-wide uppercase mb-4">
+                {project.type}
+              </p>
+
+              <div className="space-y-3 mb-4">
+                <div className="pl-2.5 border-l border-white/[0.08]">
+                  <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                    Desafío
+                  </p>
+                  <p className="text-gray-400 text-xs leading-relaxed">
+                    {project.challenge}
+                  </p>
+                </div>
+                <div className="pl-2.5 border-l border-white/[0.08]">
+                  <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                    Solución
+                  </p>
+                  <p className="text-gray-400 text-xs leading-relaxed">
+                    {project.built}
+                  </p>
+                </div>
+                <div className="pl-2.5 border-l border-white/[0.10]">
+                  <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-0.5 font-medium">
+                    Resultado
+                  </p>
+                  <p className="text-gray-300 text-xs font-medium leading-relaxed">
+                    {project.outcome}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/[0.05]">
+              <div className="flex flex-wrap gap-1">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-white/[0.03] border border-white/[0.07] text-gray-500"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors duration-300 group/link font-medium"
+              >
+                Ver en vivo
+                <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform duration-300" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const PortfolioSection = () => {
   return (
@@ -81,83 +377,70 @@ const PortfolioSection = () => {
           {/* Case Studies */}
           <motion.div
             {...staggerContainer(0.15)}
-            className="space-y-6 lg:space-y-8"
+            className="space-y-5 lg:space-y-6"
           >
-            {caseStudies.map((project) => (
-              <motion.div
-                key={project.name}
-                variants={staggerChild}
-                className="group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 hover:bg-white/[0.04] transition-colors duration-500 overflow-hidden"
-                whileHover={{
-                  y: -2,
-                  transition: { duration: 0.3, ease: ease.smooth },
-                }}
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  {/* Image */}
-                  <div className="relative aspect-video lg:aspect-auto overflow-hidden">
-                    <motion.img
-                      src={project.image}
-                      alt={`${project.name} — ${project.type}`}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.7, ease: ease.smooth }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/60 pointer-events-none" />
-                  </div>
+            {caseStudies.map((project) =>
+              project.isFeatured ? (
+                <FeaturedCard key={project.name} project={project} />
+              ) : (
+                <CaseStudyCard key={project.name} project={project} />
+              ),
+            )}
+          </motion.div>
 
-                  {/* Content */}
-                  <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
-                    <p className="text-sm text-gray-500 tracking-wide uppercase mb-2">
+          {/* Previous Work */}
+          <motion.div
+            className="mt-14 lg:mt-18"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: ease.out }}
+          >
+            <p className="text-xs tracking-widest uppercase text-gray-600 mb-5">
+              Trabajo Anterior
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {previousWork.map((project) => (
+                <a
+                  key={project.name}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-400 overflow-hidden"
+                >
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <div className="flex items-center justify-between mb-1">
+                      <h4 className="text-sm font-semibold text-white">
+                        {project.name}
+                      </h4>
+                      <span className="text-[10px] text-gray-600">
+                        {project.year}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-gray-500 mb-2">
                       {project.type}
                     </p>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">
-                      {project.name}
-                    </h3>
-
-                    <div className="space-y-4 mb-8">
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
-                          Desafío
-                        </p>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                          {project.challenge}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
-                          Lo que construimos
-                        </p>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                          {project.built}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
-                          Resultado
-                        </p>
-                        <p className="text-gray-300 text-sm font-medium leading-relaxed">
-                          {project.outcome}
-                        </p>
-                      </div>
+                    <div className="flex flex-wrap gap-1">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-1.5 py-0.5 rounded text-[9px] bg-white/[0.03] border border-white/[0.06] text-gray-600"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-gray-300 transition-colors duration-300 group/link"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Ver proyecto en vivo</span>
-                      <span className="inline-block group-hover/link:translate-x-1 transition-transform duration-200">
-                        →
-                      </span>
-                    </a>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </a>
+              ))}
+            </div>
           </motion.div>
 
           {/* CTA */}

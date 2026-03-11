@@ -69,7 +69,11 @@ const Header = () => {
           <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
             <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
               {/* Logo */}
-              <Link to="/" className="flex items-center gap-3 group">
+              <Link
+                to="/"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="flex items-center gap-3 group"
+              >
                 <motion.div
                   className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 flex items-center justify-center"
                   whileHover={{ scale: 1.08, rotate: 2 }}
@@ -166,7 +170,14 @@ const Header = () => {
             <div className="flex flex-col h-full">
               {/* Sidebar header */}
               <div className="flex items-center justify-between p-6 border-b border-white/[0.06]">
-                <Link to="/" className="flex items-center gap-3">
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="flex items-center gap-3"
+                >
                   <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center">
                     <img src={Icon} alt="Logo" className="w-7 h-7" />
                   </div>

@@ -3,6 +3,7 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import HeroSection from "./sections/HeroSection";
 import TrustStrip from "./sections/TrustStrip";
+import ShowcaseSection from "./sections/ShowcaseSection";
 import ServicesSection from "./sections/ServicesSection";
 import CapabilitiesSection from "./sections/CapabilitiesSection";
 import PortfolioSection from "./sections/PortfolioSection";
@@ -19,6 +20,7 @@ const RacoonDevsLanding = () => {
       <main className="relative z-10 pt-16 sm:pt-18 lg:pt-20">
         <HeroSection />
         <TrustStrip />
+        <ShowcaseSection />
         <ServicesSection />
         <CapabilitiesSection />
         <PortfolioSection />
