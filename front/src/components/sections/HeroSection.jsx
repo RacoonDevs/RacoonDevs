@@ -30,7 +30,7 @@ const AnimatedHeadline = ({ children, className, delay = 0 }) => {
       {words.map((word, i) => (
         <motion.span
           key={i}
-          className="inline-block mr-[0.3em]"
+          className={`inline-block mr-[0.3em] ${className || ""}`}
           variants={{
             hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
             visible: {
