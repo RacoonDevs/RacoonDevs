@@ -5,6 +5,8 @@ import RacoonDevsLanding from "./components/RacoonDevsLanding";
 import PortfolioPage from "./pages/PortfolioPage";
 import ProcessPage from "./pages/ProcessPage";
 import ContactPage from "./pages/ContactPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
 import ScrollToTop from "./components/utils/ScrollToTop";
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route path="/portafolio" element={<PortfolioPage />} />
           <Route path="/proceso" element={<ProcessPage />} />
           <Route path="/contacto" element={<ContactPage />} />
+          <Route path="/privacidad" element={<PrivacyPage />} />
+          <Route path="/terminos" element={<TermsPage />} />
         </Routes>
       </Router>
     </GoogleReCaptchaProvider>

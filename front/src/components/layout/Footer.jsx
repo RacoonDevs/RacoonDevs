@@ -1,14 +1,16 @@
-// src/components/layout/Footer.jsx
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Icon from "../../assets/RD_TRANS_C.webp";
+import { useNavigateToSection } from "../utils/NavigateToSection";
 
 const Footer = () => {
+  const navigateToSection = useNavigateToSection();
+
   const navigation = [
-    { label: "Servicios", href: "#servicios" },
+    { label: "Servicios", href: "/#servicios", isRoute: false },
     { label: "Portafolio", href: "/portafolio", isRoute: true },
-    { label: "Proceso", href: "#proceso" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Proceso", href: "/proceso", isRoute: true },
+    { label: "Contacto", href: "/#contacto", isRoute: false },
   ];
 
   const services = [
@@ -53,7 +55,6 @@ const Footer = () => {
       <div className="w-full flex justify-center py-16 lg:py-20">
         <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
-            {/* Brand */}
             <div className="lg:col-span-1">
               <Link to="/" className="flex items-center gap-3 mb-5">
                 <img src={Icon} alt="Racoon Devs" className="w-10 h-10" />
@@ -67,15 +68,14 @@ const Footer = () => {
                 </div>
               </Link>
               <p className="text-txt-3 text-sm leading-relaxed max-w-xs">
-                Desarrollo web, software a la medida y creación de aplicaciones
-                móviles en Puerto Vallarta, Jalisco y Nayarit.
+                Desarrollo web, software a la medida y creacion de aplicaciones
+                moviles en Puerto Vallarta, Jalisco y Nayarit.
               </p>
             </div>
 
-            {/* Navigation */}
             <div>
               <h4 className="text-txt text-sm font-semibold mb-5">
-                Navegación
+                Navegacion
               </h4>
               <ul className="space-y-3">
                 {navigation.map((item) => (
@@ -88,19 +88,19 @@ const Footer = () => {
                         {item.label}
                       </Link>
                     ) : (
-                      <a
-                        href={item.href}
-                        className="text-txt-3 hover:text-txt text-sm transition-colors duration-200"
+                      <button
+                        type="button"
+                        onClick={() => navigateToSection(item.href)}
+                        className="text-txt-3 hover:text-txt text-sm transition-colors duration-200 cursor-pointer"
                       >
                         {item.label}
-                      </a>
+                      </button>
                     )}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Services */}
             <div>
               <h4 className="text-txt text-sm font-semibold mb-5">Servicios</h4>
               <ul className="space-y-3">
@@ -112,12 +112,12 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact */}
             <div>
               <h4 className="text-txt text-sm font-semibold mb-5">Contacto</h4>
               <ul className="space-y-3">
                 {contactInfo.map((item) => {
                   const Wrapper = item.href ? "a" : "span";
+
                   return (
                     <li key={item.value}>
                       <Wrapper
@@ -136,7 +136,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-primary/[0.06]">
         <div className="w-full flex justify-center py-6">
           <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
@@ -146,18 +145,18 @@ const Footer = () => {
                 MX.
               </span>
               <div className="flex gap-5">
-                <a
-                  href="#"
+                <Link
+                  to="/privacidad"
                   className="hover:text-txt-2 transition-colors duration-200"
                 >
                   Privacidad
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/terminos"
                   className="hover:text-txt-2 transition-colors duration-200"
                 >
-                  Términos
-                </a>
+                  Terminos
+                </Link>
               </div>
             </div>
           </div>
