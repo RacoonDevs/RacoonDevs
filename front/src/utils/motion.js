@@ -16,11 +16,11 @@ export const sectionReveal = {
   transition: { duration: 0.7, ease: ease.out },
 };
 
-// Stagger container for children
+// Stagger container — scroll-triggered with once: true
 export const staggerContainer = (staggerDelay = 0.08) => ({
   initial: "hidden",
   whileInView: "visible",
-  viewport: { once: true, amount: 0.05 },
+  viewport: { once: true, amount: 0.15 },
   variants: {
     hidden: {},
     visible: {
@@ -32,7 +32,7 @@ export const staggerContainer = (staggerDelay = 0.08) => ({
   },
 });
 
-// Stagger child — used inside staggerContainer
+// Stagger child — used inside stagger container
 export const staggerChild = {
   hidden: { opacity: 0, y: 16 },
   visible: {

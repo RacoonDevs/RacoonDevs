@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es">
   <head>
     <script>
       // Prevent theme flash — apply dark class before paint
       (function () {
         var t = localStorage.getItem("theme");
-        if (t === "light") {
-          document.documentElement.classList.remove("dark");
-        } else {
+        if (t === "dark") {
           document.documentElement.classList.add("dark");
-          if (!t) localStorage.theme = "dark";
+        } else {
+          document.documentElement.classList.remove("dark");
+          if (!t) localStorage.theme = "light";
         }
       })();
     </script>

@@ -188,7 +188,7 @@ const TechnologySection = () => {
               className="flex flex-wrap justify-center gap-3"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={{
                 hidden: {},
                 visible: {

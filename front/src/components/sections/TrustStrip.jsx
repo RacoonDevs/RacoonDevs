@@ -97,7 +97,7 @@ const TrustStrip = () => {
             className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.15 }}
             variants={{
               hidden: {},
               visible: {
