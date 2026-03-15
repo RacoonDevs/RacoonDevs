@@ -1,5 +1,5 @@
 // src/components/layout/Footer.jsx
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Icon from "../../assets/RD_TRANS_C.webp";
 
@@ -28,8 +28,18 @@ const Footer = () => {
     },
     {
       icon: Phone,
+      value: "+52 322 135 8808",
+      href: "tel:+523221358808",
+    },
+    {
+      icon: Phone,
       value: "+52 322 265 2650",
       href: "tel:+523222652650",
+    },
+    {
+      icon: MessageCircle,
+      value: "WhatsApp",
+      href: "https://wa.me/523221358808?text=Hola%2C%20me%20interesa%20un%20proyecto%20con%20RacoonDevs",
     },
     {
       icon: MapPin,
@@ -39,7 +49,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative border-t border-ink/[0.06] bg-surface">
+    <footer className="relative border-t border-primary/[0.08] bg-surface">
       <div className="w-full flex justify-center py-16 lg:py-20">
         <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
@@ -57,8 +67,8 @@ const Footer = () => {
                 </div>
               </Link>
               <p className="text-txt-3 text-sm leading-relaxed max-w-xs">
-                Software a la medida, diseño responsivo premium y arquitectura
-                escalable para empresas que necesitan más que una plantilla.
+                Desarrollo web, software a la medida y creación de aplicaciones
+                móviles en Puerto Vallarta, Jalisco y Nayarit.
               </p>
             </div>
 
@@ -92,9 +102,7 @@ const Footer = () => {
 
             {/* Services */}
             <div>
-              <h4 className="text-txt text-sm font-semibold mb-5">
-                Servicios
-              </h4>
+              <h4 className="text-txt text-sm font-semibold mb-5">Servicios</h4>
               <ul className="space-y-3">
                 {services.map((service) => (
                   <li key={service}>
@@ -106,9 +114,7 @@ const Footer = () => {
 
             {/* Contact */}
             <div>
-              <h4 className="text-txt text-sm font-semibold mb-5">
-                Contacto
-              </h4>
+              <h4 className="text-txt text-sm font-semibold mb-5">Contacto</h4>
               <ul className="space-y-3">
                 {contactInfo.map((item) => {
                   const Wrapper = item.href ? "a" : "span";
@@ -131,7 +137,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-ink/[0.04]">
+      <div className="border-t border-primary/[0.06]">
         <div className="w-full flex justify-center py-6">
           <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-txt-4">

@@ -3,6 +3,8 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RacoonDevsLanding from "./components/RacoonDevsLanding";
 import PortfolioPage from "./pages/PortfolioPage";
+import ProcessPage from "./pages/ProcessPage";
+import ContactPage from "./pages/ContactPage";
 import ScrollToTop from "./components/utils/ScrollToTop";
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<RacoonDevsLanding />} />
           <Route path="/portafolio" element={<PortfolioPage />} />
+          <Route path="/proceso" element={<ProcessPage />} />
+          <Route path="/contacto" element={<ContactPage />} />
         </Routes>
       </Router>
     </GoogleReCaptchaProvider>

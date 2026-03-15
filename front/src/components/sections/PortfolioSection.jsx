@@ -105,17 +105,17 @@ const previousWork = [
 const FeaturedCard = ({ project }) => {
   return (
     <motion.div variants={staggerChild} className="group relative">
-      <div className="relative rounded-xl overflow-hidden bg-ink/[0.02] border border-ink/[0.08] hover:border-ink/[0.15] transition-all duration-500 glass-panel">
+      <div className="relative rounded-xl overflow-hidden bg-surface-alt/50 border border-primary/[0.08] hover:border-primary/[0.2] transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-primary/5">
         {/* Full-width image */}
         <div className="relative">
-          <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-alt border-b border-ink/[0.06]">
+          <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-alt border-b border-primary/[0.06]">
             <div className="flex gap-1">
-              <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
-              <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
-              <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
+              <div className="w-2 h-2 rounded-full bg-red-400/50" />
+              <div className="w-2 h-2 rounded-full bg-yellow-400/50" />
+              <div className="w-2 h-2 rounded-full bg-green-400/50" />
             </div>
             <div className="ml-2 flex-1 max-w-[220px]">
-              <div className="h-4 rounded bg-ink/[0.04] border border-ink/[0.06] flex items-center px-2">
+              <div className="h-4 rounded bg-primary/[0.04] border border-primary/[0.06] flex items-center px-2">
                 <span className="text-[9px] text-txt-4 truncate">
                   {(project.demoLink || project.link).replace("https://", "")}
                 </span>
@@ -143,11 +143,11 @@ const FeaturedCard = ({ project }) => {
                 <h3 className="text-2xl sm:text-3xl font-bold text-txt">
                   {project.name}
                 </h3>
-                <span className="px-1.5 py-0.5 rounded bg-ink/[0.06] border border-ink/[0.08] text-[10px] text-txt-3 font-medium">
+                <span className="px-1.5 py-0.5 rounded bg-primary/[0.08] border border-primary/[0.12] text-[10px] text-txt-3 font-medium">
                   {project.year}
                 </span>
                 {project.isNew && (
-                  <span className="px-2 py-0.5 rounded-full bg-ink/[0.10] border border-ink/[0.15] text-[10px] text-txt font-semibold uppercase tracking-wider">
+                  <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-primary/15 to-secondary/15 border border-primary/20 text-[10px] text-primary font-semibold uppercase tracking-wider">
                     Nuevo
                   </span>
                 )}
@@ -159,7 +159,7 @@ const FeaturedCard = ({ project }) => {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-ink/[0.03] border border-ink/[0.07] text-txt-3"
+                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-primary/[0.04] border border-primary/[0.1] text-txt-3"
                   >
                     {tag}
                   </span>
@@ -170,7 +170,7 @@ const FeaturedCard = ({ project }) => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-ink/[0.08] border border-ink/[0.12] text-xs text-txt font-medium hover:bg-ink/[0.12] transition-all duration-300 group/proj"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg gradient-primary text-white text-xs font-medium hover:opacity-90 transition-all duration-300 shadow-md shadow-primary/20 group/proj"
                 >
                   Ver proyecto
                   <ExternalLink className="w-3 h-3 opacity-60 group-hover/proj:opacity-100 transition-opacity" />
@@ -180,7 +180,7 @@ const FeaturedCard = ({ project }) => {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-ink/[0.08] text-xs text-txt-2 font-medium hover:text-txt hover:border-ink/[0.15] transition-all duration-300 group/demo"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-primary/[0.15] text-xs text-txt-2 font-medium hover:text-txt hover:border-primary/[0.3] transition-all duration-300 group/demo"
                   >
                     Ver demo
                     <ArrowRight className="w-3 h-3 group-hover/demo:translate-x-0.5 transition-transform duration-300" />
@@ -191,24 +191,24 @@ const FeaturedCard = ({ project }) => {
 
             {/* Right: Details */}
             <div className="space-y-3">
-              <div className="pl-3 border-l border-ink/[0.08]">
-                <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
+              <div className="pl-3 border-l-2 border-violet-500/30">
+                <p className="text-[10px] uppercase tracking-widest text-violet-500 mb-0.5 font-medium">
                   Desafío
                 </p>
                 <p className="text-txt-2 text-sm leading-relaxed">
                   {project.challenge}
                 </p>
               </div>
-              <div className="pl-3 border-l border-ink/[0.08]">
-                <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
+              <div className="pl-3 border-l-2 border-cyan-500/30">
+                <p className="text-[10px] uppercase tracking-widest text-cyan-500 mb-0.5 font-medium">
                   Solución
                 </p>
                 <p className="text-txt-2 text-sm leading-relaxed">
                   {project.built}
                 </p>
               </div>
-              <div className="pl-3 border-l border-ink/[0.10]">
-                <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
+              <div className="pl-3 border-l-2 border-emerald-500/30">
+                <p className="text-[10px] uppercase tracking-widest text-emerald-500 mb-0.5 font-medium">
                   Resultado
                 </p>
                 <p className="text-txt-2 text-sm font-medium leading-relaxed">
@@ -226,18 +226,18 @@ const FeaturedCard = ({ project }) => {
 const CaseStudyCard = ({ project }) => {
   return (
     <motion.div variants={staggerChild} className="group relative">
-      <div className="relative rounded-xl overflow-hidden bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/[0.12] transition-all duration-500 glass-panel">
+      <div className="relative rounded-xl overflow-hidden bg-surface-alt/50 border border-primary/[0.08] hover:border-primary/[0.2] transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-primary/5">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr]">
           {/* Left: Image in browser-chrome mockup */}
           <div className="relative">
-            <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-alt border-b border-ink/[0.06]">
+            <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-alt border-b border-primary/[0.06]">
               <div className="flex gap-1">
-                <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
-                <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
-                <div className="w-2 h-2 rounded-full bg-ink/[0.08]" />
+                <div className="w-2 h-2 rounded-full bg-red-400/50" />
+                <div className="w-2 h-2 rounded-full bg-yellow-400/50" />
+                <div className="w-2 h-2 rounded-full bg-green-400/50" />
               </div>
               <div className="ml-2 flex-1 max-w-[180px]">
-                <div className="h-4 rounded bg-ink/[0.04] border border-ink/[0.06] flex items-center px-2">
+                <div className="h-4 rounded bg-primary/[0.04] border border-primary/[0.06] flex items-center px-2">
                   <span className="text-[9px] text-txt-4 truncate">
                     {project.link.replace("https://", "")}
                   </span>
@@ -265,11 +265,11 @@ const CaseStudyCard = ({ project }) => {
                   <h3 className="text-xl sm:text-2xl font-bold text-txt">
                     {project.name}
                   </h3>
-                  <span className="px-1.5 py-0.5 rounded bg-ink/[0.06] border border-ink/[0.08] text-[10px] text-txt-3 font-medium">
+                  <span className="px-1.5 py-0.5 rounded bg-primary/[0.08] border border-primary/[0.12] text-[10px] text-txt-3 font-medium">
                     {project.year}
                   </span>
                   {project.isNew && (
-                    <span className="px-1.5 py-0.5 rounded-full bg-ink/[0.10] border border-ink/[0.15] text-[9px] text-txt font-semibold uppercase tracking-wider">
+                    <span className="px-1.5 py-0.5 rounded-full bg-gradient-to-r from-primary/15 to-secondary/15 border border-primary/20 text-[9px] text-primary font-semibold uppercase tracking-wider">
                       Nuevo
                     </span>
                   )}
@@ -278,7 +278,7 @@ const CaseStudyCard = ({ project }) => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 w-8 h-8 rounded-lg bg-ink/[0.04] border border-ink/[0.08] flex items-center justify-center text-txt-3 hover:text-txt hover:bg-ink/[0.08] transition-all duration-300"
+                  className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/[0.06] border border-primary/[0.12] flex items-center justify-center text-txt-3 hover:text-txt hover:bg-primary/[0.12] transition-all duration-300"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
@@ -288,24 +288,24 @@ const CaseStudyCard = ({ project }) => {
               </p>
 
               <div className="space-y-3 mb-4">
-                <div className="pl-2.5 border-l border-ink/[0.08]">
-                  <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
+                <div className="pl-2.5 border-l-2 border-violet-500/30">
+                  <p className="text-[10px] uppercase tracking-widest text-violet-500 mb-0.5 font-medium">
                     Desafío
                   </p>
                   <p className="text-txt-2 text-xs leading-relaxed">
                     {project.challenge}
                   </p>
                 </div>
-                <div className="pl-2.5 border-l border-ink/[0.08]">
-                  <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
+                <div className="pl-2.5 border-l-2 border-cyan-500/30">
+                  <p className="text-[10px] uppercase tracking-widest text-cyan-500 mb-0.5 font-medium">
                     Solución
                   </p>
                   <p className="text-txt-2 text-xs leading-relaxed">
                     {project.built}
                   </p>
                 </div>
-                <div className="pl-2.5 border-l border-ink/[0.10]">
-                  <p className="text-[10px] uppercase tracking-widest text-txt-4 mb-0.5 font-medium">
+                <div className="pl-2.5 border-l-2 border-emerald-500/30">
+                  <p className="text-[10px] uppercase tracking-widest text-emerald-500 mb-0.5 font-medium">
                     Resultado
                   </p>
                   <p className="text-txt-2 text-xs font-medium leading-relaxed">
@@ -315,12 +315,12 @@ const CaseStudyCard = ({ project }) => {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-ink/[0.05]">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-primary/[0.08]">
               <div className="flex flex-wrap gap-1">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-ink/[0.03] border border-ink/[0.07] text-txt-3"
+                    className="px-2 py-0.5 rounded text-[10px] font-medium bg-primary/[0.04] border border-primary/[0.1] text-txt-3"
                   >
                     {tag}
                   </span>
@@ -330,7 +330,7 @@ const CaseStudyCard = ({ project }) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-txt-2 hover:text-txt transition-colors duration-300 group/link font-medium"
+                className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary-light transition-colors duration-300 group/link font-medium"
               >
                 Ver en vivo
                 <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform duration-300" />
@@ -343,10 +343,12 @@ const CaseStudyCard = ({ project }) => {
   );
 };
 
-const PortfolioSection = () => {
+const PortfolioSection = ({ condensed = false }) => {
+  const visibleStudies = condensed ? caseStudies.slice(0, 2) : caseStudies;
+
   return (
     <section
-      className="py-20 sm:py-24 lg:py-32 relative border-t border-ink/5"
+      className="py-20 sm:py-24 lg:py-32 relative border-t border-primary/[0.08]"
       id="portafolio"
     >
       <div className="relative z-10 w-full flex justify-center">
@@ -359,18 +361,20 @@ const PortfolioSection = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: ease.out }}
           >
-            <motion.p
-              className="text-sm tracking-widest uppercase text-txt-3 mb-4"
+            <motion.div
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/[0.08] border border-accent/[0.15] mb-4"
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: ease.out }}
             >
-              Trabajo Seleccionado
-            </motion.p>
+              <span className="text-sm tracking-widest uppercase text-accent font-medium">
+                Trabajo Seleccionado
+              </span>
+            </motion.div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt max-w-3xl leading-tight">
               Proyectos reales,{" "}
-              <span className="text-txt-2">resultados medibles.</span>
+              <span className="gradient-text">resultados medibles.</span>
             </h2>
           </motion.div>
 
@@ -379,7 +383,7 @@ const PortfolioSection = () => {
             {...staggerContainer(0.15)}
             className="space-y-5 lg:space-y-6"
           >
-            {caseStudies.map((project) =>
+            {visibleStudies.map((project) =>
               project.isFeatured ? (
                 <FeaturedCard key={project.name} project={project} />
               ) : (
@@ -389,59 +393,61 @@ const PortfolioSection = () => {
           </motion.div>
 
           {/* Previous Work */}
-          <motion.div
-            className="mt-14 lg:mt-18"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: ease.out }}
-          >
-            <p className="text-xs tracking-widest uppercase text-txt-4 mb-5">
-              Trabajo Anterior
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {previousWork.map((project) => (
-                <a
-                  key={project.name}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group rounded-lg bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/[0.12] transition-all duration-400 overflow-hidden"
-                >
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <div className="flex items-center justify-between mb-1">
-                      <h4 className="text-sm font-semibold text-txt">
-                        {project.name}
-                      </h4>
-                      <span className="text-[10px] text-txt-4">
-                        {project.year}
-                      </span>
+          {!condensed && (
+            <motion.div
+              className="mt-14 lg:mt-18"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: ease.out }}
+            >
+              <p className="text-xs tracking-widest uppercase text-txt-4 mb-5">
+                Trabajo Anterior
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {previousWork.map((project) => (
+                  <a
+                    key={project.name}
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-lg bg-surface-alt/50 border border-primary/[0.08] hover:border-primary/[0.2] transition-all duration-400 overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5"
+                  >
+                    <div className="aspect-[16/9] overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
+                      />
                     </div>
-                    <p className="text-[11px] text-txt-3 mb-2">
-                      {project.type}
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-1.5 py-0.5 rounded text-[9px] bg-ink/[0.03] border border-ink/[0.06] text-txt-4"
-                        >
-                          {tag}
+                    <div className="p-3">
+                      <div className="flex items-center justify-between mb-1">
+                        <h4 className="text-sm font-semibold text-txt">
+                          {project.name}
+                        </h4>
+                        <span className="text-[10px] text-txt-4">
+                          {project.year}
                         </span>
-                      ))}
+                      </div>
+                      <p className="text-[11px] text-txt-3 mb-2">
+                        {project.type}
+                      </p>
+                      <div className="flex flex-wrap gap-1">
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-1.5 py-0.5 rounded text-[9px] bg-primary/[0.04] border border-primary/[0.08] text-txt-4"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </motion.div>
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* CTA */}
           <motion.div

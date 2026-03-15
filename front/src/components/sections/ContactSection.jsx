@@ -11,11 +11,12 @@ import {
   Loader2,
   AlertCircle,
   CheckCircle,
+  MessageCircle,
 } from "lucide-react";
 import { submitContactForm } from "../../services/contactFormClient";
 import { ease } from "../../utils/motion";
 
-const ContactSection = () => {
+const ContactSection = ({ hideHeader = false }) => {
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const [formData, setFormData] = useState({
@@ -92,8 +93,18 @@ const ContactSection = () => {
     },
     {
       icon: Phone,
+      label: "+52 322 135 8808 (principal)",
+      href: "tel:+523221358808",
+    },
+    {
+      icon: Phone,
       label: "+52 322 265 2650",
       href: "tel:+523222652650",
+    },
+    {
+      icon: MessageCircle,
+      label: "Escríbenos por WhatsApp",
+      href: "https://wa.me/523221358808?text=Hola%2C%20me%20interesa%20un%20proyecto%20con%20RacoonDevs",
     },
     {
       icon: MapPin,
@@ -103,7 +114,7 @@ const ContactSection = () => {
   ];
 
   const inputClass =
-    "w-full px-4 py-3 bg-ink/[0.03] border border-ink/10 rounded-xl text-txt placeholder-txt-4 focus:border-ink/25 focus:bg-ink/[0.05] focus:ring-0 focus:outline-none transition-all duration-300 glass-input";
+    "w-full px-4 py-3 bg-primary/[0.03] border border-primary/[0.1] rounded-xl text-txt placeholder-txt-4 focus:border-primary/30 focus:bg-primary/[0.05] focus:ring-2 focus:ring-primary/10 focus:outline-none transition-all duration-300";
 
   const selectStyle = {
     backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234b5563' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
@@ -114,12 +125,13 @@ const ContactSection = () => {
 
   return (
     <section
-      className="py-20 sm:py-24 lg:py-32 relative border-t border-ink/5"
+      className="py-20 sm:py-24 lg:py-32 relative border-t border-primary/[0.08]"
       id="contacto"
     >
       <div className="relative z-10 w-full flex justify-center">
         <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
           {/* Header */}
+          {!hideHeader && (
           <motion.div
             className="text-center mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
@@ -127,23 +139,27 @@ const ContactSection = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: ease.out }}
           >
-            <motion.p
-              className="text-sm tracking-widest uppercase text-txt-3 mb-4"
+            <motion.div
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/[0.08] border border-primary/[0.15] mb-4 mx-auto"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: ease.out }}
             >
-              Hablemos
-            </motion.p>
+              <span className="text-sm tracking-widest uppercase text-primary font-medium">
+                Hablemos
+              </span>
+            </motion.div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt mb-6 max-w-2xl mx-auto leading-tight">
-              Construyamos algo <span className="text-txt-2">a tu medida.</span>
+              Construyamos algo{" "}
+              <span className="gradient-text">a tu medida.</span>
             </h2>
             <p className="text-txt-2 text-lg max-w-xl mx-auto leading-relaxed">
               Cuéntanos sobre tu proyecto y te responderemos en menos de 24
               horas con una propuesta inicial.
             </p>
           </motion.div>
+          )}
 
           {/* Form + Info Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
@@ -297,7 +313,7 @@ const ContactSection = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-ink text-ink-inv rounded-full font-semibold text-base overflow-hidden disabled:bg-txt-4 disabled:text-txt-2 disabled:cursor-not-allowed"
+                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 gradient-primary text-white rounded-full font-semibold text-base overflow-hidden shadow-lg shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed"
                   whileHover={!isSubmitting ? { scale: 1.03 } : {}}
                   whileTap={!isSubmitting ? { scale: 0.97 } : {}}
                   transition={{ duration: 0.2 }}
@@ -353,7 +369,7 @@ const ContactSection = () => {
               </div>
 
               <motion.div
-                className="p-6 rounded-2xl bg-ink/[0.02] border border-ink/[0.06] hover:border-ink/15 transition-colors duration-500"
+                className="p-6 rounded-2xl bg-surface-alt/50 border border-primary/[0.08] hover:border-primary/[0.2] transition-all duration-500 shadow-sm hover:shadow-lg hover:shadow-primary/5"
                 whileHover={{
                   y: -2,
                   transition: { duration: 0.3, ease: ease.smooth },
@@ -367,10 +383,35 @@ const ContactSection = () => {
                   proyecto en detalle.
                 </p>
                 <a
-                  href="tel:+523222652650"
+                  href="tel:+523221358808"
                   className="inline-flex items-center gap-2 text-txt text-sm font-medium hover:text-txt-2 transition-colors duration-300 group"
                 >
-                  Agendar Llamada
+                  Llamar ahora
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
+              </motion.div>
+
+              <motion.div
+                className="p-6 rounded-2xl bg-green-500/5 border border-green-500/[0.15] hover:border-green-500/[0.3] transition-all duration-500 shadow-sm hover:shadow-lg hover:shadow-green-500/5"
+                whileHover={{
+                  y: -2,
+                  transition: { duration: 0.3, ease: ease.smooth },
+                }}
+              >
+                <h4 className="text-txt font-semibold mb-3 flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 text-green-500" />
+                  Contáctanos por WhatsApp
+                </h4>
+                <p className="text-txt-2 text-sm mb-4 leading-relaxed">
+                  Envíanos un mensaje directo y te respondemos al instante.
+                </p>
+                <a
+                  href="https://wa.me/523221358808?text=Hola%2C%20me%20interesa%20un%20proyecto%20con%20RacoonDevs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-green-500 text-sm font-medium hover:text-green-400 transition-colors duration-300 group"
+                >
+                  Abrir WhatsApp
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               </motion.div>

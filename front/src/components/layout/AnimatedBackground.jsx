@@ -6,7 +6,6 @@ const AnimatedBackground = () => {
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.3 });
   const containerRef = useRef(null);
 
-  // Smooth spring-based mouse tracking
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.3);
   const smoothX = useSpring(mouseX, { stiffness: 30, damping: 30 });
@@ -35,48 +34,49 @@ const AnimatedBackground = () => {
       {/* Base */}
       <div className="absolute inset-0 bg-surface" />
 
-      {/* Light-mode color mesh — soft blobs behind glass panels */}
-      <div className="absolute top-[-15%] right-[-10%] w-[700px] h-[700px] rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/20 blur-3xl dark:opacity-0 transition-opacity duration-700" />
-      <div className="absolute bottom-[-10%] left-[-15%] w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-indigo-100/25 to-cyan-100/20 blur-3xl dark:opacity-0 transition-opacity duration-700" />
-      <div className="absolute top-[30%] left-[50%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-violet-100/20 to-pink-100/15 blur-3xl dark:opacity-0 transition-opacity duration-700" />
+      {/* Colorful mesh gradients - Light mode */}
+      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-violet-300/25 via-purple-200/20 to-indigo-200/15 blur-3xl dark:from-violet-900/15 dark:via-purple-900/10 dark:to-indigo-900/10 transition-all duration-700" />
+      <div className="absolute bottom-[-15%] left-[-15%] w-[900px] h-[900px] rounded-full bg-gradient-to-tr from-cyan-200/25 via-teal-100/20 to-blue-200/15 blur-3xl dark:from-cyan-900/12 dark:via-teal-900/10 dark:to-blue-900/8 transition-all duration-700" />
+      <div className="absolute top-[25%] left-[45%] w-[700px] h-[700px] rounded-full bg-gradient-to-br from-orange-100/20 via-rose-100/15 to-pink-200/10 blur-3xl dark:from-orange-900/8 dark:via-rose-900/6 dark:to-pink-900/5 transition-all duration-700" />
+      <div className="absolute top-[60%] right-[20%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-emerald-100/15 to-cyan-100/10 blur-3xl dark:from-emerald-900/8 dark:to-cyan-900/5 transition-all duration-700" />
 
       {/* Animated noise / grain */}
-      <div className="absolute inset-0 opacity-[0.025] animate-grain" />
+      <div className="absolute inset-0 opacity-[0.018] animate-grain" />
 
-      {/* Faint grid lines */}
+      {/* Faint dot grid */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.015]"
         style={{
           backgroundImage:
-            "linear-gradient(rgb(var(--ink-rgb) / 0.04) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--ink-rgb) / 0.04) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
+            "radial-gradient(circle, rgb(var(--primary-rgb) / 0.15) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
         }}
       />
 
-      {/* Primary glow — follows cursor softly */}
+      {/* Primary glow — follows cursor */}
       <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.03) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(var(--primary-rgb) / 0.08) 0%, rgba(var(--secondary-rgb) / 0.04) 40%, transparent 70%)",
           x: smoothX,
           y: smoothY,
-          left: "-300px",
-          top: "-300px",
+          left: "-250px",
+          top: "-250px",
         }}
         animate={{
-          left: `calc(${mousePos.x * 100}% - 300px)`,
-          top: `calc(${mousePos.y * 100}% - 300px)`,
+          left: `calc(${mousePos.x * 100}% - 250px)`,
+          top: `calc(${mousePos.y * 100}% - 250px)`,
         }}
         transition={{ duration: 0 }}
       />
 
-      {/* Ambient orb 1 — slow drift top-right */}
+      {/* Ambient orb 1 — violet drift top-right */}
       <motion.div
         className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.025) 0%, transparent 60%)",
+            "radial-gradient(circle, rgba(var(--primary-rgb) / 0.06) 0%, transparent 60%)",
         }}
         animate={{
           x: [0, 30, -20, 0],
@@ -89,16 +89,16 @@ const AnimatedBackground = () => {
         }}
       />
 
-      {/* Ambient orb 2 — slow drift bottom-left */}
+      {/* Ambient orb 2 — cyan drift bottom-left */}
       <motion.div
         className="absolute bottom-[-15%] left-[-10%] w-[600px] h-[600px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.018) 0%, transparent 60%)",
+            "radial-gradient(circle, rgba(var(--secondary-rgb) / 0.05) 0%, transparent 60%)",
         }}
         animate={{
           x: [0, -25, 15, 0],
-          y: [0, -15, 25, 0],
+          y: [0, 15, -20, 0],
         }}
         transition={{
           duration: 25,
@@ -107,30 +107,21 @@ const AnimatedBackground = () => {
         }}
       />
 
-      {/* Ambient orb 3 — center drift */}
+      {/* Ambient orb 3 — warm accent drift center */}
       <motion.div
         className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgb(var(--ink-rgb) / 0.012) 0%, transparent 60%)",
+            "radial-gradient(circle, rgba(var(--accent-rgb) / 0.03) 0%, transparent 60%)",
         }}
         animate={{
-          x: [0, 40, -30, 0],
-          y: [0, -20, 30, 0],
+          x: [0, 20, -15, 0],
+          y: [0, -15, 20, 0],
         }}
         transition={{
-          duration: 30,
+          duration: 22,
           repeat: Infinity,
           ease: "linear",
-        }}
-      />
-
-      {/* Vignette overlay for depth */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 40%, rgb(var(--surface-rgb)) 100%)",
         }}
       />
     </div>

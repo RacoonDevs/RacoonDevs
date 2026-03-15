@@ -29,20 +29,24 @@ const Header = () => {
 
   const Icon = isDarkMode ? IconWhite : IconBlack;
 
+  const isHome = location.pathname === "/";
+
   const getNavItems = () => {
-    if (location.pathname === "/portafolio") {
+    if (isHome) {
       return [
-        { name: "Inicio", path: "/", isAnchor: false },
-        { name: "Servicios", path: "/#servicios", isAnchor: false },
+        { name: "Servicios", path: "#servicios", isAnchor: true },
+        { name: "Precios", path: "#precios", isAnchor: true },
         { name: "Portafolio", path: "/portafolio", isAnchor: false },
-        { name: "Contacto", path: "/#contacto", isAnchor: false },
+        { name: "Proceso", path: "/proceso", isAnchor: false },
+        { name: "Contacto", path: "#contacto", isAnchor: true },
       ];
     }
     return [
-      { name: "Servicios", path: "#servicios", isAnchor: true },
+      { name: "Inicio", path: "/", isAnchor: false },
+      { name: "Servicios", path: "/#servicios", isAnchor: false },
       { name: "Portafolio", path: "/portafolio", isAnchor: false },
-      { name: "Proceso", path: "#proceso", isAnchor: true },
-      { name: "Contacto", path: "#contacto", isAnchor: true },
+      { name: "Proceso", path: "/proceso", isAnchor: false },
+      { name: "Contacto", path: "/contacto", isAnchor: false },
     ];
   };
 
@@ -72,12 +76,12 @@ const Header = () => {
   return (
     <>
       <motion.header
-        initial={{ y: -20, opacity: 0 }}
+        initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: ease.out }}
+        transition={{ duration: 0.9, delay: 0.6, ease: ease.out }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-surface/70 backdrop-blur-2xl backdrop-saturate-150 glass-panel"
+            ? "bg-surface/80 backdrop-blur-2xl backdrop-saturate-150 shadow-sm shadow-primary/5"
             : "bg-transparent"
         }`}
       >
@@ -137,8 +141,10 @@ const Header = () => {
                   </button>
                 ))}
                 <motion.button
-                  onClick={() => navigateToSection("#contacto")}
-                  className="ml-4 inline-flex items-center gap-2 px-5 py-2 bg-ink text-ink-inv rounded-full text-sm font-medium cursor-pointer overflow-hidden relative"
+                  onClick={() =>
+                    navigateToSection(isHome ? "#contacto" : "/contacto")
+                  }
+                  className="ml-4 inline-flex items-center gap-2 px-5 py-2 gradient-primary text-white rounded-full text-sm font-medium cursor-pointer overflow-hidden relative shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300"
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
                   transition={{ duration: 0.2 }}
@@ -259,10 +265,10 @@ const Header = () => {
               <div className="p-6 border-t border-ink/[0.06]">
                 <button
                   onClick={() => {
-                    navigateToSection("#contacto");
+                    navigateToSection(isHome ? "#contacto" : "/contacto");
                     setIsMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-ink text-ink-inv rounded-full font-medium text-base"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 gradient-primary text-white rounded-full font-medium text-base shadow-lg shadow-primary/25"
                 >
                   Iniciar Proyecto
                   <ArrowRight className="w-4 h-4" />
