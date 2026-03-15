@@ -136,7 +136,7 @@ const ContactSection = ({ hideHeader = false }) => {
             className="text-center mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <motion.div
@@ -168,7 +168,7 @@ const ContactSection = ({ hideHeader = false }) => {
               className="lg:col-span-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ delay: 0.2, duration: 0.7, ease: ease.out }}
             >
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -344,7 +344,7 @@ const ContactSection = ({ hideHeader = false }) => {
               className="lg:col-span-2 space-y-10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ delay: 0.3, duration: 0.7, ease: ease.out }}
             >
               <div>

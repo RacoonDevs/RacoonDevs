@@ -10,17 +10,17 @@ export const ease = {
 
 // Section reveal — fade + y translate
 export const sectionReveal = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.8, ease: ease.out },
+  viewport: { once: true, amount: 0.1 },
+  transition: { duration: 0.7, ease: ease.out },
 };
 
 // Stagger container for children
 export const staggerContainer = (staggerDelay = 0.08) => ({
   initial: "hidden",
   whileInView: "visible",
-  viewport: { once: true, margin: "-60px" },
+  viewport: { once: true, amount: 0.05 },
   variants: {
     hidden: {},
     visible: {
@@ -34,11 +34,11 @@ export const staggerContainer = (staggerDelay = 0.08) => ({
 
 // Stagger child — used inside staggerContainer
 export const staggerChild = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: ease.out },
+    transition: { duration: 0.5, ease: ease.out },
   },
 };
 

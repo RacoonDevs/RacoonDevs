@@ -65,7 +65,7 @@ const ProcessStep = ({ step, index }) => {
       className="group grid grid-cols-1 md:grid-cols-[80px_1fr] gap-4 md:gap-8 py-8 sm:py-10 border-t border-primary/[0.08] first:border-t-0 relative"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ delay: index * 0.1, duration: 0.6, ease: ease.out }}
     >
       {/* Number with animated accent line */}
@@ -108,7 +108,7 @@ const ProcessSection = () => {
             className="mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <motion.div
