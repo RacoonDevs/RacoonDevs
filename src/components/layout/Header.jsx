@@ -13,7 +13,7 @@ const navItems = [
   { name: "Servicios", path: "/servicios" },
   { name: "Portafolio", path: "/portafolio" },
   { name: "Proceso", path: "/proceso" },
-  { name: "Pricing", path: "/pricing" },
+  { name: "Precios", path: "/precios" },
   { name: "Testimoniales", path: "/testimoniales" },
   { name: "Contacto", path: "/contacto" },
 ];
@@ -65,8 +65,8 @@ const Header = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
           isScrolled
-            ? "glass-panel border-primary/[0.08] py-3"
-            : "py-4 bg-transparent border-transparent",
+            ? "glass-panel border-primary/12 py-3 shadow-sm"
+            : "py-4 bg-surface/88 backdrop-blur-xl border-primary/8",
         )}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

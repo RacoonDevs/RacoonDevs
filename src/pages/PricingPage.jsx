@@ -5,8 +5,8 @@ const PricingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirige a la homepage con el hash de pricing
-    navigate("/#pricing", { replace: true });
+    // Redirige a la homepage con el hash de la seccion de planes
+    navigate("/#planes", { replace: true });
   }, [navigate]);
 
   return null;

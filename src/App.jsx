@@ -62,6 +62,14 @@ function AnimatedRoutes() {
             }
           />
           <Route
+            path="/precios"
+            element={
+              <PageTransition>
+                <PricingPage />
+              </PageTransition>
+            }
+          />
+          <Route
             path="/pricing"
             element={
               <PageTransition>

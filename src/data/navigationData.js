@@ -3,7 +3,7 @@ export const mainNavItems = [
   { name: "Servicios", path: "/servicios" },
   { name: "Portafolio", path: "/portafolio" },
   { name: "Proceso", path: "/proceso" },
-  { name: "Pricing", path: "/pricing" },
+  { name: "Precios", path: "/precios" },
   { name: "Testimoniales", path: "/testimoniales" },
   { name: "Contacto", path: "/contacto" },
 ];
@@ -12,7 +12,7 @@ export const homeHashLinks = [
   { name: "Servicios", hash: "#servicios" },
   { name: "Portafolio", hash: "#portafolio" },
   { name: "Proceso", hash: "#proceso" },
-  { name: "Pricing", hash: "#pricing" },
+  { name: "Precios", hash: "#planes" },
   { name: "Testimoniales", hash: "#testimoniales" },
   { name: "Contacto", hash: "#contacto" },
 ];
