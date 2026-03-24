@@ -1,58 +1,16 @@
-﻿# RacoonDevs Landing
+# React + Vite
 
-Landing page de RacoonDevs con formulario de contacto usando Appwrite Function.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Estructura
+Currently, two official plugins are available:
 
-```
-racoondevs/
-├── front/
-│   ├── src/
-│   │   └── services/contactFormClient.js
-│   ├── functions/
-│   │   └── contact-form/
-│   │       ├── src/main.js
-│   │       ├── package.json
-│   │       ├── .env
-│   │       ├── .env.example
-│   │       └── README.md
-│   ├── .env
-│   └── package.json
-└── README.md
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Frontend env (`front/.env`)
+## React Compiler
 
-```env
-VITE_RECAPTCHA_SITE_KEY=
-VITE_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
-VITE_APPWRITE_PROJECT_ID=
-VITE_APPWRITE_CONTACT_FUNCTION_ID=
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Flujo del formulario
+## Expanding the ESLint configuration
 
-1. React obtiene token de reCAPTCHA v3.
-2. React ejecuta la Appwrite Function por REST (`/functions/{id}/executions`).
-3. La function valida payload, verifica reCAPTCHA server-side y envia correos.
-
-## Configuracion de la function
-
-Todo el detalle (seguridad, scopes, variables, deploy) esta en:
-
-- `front/functions/contact-form/README.md`
-
-## Desarrollo frontend
-
-```bash
-cd front
-npm install
-npm run dev
-```
-
-## Build frontend
-
-```bash
-cd front
-npm run build
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
