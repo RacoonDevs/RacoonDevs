@@ -1,12 +1,22 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+const sectionAliases = {
+  testimoniales: "testimonios",
+  pricing: "planes",
+};
+
+const normalizeSectionId = (rawHash) => {
+  const hash = rawHash.replace("#", "");
+  return sectionAliases[hash] || hash;
+};
+
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (hash) {
-      const element = document.getElementById(hash.replace("#", ""));
+      const element = document.getElementById(normalizeSectionId(hash));
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({

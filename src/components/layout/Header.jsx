@@ -63,11 +63,18 @@ const Header = () => {
       <motion.header
         ref={headerRef}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b glass-panel",
           isScrolled
-            ? "glass-panel border-primary/12 py-3 shadow-sm"
-            : "py-4 bg-surface/88 backdrop-blur-xl border-primary/8",
+            ? "border-primary/15 py-3 shadow-md"
+            : "border-primary/12 py-4 shadow-sm",
         )}
+        style={{
+          backgroundColor: isScrolled
+            ? "rgb(var(--surface-rgb) / 0.92)"
+            : "rgb(var(--surface-rgb) / 0.97)",
+          backdropFilter: "blur(18px) saturate(165%)",
+          WebkitBackdropFilter: "blur(18px) saturate(165%)",
+        }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: ease.out }}

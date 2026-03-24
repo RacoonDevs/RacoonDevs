@@ -1,13 +1,31 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
+const sectionAliases = {
+  testimoniales: "testimonios",
+  pricing: "planes",
+};
+
+const normalizeSectionPath = (path) => {
+  if (!path.includes("#")) {
+    return path;
+  }
+
+  const [basePath, rawHash] = path.split("#");
+  const normalizedHash = sectionAliases[rawHash] || rawHash;
+
+  return `${basePath}#${normalizedHash}`;
+};
+
 export const useNavigateToSection = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const navigateToSection = (path) => {
-    if (path.startsWith("/#")) {
+    const normalizedPath = normalizeSectionPath(path);
+
+    if (normalizedPath.startsWith("/#")) {
       if (location.pathname === "/") {
-        const sectionId = path.replace("/#", "");
+        const sectionId = normalizedPath.replace("/#", "");
         const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({
@@ -16,10 +34,10 @@ export const useNavigateToSection = () => {
           });
         }
       } else {
-        navigate(path);
+        navigate(normalizedPath);
       }
     } else {
-      navigate(path);
+      navigate(normalizedPath);
     }
   };
 

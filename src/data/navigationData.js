@@ -13,6 +13,6 @@ export const homeHashLinks = [
   { name: "Portafolio", hash: "#portafolio" },
   { name: "Proceso", hash: "#proceso" },
   { name: "Precios", hash: "#planes" },
-  { name: "Testimoniales", hash: "#testimoniales" },
+  { name: "Testimoniales", hash: "#testimonios" },
   { name: "Contacto", hash: "#contacto" },
 ];

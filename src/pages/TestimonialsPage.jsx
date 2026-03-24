@@ -5,8 +5,8 @@ const TestimonialsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirige a la homepage con el hash de testimoniales
-    navigate("/#testimoniales", { replace: true });
+    // Redirige a la homepage con el hash de la seccion de testimonios
+    navigate("/#testimonios", { replace: true });
   }, [navigate]);
 
   return null;
