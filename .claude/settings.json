@@ -4,7 +4,8 @@
       "Bash(find /d/RacoonDevs/racoondevs -type f -name *appwrite* -o -name functions -type d)",
       "Bash(grep -r appwrite /d/RacoonDevs/racoondevs --include=*.md --include=*.txt --include=*.json)",
       "Bash(git log:*)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "WebFetch(domain:open.er-api.com)"
     ]
   }
 }

@@ -1,11 +1,10 @@
-import { Rocket, Star, Zap, Shield, Check, ArrowRight } from "lucide-react";
+import { Rocket, Star, Shield } from "lucide-react";
 
 export const pricingPlans = [
   {
     id: "esencial",
     name: "Esencial",
-    price: "8,000",
-    currency: "MXN",
+    basePriceMXN: 8000,
     prefix: "Desde",
     description:
       "Ideal para emprendedores y negocios que necesitan una presencia digital sólida.",
@@ -24,8 +23,7 @@ export const pricingPlans = [
   {
     id: "profesional",
     name: "Profesional",
-    price: "25,000",
-    currency: "MXN",
+    basePriceMXN: 25000,
     prefix: "Desde",
     description:
       "Para negocios en crecimiento que necesitan funcionalidad avanzada y diseño premium.",
@@ -45,8 +43,7 @@ export const pricingPlans = [
   {
     id: "enterprise",
     name: "Enterprise",
-    price: "Personalizado",
-    currency: "",
+    basePriceMXN: null,
     prefix: "",
     description:
       "Para empresas que necesitan soluciones complejas, sistemas a la medida y escalabilidad.",

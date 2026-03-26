@@ -205,12 +205,12 @@ export const TIMELINE_OPTIONS = [
 export const TIMELINE_VALUES = new Set(TIMELINE_OPTIONS.map((o) => o.value));
 
 export const BUDGET_OPTIONS = [
-  { value: "5k-15k", label: "$5,000 - $15,000 MXN" },
-  { value: "15k-30k", label: "$15,000 - $30,000 MXN" },
-  { value: "30k-50k", label: "$30,000 - $50,000 MXN" },
-  { value: "50k-100k", label: "$50,000 - $100,000 MXN" },
-  { value: "100k+", label: "Más de $100,000 MXN" },
-  { value: "discuss", label: "Prefiero platicarlo" },
+  { value: "5k-15k", minMXN: 5000, maxMXN: 15000 },
+  { value: "15k-30k", minMXN: 15000, maxMXN: 30000 },
+  { value: "30k-50k", minMXN: 30000, maxMXN: 50000 },
+  { value: "50k-100k", minMXN: 50000, maxMXN: 100000 },
+  { value: "100k+", minMXN: 100000, maxMXN: null },
+  { value: "discuss", minMXN: null, maxMXN: null },
 ];
 
 export const BUDGET_VALUES = new Set(BUDGET_OPTIONS.map((o) => o.value));
@@ -322,8 +322,26 @@ export const getEstiloVisualLabel = (value) =>
 export const getTimelineLabel = (value) =>
   TIMELINE_OPTIONS.find((o) => o.value === value)?.label || value;
 
-export const getBudgetLabel = (value) =>
-  BUDGET_OPTIONS.find((o) => o.value === value)?.label || value;
+export const getBudgetLabel = (value) => {
+  const option = BUDGET_OPTIONS.find((o) => o.value === value);
+  if (!option) return value;
+  if (option.value === "discuss") return "Prefiero platicarlo";
+  if (!option.maxMXN) return `Más de $${option.minMXN.toLocaleString("es-MX")} MXN`;
+  return `$${option.minMXN.toLocaleString("es-MX")} - $${option.maxMXN.toLocaleString("es-MX")} MXN`;
+};
+
+export const formatBudgetWithCurrency = (value, convert, currencyInfo) => {
+  const option = BUDGET_OPTIONS.find((o) => o.value === value);
+  if (!option) return value;
+  if (option.value === "discuss") return "Prefiero platicarlo";
+  if (!convert) return getBudgetLabel(value);
+  const min = option.minMXN ? convert(option.minMXN) : null;
+  const max = option.maxMXN ? convert(option.maxMXN) : null;
+  const sym = currencyInfo?.symbol || "$";
+  const code = currencyInfo?.code || "MXN";
+  if (!max) return `Más de ${sym}${min.formatted} ${code}`;
+  return `${sym}${min.formatted} - ${sym}${max.formatted} ${code}`;
+};
 
 export const getMarcaLabel = (value) =>
   MARCA_OPTIONS.find((o) => o.value === value)?.label || value;
