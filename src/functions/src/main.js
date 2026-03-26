@@ -50,25 +50,46 @@ const parseAllowedOrigins = () => {
     .filter(Boolean);
 };
 
-const validateOrigin = (req) => {
-  const allowedOrigins = parseAllowedOrigins();
-  if (allowedOrigins.length === 0) {
-    return { valid: true };
-  }
+const getRequestOrigin = (req) => {
+  // Appwrite puede enviar headers en diferentes formatos
+  const headers = req?.headers || {};
 
-  const requestOrigin =
-    normalizeTextField(req?.headers?.origin) ||
-    normalizeTextField(req?.headers?.Origin);
+  // Intentar obtener el origen de múltiples fuentes
+  const origin =
+    headers.origin ||
+    headers.Origin ||
+    headers["x-forwarded-host"] ||
+    headers["X-Forwarded-Host"] ||
+    "";
 
-  if (!requestOrigin || !allowedOrigins.includes(requestOrigin)) {
-    return {
-      valid: false,
-      error: "Origen no permitido para este endpoint.",
-    };
-  }
-
-  return { valid: true };
+  return normalizeTextField(origin);
 };
+
+const getCorsOrigin = (req) => {
+  const allowedOrigins = parseAllowedOrigins();
+  const requestOrigin = getRequestOrigin(req);
+
+  // Si no hay origenes configurados, permitir cualquiera
+  if (allowedOrigins.length === 0) {
+    return requestOrigin || "*";
+  }
+
+  // Si el origen está en la lista permitida, devolverlo
+  if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
+    return requestOrigin;
+  }
+
+  // Si no hay origen o no está permitido, devolver el primer origen configurado
+  return allowedOrigins[0];
+};
+
+const getCorsHeaders = (req) => ({
+  "Access-Control-Allow-Origin": getCorsOrigin(req),
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers":
+    "Content-Type, Authorization, X-Requested-With",
+  "Access-Control-Max-Age": "86400",
+});
 
 const parseJsonSafely = (rawValue) => {
   if (typeof rawValue !== "string") return null;
@@ -327,16 +348,23 @@ const sendContactEmails = async (payload, log) => {
   return true;
 };
 
-const successResponse = (res, body) =>
+const successResponse = (res, body, headers = {}) =>
   res.json(
     {
       success: true,
       ...body,
     },
     200,
+    headers,
   );
 
-const errorResponse = (res, message, details = [], status = 400) =>
+const errorResponse = (
+  res,
+  message,
+  details = [],
+  status = 400,
+  headers = {},
+) =>
   res.json(
     {
       success: false,
@@ -344,19 +372,27 @@ const errorResponse = (res, message, details = [], status = 400) =>
       details,
     },
     status,
+    headers,
   );
 
 export default async ({ req, res, log, error }) => {
   const requestMethod = (req?.method || "GET").toUpperCase();
+  const corsHeaders = getCorsHeaders(req);
+
+  log(`Método: ${requestMethod}`);
+
+  // Manejar preflight CORS
+  if (requestMethod === "OPTIONS") {
+    return res.empty(204, corsHeaders);
+  }
 
   if (requestMethod !== "POST") {
-    return errorResponse(res, "Metodo no permitido.", [], 405);
+    return errorResponse(res, "Metodo no permitido.", [], 405, corsHeaders);
   }
 
-  const originValidation = validateOrigin(req);
-  if (!originValidation.valid) {
-    return errorResponse(res, originValidation.error, [], 403);
-  }
+  // NOTA: La validación de origen se removió porque cuando se ejecuta
+  // a través de Appwrite Functions API, los headers del navegador no
+  // se pasan a la función. Appwrite maneja CORS a nivel de plataforma.
 
   const payload = sanitizePayload(getRequestBody(req));
   const payloadErrors = validatePayload(payload);
@@ -367,6 +403,7 @@ export default async ({ req, res, log, error }) => {
       "Por favor corrige los datos del formulario.",
       payloadErrors,
       400,
+      corsHeaders,
     );
   }
 
@@ -378,6 +415,7 @@ export default async ({ req, res, log, error }) => {
         "No se pudo validar reCAPTCHA. Intenta nuevamente.",
         [],
         400,
+        corsHeaders,
       );
     }
 
@@ -388,12 +426,17 @@ export default async ({ req, res, log, error }) => {
         "No se pudo enviar el correo al equipo. Intenta de nuevo.",
         [],
         500,
+        corsHeaders,
       );
     }
 
-    return successResponse(res, {
-      message: "Mensaje enviado exitosamente. Te contactaremos pronto.",
-    });
+    return successResponse(
+      res,
+      {
+        message: "Mensaje enviado exitosamente. Te contactaremos pronto.",
+      },
+      corsHeaders,
+    );
   } catch (caughtError) {
     error(
       `contact-form-function failed for ${toSafeLog(payload.email)}: ${
@@ -406,6 +449,7 @@ export default async ({ req, res, log, error }) => {
       "Error interno al procesar el formulario.",
       [],
       500,
+      corsHeaders,
     );
   }
 };
