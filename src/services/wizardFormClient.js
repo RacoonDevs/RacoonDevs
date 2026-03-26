@@ -171,14 +171,14 @@ const getExecutionEndpoint = () => {
   return `${endpoint}/functions/${functionId}/executions`;
 };
 
-const buildFunctionPayload = ({ formData, recaptchaToken }) => ({
+const buildFunctionPayload = ({ formData, recaptchaToken, presupuestoLabel }) => ({
   ...formData,
   tipoProyectoLabel: getProjectTypeLabel(formData.tipoProyecto),
   estiloVisualLabel: getEstiloVisualLabel(formData.estiloVisual),
   timelineLabel: getTimelineLabel(formData.timeline),
-  presupuestoLabel: formData.presupuesto
+  presupuestoLabel: presupuestoLabel || (formData.presupuesto
     ? getBudgetLabel(formData.presupuesto)
-    : null,
+    : null),
   tieneMarcaLabel: formData.tieneMarca
     ? getMarcaLabel(formData.tieneMarca)
     : null,
@@ -190,7 +190,7 @@ const buildFunctionPayload = ({ formData, recaptchaToken }) => ({
   submittedAt: new Date().toISOString(),
 });
 
-export const submitWizardForm = async ({ formData, recaptchaToken }) => {
+export const submitWizardForm = async ({ formData, recaptchaToken, presupuestoLabel }) => {
   const { sanitizedData, errors } = validateWizardData({
     formData,
     recaptchaToken,
@@ -217,6 +217,7 @@ export const submitWizardForm = async ({ formData, recaptchaToken }) => {
       buildFunctionPayload({
         formData: sanitizedData,
         recaptchaToken: normalizeTextField(recaptchaToken),
+        presupuestoLabel,
       }),
     ),
   };

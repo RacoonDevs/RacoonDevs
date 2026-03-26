@@ -337,10 +337,11 @@ export const formatBudgetWithCurrency = (value, convert, currencyInfo) => {
   if (!convert) return getBudgetLabel(value);
   const min = option.minMXN ? convert(option.minMXN) : null;
   const max = option.maxMXN ? convert(option.maxMXN) : null;
+  if (min && !min.formatted) return getBudgetLabel(value);
   const sym = currencyInfo?.symbol || "$";
   const code = currencyInfo?.code || "MXN";
-  if (!max) return `Más de ${sym}${min.formatted} ${code}`;
-  return `${sym}${min.formatted} - ${sym}${max.formatted} ${code}`;
+  if (!max) return `Más de ${sym}${min?.formatted || "?"} ${code}`;
+  return `${sym}${min?.formatted || "?"} - ${sym}${max.formatted} ${code}`;
 };
 
 export const getMarcaLabel = (value) =>

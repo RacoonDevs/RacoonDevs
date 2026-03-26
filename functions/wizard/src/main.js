@@ -181,6 +181,7 @@ const sanitizePayload = (payload = {}) => ({
   tieneMarca: normalizeTextField(payload.tieneMarca),
   timeline: normalizeTextField(payload.timeline),
   presupuesto: normalizeTextField(payload.presupuesto),
+  presupuestoLabel: normalizeTextField(payload.presupuestoLabel),
   comentariosExtra: normalizeTextField(payload.comentariosExtra),
   nombre: normalizeTextField(payload.nombre),
   email: normalizeTextField(payload.email).toLowerCase(),
@@ -373,7 +374,7 @@ const buildTeamEmail = (payload) => {
 
         <h3 style="color: #333; border-bottom: 2px solid #7c3aed; padding-bottom: 8px;">Tiempo y presupuesto</h3>
         <p><strong>Timeline:</strong> ${getLabel(TIMELINE_LABELS, payload.timeline)}</p>
-        <p><strong>Presupuesto:</strong> ${getLabel(PRESUPUESTO_LABELS, payload.presupuesto)}</p>
+        <p><strong>Presupuesto:</strong> ${payload.presupuestoLabel || getLabel(PRESUPUESTO_LABELS, payload.presupuesto)}</p>
         ${payload.comentariosExtra ? `<p><strong>Comentarios:</strong> ${escapeHtml(payload.comentariosExtra).replace(/\n/g, "<br>")}</p>` : ""}
 
         <hr style="border: 1px solid #eee; margin: 20px 0;">

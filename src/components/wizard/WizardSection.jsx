@@ -26,8 +26,10 @@ import {
   WIZARD_STEPS,
   INITIAL_WIZARD_DATA,
   validateStep,
+  formatBudgetWithCurrency,
 } from "../../data/wizardData";
 import { submitWizardForm } from "../../services/wizardFormClient";
+import { useCurrency } from "../../hooks/useCurrency";
 import { cn } from "../../utils/cn";
 import { ease } from "../../utils/motion";
 
@@ -93,6 +95,7 @@ const reducer = (state, action) => {
 const WizardSection = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const { convert, currencyInfo } = useCurrency();
   const { currentStep, direction, data, stepErrors, isSubmitting, feedbackModal } =
     state;
 
@@ -141,9 +144,14 @@ const WizardSection = () => {
         recaptchaToken = await executeRecaptcha("wizard_form_submit");
       }
 
+      const presupuestoLabel = data.presupuesto
+        ? formatBudgetWithCurrency(data.presupuesto, convert, currencyInfo)
+        : null;
+
       const result = await submitWizardForm({
         formData: data,
         recaptchaToken,
+        presupuestoLabel,
       });
 
       dispatch({
@@ -168,7 +176,7 @@ const WizardSection = () => {
     } finally {
       dispatch({ type: "SET_SUBMITTING", value: false });
     }
-  }, [data, executeRecaptcha, isSubmitting]);
+  }, [data, executeRecaptcha, isSubmitting, convert, currencyInfo]);
 
   const closeFeedbackModal = useCallback(() => {
     if (feedbackModal.status === "success") {
