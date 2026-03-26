@@ -51,4 +51,12 @@ export const seoConfig = {
     canonical: "https://racoondevs.com/terminos",
     ogImage: "https://racoondevs.com/hero_raconodevs.webp",
   },
+  wizard: {
+    title:
+      "Cuéntanos tu Idea | Racoon Devs — Diseñemos tu Proyecto Juntos",
+    description:
+      "Comparte tu idea de proyecto paso a paso. Te ayudamos a definir los requerimientos de tu sitio web, app o sistema de forma sencilla y guiada.",
+    canonical: "https://racoondevs.com/cuentanos-tu-idea",
+    ogImage: "https://racoondevs.com/hero_raconodevs.webp",
+  },
 };

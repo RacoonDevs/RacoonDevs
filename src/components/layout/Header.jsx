@@ -139,7 +139,7 @@ const Header = () => {
 
             {/* CTA Button (desktop) */}
             <Link
-              to="/contacto"
+              to="/cuentanos-tu-idea"
               className="hidden xl:inline-flex items-center gap-1.5 px-4 py-2 gradient-primary text-white rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 whitespace-nowrap"
             >
               Hablemos

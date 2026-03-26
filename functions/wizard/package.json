@@ -1,0 +1,10 @@
+{
+  "name": "racoondevs-wizard-function",
+  "version": "1.0.0",
+  "description": "Appwrite function for the RacoonDevs idea wizard form",
+  "type": "module",
+  "main": "src/main.js",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}

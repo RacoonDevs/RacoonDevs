@@ -15,6 +15,7 @@ const PricingPage = lazy(() => import("./pages/PricingPage"));
 const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
+const WizardPage = lazy(() => import("./pages/WizardPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const PageLoader = () => (
@@ -90,6 +91,14 @@ function AnimatedRoutes() {
             element={
               <PageTransition>
                 <ContactPage />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/cuentanos-tu-idea"
+            element={
+              <PageTransition>
+                <WizardPage />
               </PageTransition>
             }
           />

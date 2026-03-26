@@ -66,7 +66,7 @@ const FinalCTASection = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: ease.out, delay: 0.35 }}
       >
-        <Button variant="cta" to="/contacto">
+        <Button variant="cta" to="/cuentanos-tu-idea">
           Iniciar un Proyecto
         </Button>
         <Button variant="outline" to="/portafolio" size="lg">
