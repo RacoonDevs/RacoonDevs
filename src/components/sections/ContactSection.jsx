@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Send,
@@ -150,6 +151,7 @@ const ContactSection = () => {
   };
 
   return (
+    <>
     <SectionWrapper id="contacto">
       <SectionHeading
         badge="Contacto"
@@ -382,89 +384,94 @@ const ContactSection = () => {
         </motion.div>
       </div>
 
-      <AnimatePresence>
-        {feedbackModal.open && (
-          <motion.div
-            className="fixed inset-0 z-100 flex items-center justify-center p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
+    </SectionWrapper>
+
+      {createPortal(
+        <AnimatePresence>
+          {feedbackModal.open && (
             <motion.div
-              className="absolute inset-0 bg-black/45 backdrop-blur-sm"
-              onClick={() =>
-                setFeedbackModal((prev) => ({ ...prev, open: false }))
-              }
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-            />
-
-            <motion.div
-              className="relative z-10 w-full max-w-md"
-              initial={{ opacity: 0, y: 20, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.96 }}
-              transition={{ duration: 0.25, ease: ease.out }}
             >
-              <GlassCard hover={false} className="p-6 sm:p-7">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setFeedbackModal((prev) => ({ ...prev, open: false }))
-                  }
-                  className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-primary/10 transition-colors cursor-pointer"
-                  aria-label="Cerrar modal"
-                >
-                  <X className="w-4 h-4 text-txt-2" />
-                </button>
+              <motion.div
+                className="absolute inset-0 bg-black/45 backdrop-blur-sm"
+                onClick={() =>
+                  setFeedbackModal((prev) => ({ ...prev, open: false }))
+                }
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
 
-                <div className="pr-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    {feedbackModal.status === "success" ? (
-                      <CheckCircle2 className="w-6 h-6 text-emerald-500" />
-                    ) : (
-                      <AlertCircle className="w-6 h-6 text-red-500" />
+              <motion.div
+                className="relative z-10 w-full max-w-md"
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.96 }}
+                transition={{ duration: 0.25, ease: ease.out }}
+              >
+                <GlassCard hover={false} className="p-6 sm:p-7">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setFeedbackModal((prev) => ({ ...prev, open: false }))
+                    }
+                    className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-primary/10 transition-colors cursor-pointer"
+                    aria-label="Cerrar modal"
+                  >
+                    <X className="w-4 h-4 text-txt-2" />
+                  </button>
+
+                  <div className="pr-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      {feedbackModal.status === "success" ? (
+                        <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                      ) : (
+                        <AlertCircle className="w-6 h-6 text-red-500" />
+                      )}
+                      <h3 className="text-lg font-semibold text-txt">
+                        {feedbackModal.status === "success"
+                          ? "Mensaje enviado"
+                          : "No se pudo enviar"}
+                      </h3>
+                    </div>
+
+                    <p className="text-sm text-txt-2 leading-relaxed mb-4">
+                      {feedbackModal.message}
+                    </p>
+
+                    {feedbackModal.details.length > 0 && (
+                      <ul className="mb-5 space-y-1.5">
+                        {feedbackModal.details.map((detail) => (
+                          <li key={detail} className="text-xs text-txt-3">
+                            • {detail}
+                          </li>
+                        ))}
+                      </ul>
                     )}
-                    <h3 className="text-lg font-semibold text-txt">
-                      {feedbackModal.status === "success"
-                        ? "Mensaje enviado"
-                        : "No se pudo enviar"}
-                    </h3>
+
+                    <div className="flex justify-end">
+                      <Button
+                        type="button"
+                        size="sm"
+                        onClick={() =>
+                          setFeedbackModal((prev) => ({ ...prev, open: false }))
+                        }
+                      >
+                        Entendido
+                      </Button>
+                    </div>
                   </div>
-
-                  <p className="text-sm text-txt-2 leading-relaxed mb-4">
-                    {feedbackModal.message}
-                  </p>
-
-                  {feedbackModal.details.length > 0 && (
-                    <ul className="mb-5 space-y-1.5">
-                      {feedbackModal.details.map((detail) => (
-                        <li key={detail} className="text-xs text-txt-3">
-                          • {detail}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <div className="flex justify-end">
-                    <Button
-                      type="button"
-                      size="sm"
-                      onClick={() =>
-                        setFeedbackModal((prev) => ({ ...prev, open: false }))
-                      }
-                    >
-                      Entendido
-                    </Button>
-                  </div>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </SectionWrapper>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
+    </>
   );
 };
 

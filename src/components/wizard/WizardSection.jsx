@@ -1,4 +1,5 @@
 import { useReducer, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import {
@@ -215,6 +216,7 @@ const WizardSection = () => {
   };
 
   return (
+    <>
     <SectionWrapper id="wizard" noBorder>
       <SectionHeading
         badge="Tu idea, nuestro siguiente proyecto"
@@ -326,101 +328,106 @@ const WizardSection = () => {
         </div>
       </div>
 
-      {/* Feedback Modal */}
-      <AnimatePresence>
-        {feedbackModal.open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-100 flex items-center justify-center p-4"
-            onClick={closeFeedbackModal}
-          >
-            <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" />
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: ease.out }}
-              className="relative z-10 w-full max-w-md"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <GlassCard hover={false} className="text-center">
-                <button
-                  type="button"
-                  onClick={closeFeedbackModal}
-                  className="absolute top-4 right-4 text-txt-3 hover:text-txt transition-colors cursor-pointer"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-
-                <div className="flex justify-center mb-4">
-                  {feedbackModal.status === "success" ? (
-                    <div className="w-14 h-14 rounded-full bg-green-500/10 flex items-center justify-center">
-                      <CheckCircle2 className="w-8 h-8 text-green-400" />
-                    </div>
-                  ) : (
-                    <div className="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center">
-                      <AlertCircle className="w-8 h-8 text-red-400" />
-                    </div>
-                  )}
-                </div>
-
-                {feedbackModal.status === "success" ? (
-                  <>
-                    <h4 className="text-xl font-bold text-txt mb-2">
-                      Recibimos tu idea
-                    </h4>
-                    <p className="text-txt-2 mb-1">
-                      Gracias por compartir tu proyecto con nosotros.
-                    </p>
-                    <p className="text-txt-2 mb-4">
-                      Nuestro equipo revisará tu propuesta y{" "}
-                      <span className="font-semibold text-primary">
-                        te contactaremos en menos de 24 horas
-                      </span>{" "}
-                      para platicar sobre los siguientes pasos.
-                    </p>
-                    <motion.button
-                      type="button"
-                      onClick={closeFeedbackModal}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="px-6 py-3 rounded-xl text-sm font-semibold gradient-primary text-white cursor-pointer"
-                    >
-                      Entendido
-                    </motion.button>
-                  </>
-                ) : (
-                  <>
-                    <h4 className="text-xl font-bold text-txt mb-2">
-                      Ocurrió un error
-                    </h4>
-                    <p className="text-txt-2 mb-4">{feedbackModal.message}</p>
-                    {feedbackModal.details.length > 0 && (
-                      <ul className="text-sm text-left text-red-300 space-y-1 mb-4 bg-red-500/10 rounded-xl p-4">
-                        {feedbackModal.details.map((d) => (
-                          <li key={d}>- {d}</li>
-                        ))}
-                      </ul>
-                    )}
-                    <motion.button
-                      type="button"
-                      onClick={closeFeedbackModal}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="px-6 py-3 rounded-xl text-sm font-semibold gradient-primary text-white cursor-pointer"
-                    >
-                      Intentar de nuevo
-                    </motion.button>
-                  </>
-                )}
-              </GlassCard>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </SectionWrapper>
+
+      {/* Feedback Modal - rendered via portal to avoid z-index stacking context issues */}
+      {createPortal(
+        <AnimatePresence>
+          {feedbackModal.open && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+              onClick={closeFeedbackModal}
+            >
+              <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" />
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25, ease: ease.out }}
+                className="relative z-10 w-full max-w-md"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <GlassCard hover={false} className="text-center">
+                  <button
+                    type="button"
+                    onClick={closeFeedbackModal}
+                    className="absolute top-4 right-4 text-txt-3 hover:text-txt transition-colors cursor-pointer"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+
+                  <div className="flex justify-center mb-4">
+                    {feedbackModal.status === "success" ? (
+                      <div className="w-14 h-14 rounded-full bg-green-500/10 flex items-center justify-center">
+                        <CheckCircle2 className="w-8 h-8 text-green-400" />
+                      </div>
+                    ) : (
+                      <div className="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center">
+                        <AlertCircle className="w-8 h-8 text-red-400" />
+                      </div>
+                    )}
+                  </div>
+
+                  {feedbackModal.status === "success" ? (
+                    <>
+                      <h4 className="text-xl font-bold text-txt mb-2">
+                        Recibimos tu idea
+                      </h4>
+                      <p className="text-txt-2 mb-1">
+                        Gracias por compartir tu proyecto con nosotros.
+                      </p>
+                      <p className="text-txt-2 mb-4">
+                        Nuestro equipo revisará tu propuesta y{" "}
+                        <span className="font-semibold text-primary">
+                          te contactaremos en menos de 24 horas
+                        </span>{" "}
+                        para platicar sobre los siguientes pasos.
+                      </p>
+                      <motion.button
+                        type="button"
+                        onClick={closeFeedbackModal}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="px-6 py-3 rounded-xl text-sm font-semibold gradient-primary text-white cursor-pointer"
+                      >
+                        Entendido
+                      </motion.button>
+                    </>
+                  ) : (
+                    <>
+                      <h4 className="text-xl font-bold text-txt mb-2">
+                        Ocurrió un error
+                      </h4>
+                      <p className="text-txt-2 mb-4">{feedbackModal.message}</p>
+                      {feedbackModal.details.length > 0 && (
+                        <ul className="text-sm text-left text-red-300 space-y-1 mb-4 bg-red-500/10 rounded-xl p-4">
+                          {feedbackModal.details.map((d) => (
+                            <li key={d}>- {d}</li>
+                          ))}
+                        </ul>
+                      )}
+                      <motion.button
+                        type="button"
+                        onClick={closeFeedbackModal}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="px-6 py-3 rounded-xl text-sm font-semibold gradient-primary text-white cursor-pointer"
+                      >
+                        Intentar de nuevo
+                      </motion.button>
+                    </>
+                  )}
+                </GlassCard>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
+    </>
   );
 };
 
