@@ -73,6 +73,7 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
+    telefono: "",
     proyecto: "",
     presupuesto: "",
     mensaje: "",
@@ -108,6 +109,7 @@ const ContactSection = () => {
         formData: {
           name: formData.nombre,
           email: formData.email,
+          phone: formData.telefono,
           projectType: formData.proyecto,
           budget: formData.presupuesto,
           message: formData.mensaje,
@@ -127,6 +129,7 @@ const ContactSection = () => {
       setFormData({
         nombre: "",
         email: "",
+        telefono: "",
         proyecto: "",
         presupuesto: "",
         mensaje: "",
@@ -202,6 +205,26 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="tu@email.com"
+                  className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                />
+              </div>
+
+              {/* Teléfono (opcional) */}
+              <div>
+                <label
+                  htmlFor="telefono"
+                  className="block text-sm font-medium text-txt mb-1.5"
+                >
+                  Teléfono{" "}
+                  <span className="text-txt-3 font-normal">(opcional)</span>
+                </label>
+                <input
+                  id="telefono"
+                  name="telefono"
+                  type="tel"
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  placeholder="+52 55 1234 5678"
                   className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                 />
               </div>

@@ -79,12 +79,12 @@ const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: ease.out }}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link
             to="/"
             onClick={handleHomeClick}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-2 group flex-shrink-0"
           >
             <div className="w-8 h-8 rounded-lg bg-primary/[0.08] flex items-center justify-center group-hover:bg-primary/[0.12] transition-colors duration-300">
               <img
@@ -94,24 +94,24 @@ const Header = () => {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold font-[family-name:var(--font-display)] text-txt group-hover:text-primary transition-colors duration-300 leading-tight">
+              <span className="text-base xl:text-lg font-bold font-[family-name:var(--font-display)] text-txt group-hover:text-primary transition-colors duration-300 leading-tight whitespace-nowrap">
                 Racoon Devs
               </span>
-              <span className="text-[10px] text-txt-3 tracking-wider uppercase leading-none">
+              <span className="text-[9px] xl:text-[10px] text-txt-3 tracking-wider uppercase leading-none whitespace-nowrap">
                 Software Studio
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-0.5 flex-shrink-0">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 onClick={item.path === "/" ? handleHomeClick : undefined}
                 className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
+                  "px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap",
                   location.pathname === item.path
                     ? "text-primary bg-primary/[0.08]"
                     : "text-txt-2 hover:text-txt hover:bg-primary/[0.05]",
@@ -123,11 +123,11 @@ const Header = () => {
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 flex-shrink-0">
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl bg-primary/[0.06] border border-primary/[0.1] hover:bg-primary/[0.12] transition-all duration-300 cursor-pointer"
+              className="p-2 xl:p-2.5 rounded-xl bg-primary/[0.06] border border-primary/[0.1] hover:bg-primary/[0.12] transition-all duration-300 cursor-pointer"
               aria-label="Cambiar tema"
             >
               {isDark ? (
@@ -140,7 +140,7 @@ const Header = () => {
             {/* CTA Button (desktop) */}
             <Link
               to="/contacto"
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 gradient-primary text-white rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+              className="hidden xl:inline-flex items-center gap-1.5 px-4 py-2 gradient-primary text-white rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 whitespace-nowrap"
             >
               Hablemos
               <ArrowRight className="w-3.5 h-3.5" />
@@ -149,7 +149,7 @@ const Header = () => {
             {/* Mobile burger */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-primary/[0.06] border border-primary/[0.1] cursor-pointer"
+              className="xl:hidden p-2 xl:p-2.5 rounded-xl bg-primary/[0.06] border border-primary/[0.1] cursor-pointer"
               aria-label="Menú"
             >
               {isMobileOpen ? (
@@ -167,14 +167,14 @@ const Header = () => {
         {isMobileOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/50 backdrop-blur-md z-[60] xl:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileOpen(false)}
             />
             <motion.nav
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-surface border-l border-primary/[0.08] z-50 lg:hidden p-6 flex flex-col"
+              className="fixed top-0 right-0 bottom-0 w-[280px] bg-surface border-l border-primary/[0.08] z-[70] xl:hidden p-6 flex flex-col"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}

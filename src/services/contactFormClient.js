@@ -3,6 +3,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_FIELD_LENGTHS = {
   name: 100,
   email: 255,
+  phone: 20,
   message: 2000,
 };
 
@@ -64,14 +65,15 @@ const normalizeOptionField = (value, allowedOptions) => {
 const sanitizeFormData = (formData = {}) => {
   const name = normalizeTextField(formData.name);
   const email = normalizeTextField(formData.email).toLowerCase();
+  const phone = normalizeTextField(formData.phone);
   const projectType = normalizeOptionField(
     formData.projectType,
-    PROJECT_TYPE_OPTIONS
+    PROJECT_TYPE_OPTIONS,
   );
   const budget = normalizeOptionField(formData.budget, BUDGET_OPTIONS);
   const message = normalizeTextField(formData.message);
 
-  return { name, email, projectType, budget, message };
+  return { name, email, phone, projectType, budget, message };
 };
 
 const validateFormData = ({ formData, recaptchaToken }) => {
@@ -98,6 +100,13 @@ const validateFormData = ({ formData, recaptchaToken }) => {
 
   if (sanitizedData.email.length > MAX_FIELD_LENGTHS.email) {
     errors.push("El email no debe superar 255 caracteres.");
+  }
+
+  if (
+    sanitizedData.phone &&
+    sanitizedData.phone.length > MAX_FIELD_LENGTHS.phone
+  ) {
+    errors.push("El telefono no debe superar 20 caracteres.");
   }
 
   if (sanitizedData.message.length > MAX_FIELD_LENGTHS.message) {
@@ -145,19 +154,19 @@ const getMissingAppwriteEnvVars = () => {
   ];
 
   return requiredVars.filter(
-    (name) => !normalizeTextField(import.meta.env[name])
+    (name) => !normalizeTextField(import.meta.env[name]),
   );
 };
 
 const getExecutionEndpoint = () => {
   const rawEndpoint = normalizeTextField(
-    import.meta.env.VITE_APPWRITE_ENDPOINT
+    import.meta.env.VITE_APPWRITE_ENDPOINT,
   ).replace(/\/$/, "");
   const endpoint = rawEndpoint.endsWith("/v1")
     ? rawEndpoint
     : `${rawEndpoint}/v1`;
   const functionId = normalizeTextField(
-    import.meta.env.VITE_APPWRITE_CONTACT_FUNCTION_ID
+    import.meta.env.VITE_APPWRITE_CONTACT_FUNCTION_ID,
   );
 
   return `${endpoint}/functions/${functionId}/executions`;
@@ -179,7 +188,10 @@ const buildFunctionPayload = ({ formData, recaptchaToken }) => {
 };
 
 export const submitContactForm = async ({ formData, recaptchaToken }) => {
-  const { sanitizedData, errors } = validateFormData({ formData, recaptchaToken });
+  const { sanitizedData, errors } = validateFormData({
+    formData,
+    recaptchaToken,
+  });
 
   if (errors.length > 0) {
     throw createContactFormError("Formulario invalido.", errors);
@@ -189,7 +201,7 @@ export const submitContactForm = async ({ formData, recaptchaToken }) => {
   if (missingEnvVars.length > 0) {
     throw createContactFormError(
       "Configuracion incompleta de Appwrite en frontend.",
-      missingEnvVars
+      missingEnvVars,
     );
   }
 
@@ -204,7 +216,7 @@ export const submitContactForm = async ({ formData, recaptchaToken }) => {
       buildFunctionPayload({
         formData: sanitizedData,
         recaptchaToken: normalizeTextField(recaptchaToken),
-      })
+      }),
     ),
   };
 
@@ -229,18 +241,20 @@ export const submitContactForm = async ({ formData, recaptchaToken }) => {
 
   if (!response.ok) {
     throw createContactFormError(
-      executionData?.message || executionData?.type || CONTACT_ERROR_MESSAGE
+      executionData?.message || executionData?.type || CONTACT_ERROR_MESSAGE,
     );
   }
 
   const responseBody = getFunctionResponseBody(executionData);
   const statusCode = executionData?.responseStatusCode;
-  const details = Array.isArray(responseBody?.details) ? responseBody.details : [];
+  const details = Array.isArray(responseBody?.details)
+    ? responseBody.details
+    : [];
 
   if (typeof statusCode === "number" && statusCode >= 400) {
     throw createContactFormError(
       responseBody?.message || CONTACT_ERROR_MESSAGE,
-      details
+      details,
     );
   }
 
