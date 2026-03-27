@@ -11,6 +11,7 @@ import {
   getMarcaLabel,
   getContactoPreferidoLabel,
 } from "../data/wizardData";
+import { trackAnalyticsEvent } from "./analyticsClient";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -223,6 +224,12 @@ export const submitWizardForm = async ({ formData, recaptchaToken, presupuestoLa
   };
 
   let response;
+  trackAnalyticsEvent("form_submit", {
+    path: "/cuentanos-tu-idea",
+    section: "wizard",
+    elementId: "wizard-form",
+    label: "wizard form submit",
+  });
 
   try {
     response = await fetch(getExecutionEndpoint(), {
@@ -234,6 +241,12 @@ export const submitWizardForm = async ({ formData, recaptchaToken, presupuestoLa
       body: JSON.stringify(requestBody),
     });
   } catch {
+    trackAnalyticsEvent("form_error", {
+      path: "/cuentanos-tu-idea",
+      section: "wizard",
+      elementId: "wizard-form",
+      label: "network error",
+    });
     throw createWizardFormError(WIZARD_ERROR_MESSAGE);
   }
 
@@ -242,6 +255,13 @@ export const submitWizardForm = async ({ formData, recaptchaToken, presupuestoLa
     .catch(() => ({ message: WIZARD_ERROR_MESSAGE }));
 
   if (!response.ok) {
+    trackAnalyticsEvent("form_error", {
+      path: "/cuentanos-tu-idea",
+      section: "wizard",
+      elementId: "wizard-form",
+      label: "execution request failed",
+      metadata: { status: response.status || 0 },
+    });
     throw createWizardFormError(
       executionData?.message || executionData?.type || WIZARD_ERROR_MESSAGE,
     );
@@ -254,11 +274,25 @@ export const submitWizardForm = async ({ formData, recaptchaToken, presupuestoLa
     : [];
 
   if (typeof statusCode === "number" && statusCode >= 400) {
+    trackAnalyticsEvent("form_error", {
+      path: "/cuentanos-tu-idea",
+      section: "wizard",
+      elementId: "wizard-form",
+      label: "function response error",
+      metadata: { statusCode },
+    });
     throw createWizardFormError(
       responseBody?.message || WIZARD_ERROR_MESSAGE,
       details,
     );
   }
+
+  trackAnalyticsEvent("form_success", {
+    path: "/cuentanos-tu-idea",
+    section: "wizard",
+    elementId: "wizard-form",
+    label: "wizard form success",
+  });
 
   return {
     message: responseBody?.message || WIZARD_SUCCESS_MESSAGE,

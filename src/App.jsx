@@ -4,6 +4,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "./components/utils/ScrollToTop";
+import AnalyticsTracker from "./components/utils/AnalyticsTracker";
 import PageTransition from "./components/layout/PageTransition";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -139,6 +140,7 @@ function App() {
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <AnalyticsTracker />
         <AnimatedRoutes />
       </BrowserRouter>
     </HelmetProvider>

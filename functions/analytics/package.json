@@ -1,0 +1,6 @@
+{
+  "name": "racoondevs-analytics-function",
+  "private": true,
+  "type": "module",
+  "main": "src/main.js"
+}

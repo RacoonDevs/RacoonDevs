@@ -1,3 +1,5 @@
+import { trackAnalyticsEvent } from "./analyticsClient";
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const MAX_FIELD_LENGTHS = {
@@ -221,6 +223,12 @@ export const submitContactForm = async ({ formData, recaptchaToken }) => {
   };
 
   let response;
+  trackAnalyticsEvent("form_submit", {
+    path: "/contacto",
+    section: "contacto",
+    elementId: "contact-form",
+    label: "contact form submit",
+  });
 
   try {
     response = await fetch(getExecutionEndpoint(), {
@@ -232,6 +240,12 @@ export const submitContactForm = async ({ formData, recaptchaToken }) => {
       body: JSON.stringify(requestBody),
     });
   } catch {
+    trackAnalyticsEvent("form_error", {
+      path: "/contacto",
+      section: "contacto",
+      elementId: "contact-form",
+      label: "network error",
+    });
     throw createContactFormError(CONTACT_ERROR_MESSAGE);
   }
 
@@ -240,6 +254,13 @@ export const submitContactForm = async ({ formData, recaptchaToken }) => {
     .catch(() => ({ message: CONTACT_ERROR_MESSAGE }));
 
   if (!response.ok) {
+    trackAnalyticsEvent("form_error", {
+      path: "/contacto",
+      section: "contacto",
+      elementId: "contact-form",
+      label: "execution request failed",
+      metadata: { status: response.status || 0 },
+    });
     throw createContactFormError(
       executionData?.message || executionData?.type || CONTACT_ERROR_MESSAGE,
     );
@@ -252,11 +273,25 @@ export const submitContactForm = async ({ formData, recaptchaToken }) => {
     : [];
 
   if (typeof statusCode === "number" && statusCode >= 400) {
+    trackAnalyticsEvent("form_error", {
+      path: "/contacto",
+      section: "contacto",
+      elementId: "contact-form",
+      label: "function response error",
+      metadata: { statusCode },
+    });
     throw createContactFormError(
       responseBody?.message || CONTACT_ERROR_MESSAGE,
       details,
     );
   }
+
+  trackAnalyticsEvent("form_success", {
+    path: "/contacto",
+    section: "contacto",
+    elementId: "contact-form",
+    label: "contact form success",
+  });
 
   return {
     message: responseBody?.message || CONTACT_SUCCESS_MESSAGE,

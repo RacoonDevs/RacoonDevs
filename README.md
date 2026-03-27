@@ -1,16 +1,41 @@
-# React + Vite
+# RacoonDevs Public Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio publico en React + Vite con formularios conectados a Appwrite Functions.
 
-Currently, two official plugins are available:
+## Formularios y CRM
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `/cuentanos-tu-idea` ejecuta `functions/wizard`.
+- Landing + `/contacto` ejecutan `functions/contact-form`.
+- Analitica frontend ejecuta `functions/analytics`.
+- Ambas funciones sincronizan leads al proyecto `crm` via la function `create-lead`.
 
-## React Compiler
+Variables runtime de sync documentadas en:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `functions/wizard/.env.example`
+- `functions/contact-form/.env.example`
+- `functions/analytics/.env.example`
 
-## Expanding the ESLint configuration
+## Analitica hacia CRM
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El frontend envia eventos anonimos a `functions/analytics` (mismo proyecto), y esa function sincroniza al CRM (`track-analytics-event`):
+
+- `page_view`
+- `section_view`
+- `cta_click`
+- `form_submit`
+- `form_success`
+- `form_error`
+
+Variables frontend relevantes en `.env.example`:
+
+- `VITE_ANALYTICS_ENABLED`
+- `VITE_APPWRITE_ANALYTICS_FUNCTION_ID`
+- `VITE_ANALYTICS_SITE_ID`
+
+## Comandos
+
+```bash
+npm install
+npm run dev
+npm run build
+```
