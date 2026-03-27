@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { syncLeadToCrm } from "./crmSync.js";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -476,6 +477,11 @@ export default async ({ req, res, log, error }) => {
         400,
         corsHeaders,
       );
+    }
+
+    const crmSyncResult = await syncLeadToCrm(payload, log);
+    if (crmSyncResult?.skipped) {
+      log(`CRM sync skipped: ${crmSyncResult.reason || "unknown reason"}`);
     }
 
     const sent = await sendWizardEmails(payload, log);
