@@ -9,7 +9,7 @@ import Button from "../components/ui/Button";
 import { cn } from "../utils/cn";
 import { ease, staggerContainer, staggerChild } from "../utils/motion";
 import { services } from "../data/servicesData";
-import { useNavigateToSection } from "../components/utils/NavigateToSection";
+import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 
 const ServiceCard = ({ service, large = false }) => {
@@ -79,7 +79,6 @@ const ServiceCard = ({ service, large = false }) => {
 };
 
 const ServicesPage = () => {
-  const navigateToSection = useNavigateToSection();
   const featured = services.filter((s) => s.featured);
   const rest = services.filter((s) => !s.featured);
 
@@ -122,15 +121,13 @@ const ServicesPage = () => {
                 desarrollamos y optimizamos productos digitales que impulsan tu
                 negocio.
               </p>
-              <motion.button
-                onClick={() => navigateToSection("/#contacto")}
-                className="inline-flex items-center gap-2 px-6 py-3 gradient-primary text-white rounded-full font-medium text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300 cursor-pointer"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
+              <Link
+                to="/cuentanos-tu-idea"
+                className="inline-flex items-center gap-2 px-6 py-3 gradient-primary text-white rounded-full font-medium text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300"
               >
                 Iniciar un Proyecto
                 <ArrowRight className="w-4 h-4" />
-              </motion.button>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -184,15 +181,13 @@ const ServicesPage = () => {
                 Cuéntanos tu idea y diseñamos la solución perfecta para tu
                 negocio.
               </p>
-              <motion.button
-                onClick={() => navigateToSection("/#contacto")}
-                className="inline-flex items-center gap-2 px-8 py-4 gradient-primary text-white rounded-full font-semibold text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300 cursor-pointer"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
+              <Link
+                to="/cuentanos-tu-idea"
+                className="inline-flex items-center gap-2 px-8 py-4 gradient-primary text-white rounded-full font-semibold text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300"
               >
                 Iniciar Proyecto
                 <ArrowRight className="w-4 h-4" />
-              </motion.button>
+              </Link>
             </motion.div>
           </div>
         </div>

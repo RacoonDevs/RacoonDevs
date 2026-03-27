@@ -1,5 +1,6 @@
 import { useReducer, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import {
@@ -10,6 +11,7 @@ import {
   AlertCircle,
   X,
   Loader2,
+  MessageSquare,
 } from "lucide-react";
 import SectionWrapper from "../ui/SectionWrapper";
 import SectionHeading from "../ui/SectionHeading";
@@ -224,6 +226,25 @@ const WizardSection = () => {
         gradient="tu idea"
         subtitle="Responde unas preguntas sencillas y te ayudamos a darle forma a tu proyecto. Sin compromisos, sin términos complicados."
       />
+
+      {/* Cross-reference to contact */}
+      <motion.div
+        className="flex items-center justify-center gap-2 mb-10"
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.5, ease: ease.out }}
+      >
+        <MessageSquare className="w-4 h-4 text-txt-3" />
+        <p className="text-sm text-txt-3">
+          ¿Ya sabes exactamente lo que necesitas?{" "}
+          <Link
+            to="/contacto"
+            className="text-primary font-medium hover:underline"
+          >
+            Contáctanos directamente
+          </Link>
+        </p>
+      </motion.div>
 
       <div className="max-w-4xl mx-auto">
         <WizardProgress currentStep={currentStep} />

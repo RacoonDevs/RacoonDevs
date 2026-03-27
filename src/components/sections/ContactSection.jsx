@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Send,
@@ -11,6 +12,7 @@ import {
   AlertCircle,
   X,
   Loader2,
+  Sparkles,
 } from "lucide-react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import SectionWrapper from "../ui/SectionWrapper";
@@ -380,6 +382,29 @@ const ContactSection = () => {
                 escríbenos por WhatsApp para atención inmediata.
               </p>
             </GlassCard>
+          </motion.div>
+
+          {/* Wizard cross-reference */}
+          <motion.div variants={staggerChild}>
+            <Link to="/cuentanos-tu-idea" className="block group">
+              <GlassCard className="mt-2 hover:border-primary/20 transition-all duration-300">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 shrink-0">
+                    <Sparkles className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-txt mb-1">
+                      ¿No sabes por dónde empezar?
+                    </p>
+                    <p className="text-xs text-txt-3 leading-relaxed">
+                      Prueba nuestro asistente de proyectos. Te guiamos paso a
+                      paso para definir lo que necesitas.
+                    </p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-txt-3 mt-1 shrink-0 group-hover:text-primary transition-colors" />
+                </div>
+              </GlassCard>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

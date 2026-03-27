@@ -232,7 +232,7 @@ const Header = () => {
               </div>
 
               <Link
-                to="/contacto"
+                to="/cuentanos-tu-idea"
                 className="flex items-center justify-center gap-2 px-6 py-3.5 gradient-primary text-white rounded-full font-semibold text-base mt-4"
               >
                 Iniciar Proyecto

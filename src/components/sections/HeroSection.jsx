@@ -380,7 +380,7 @@ const HeroSection = () => {
               transition={{ delay: 1.1, duration: 0.6, ease: ease.out }}
             >
               <motion.div ref={ctaRef} style={{ x: ctaSpringX, y: ctaSpringY }}>
-                <Button variant="cta" to="/contacto">
+                <Button variant="cta" to="/cuentanos-tu-idea">
                   Iniciar un Proyecto
                 </Button>
               </motion.div>
