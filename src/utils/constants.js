@@ -14,8 +14,7 @@ export const ADDRESS = {
   country: "MX",
 };
 export const SOCIAL_LINKS = {
-  linkedin: "https://www.linkedin.com/in/raulbellosom/",
-  github: "https://github.com/raulbellosom",
-  twitter: "https://x.com/Raul_BellosoM",
+  facebook: "https://www.facebook.com/RacoonDevs",
   instagram: "https://www.instagram.com/racoondevs/",
+  twitter: "https://x.com/Raul_BellosoM",
 };

@@ -5,7 +5,11 @@
       "Bash(grep -r appwrite /d/RacoonDevs/racoondevs --include=*.md --include=*.txt --include=*.json)",
       "Bash(git log:*)",
       "Bash(npx vite:*)",
-      "WebFetch(domain:open.er-api.com)"
+      "WebFetch(domain:open.er-api.com)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//d/RacoonDevs/racoondevs/**)",
+      "Bash(done)"
     ]
   }
 }

@@ -154,7 +154,7 @@ const ContactSection = () => {
 
   return (
     <>
-    <SectionWrapper id="contacto">
+    <SectionWrapper id="contacto" noBorder noTopPadding>
       <SectionHeading
         badge="Contacto"
         title="Construyamos algo a tu medida"

@@ -16,7 +16,7 @@ const ProcessSection = () => {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <SectionWrapper id="proceso">
+    <SectionWrapper id="proceso" noBorder noTopPadding>
       <SectionHeading
         badge="Proceso"
         title="Un proceso claro para resultados predecibles"

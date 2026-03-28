@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
 import { ease } from "../../utils/motion";
 
-const SectionWrapper = ({ id, children, className, noPadding, noBorder }) => (
+const SectionWrapper = ({ id, children, className, noPadding, noBorder, noTopPadding }) => (
   <motion.section
     id={id}
     className={cn(
-      !noPadding && "py-20 sm:py-24 lg:py-32",
+      !noPadding && !noTopPadding && "py-20 sm:py-24 lg:py-32",
+      !noPadding && noTopPadding && "pt-8 sm:pt-12 pb-20 sm:pb-24 lg:pb-32",
       !noBorder && "border-t border-primary/[0.06]",
       "relative",
       className,

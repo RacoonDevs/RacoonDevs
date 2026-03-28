@@ -9,9 +9,7 @@ const ContactPage = () => (
       description="Contáctanos para discutir tu próximo proyecto de desarrollo web o software. Estamos en Puerto Vallarta, listos para ayudarte."
       canonical="https://racoondevs.com/contacto"
     />
-    <div className="pt-8 sm:pt-12">
-      <ContactSection />
-    </div>
+    <ContactSection />
   </PageLayout>
 );
 

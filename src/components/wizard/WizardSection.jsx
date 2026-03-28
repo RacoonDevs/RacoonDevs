@@ -107,6 +107,10 @@ const WizardSection = () => {
   const isFirstStep = currentStep === 0;
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentStep]);
+
+  useEffect(() => {
     const hasData = Object.values(data).some((v) =>
       Array.isArray(v) ? v.length > 0 : Boolean(v),
     );

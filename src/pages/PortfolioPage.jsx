@@ -293,7 +293,7 @@ const PortfolioPage = () => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative py-20 sm:py-28 lg:py-36">
+      <section className="relative pt-8 sm:pt-12 pb-20 sm:pb-28 lg:pb-36">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[10%] right-[10%] w-[300px] h-[300px] rounded-full bg-gradient-to-br from-primary/15 to-secondary/8 blur-3xl opacity-60" />
           <div className="absolute bottom-[5%] left-[5%] w-[250px] h-[250px] rounded-full bg-gradient-to-br from-secondary/12 to-accent/8 blur-3xl opacity-50" />

@@ -389,7 +389,7 @@ const ProcessPage = () => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative py-20 sm:py-24 lg:py-32">
+      <section className="relative pt-8 sm:pt-12 pb-20 sm:pb-24 lg:pb-32">
         <div className="w-full flex justify-center">
           <div className="w-full max-w-7xl px-6 sm:px-8 lg:px-12">
             <motion.div

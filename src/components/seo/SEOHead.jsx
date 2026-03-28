@@ -18,7 +18,7 @@ const SEOHead = ({ title, description, canonical, ogImage, jsonLd }) => (
     {ogImage && (
       <meta
         property="og:image:alt"
-        content="RacoonDevs - Desarrollo Web y Apps en Puerto Vallarta"
+        content="Racoon Devs - Desarrollo Web y Apps en Puerto Vallarta"
       />
     )}
 
@@ -32,7 +32,7 @@ const SEOHead = ({ title, description, canonical, ogImage, jsonLd }) => (
     {ogImage && (
       <meta
         property="twitter:image:alt"
-        content="RacoonDevs - Desarrollo Web y Apps en Puerto Vallarta"
+        content="Racoon Devs - Desarrollo Web y Apps en Puerto Vallarta"
       />
     )}
 
