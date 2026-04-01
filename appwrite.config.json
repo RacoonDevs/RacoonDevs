@@ -1,3 +1,56 @@
 {
-    "projectId": "69b0d656000258693c27"
+    "projectId": "69b0d656000258693c27",
+    "functions": [
+        {
+            "$id": "contact-form",
+            "name": "contact-form",
+            "runtime": "node-18.0",
+            "path": "functions/contact-form",
+            "entrypoint": "src/main.js",
+            "execute": [
+                "any"
+            ],
+            "enabled": true,
+            "logging": true,
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "commands": "npm install",
+            "scopes": []
+        },
+        {
+            "$id": "wizard",
+            "name": "wizard",
+            "runtime": "node-18.0",
+            "path": "functions/wizard",
+            "entrypoint": "src/main.js",
+            "execute": [
+                "any"
+            ],
+            "enabled": true,
+            "logging": true,
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "commands": "npm install",
+            "scopes": []
+        },
+        {
+            "$id": "analytics",
+            "name": "analytics",
+            "runtime": "node-18.0",
+            "path": "functions/analytics",
+            "entrypoint": "src/main.js",
+            "execute": [
+                "any"
+            ],
+            "enabled": true,
+            "logging": true,
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "commands": "npm install",
+            "scopes": []
+        }
+    ]
 }

@@ -26,6 +26,14 @@ El frontend envia eventos anonimos a `functions/analytics` (mismo proyecto), y e
 - `form_success`
 - `form_error`
 
+La function de analytics ahora enriquece cada evento con:
+
+- senales de cliente (UA, idioma, viewport, dispositivo, timezone)
+- clasificacion de trafico (`likely_human`, `suspicious`, `likely_bot`)
+- geolocalizacion aproximada por IP (pais/region/ciudad y lat/lon aproximado)
+
+Nota: por IP no se obtiene GPS exacto del visitante, solo una aproximacion de red.
+
 Variables frontend relevantes en `.env.example`:
 
 - `VITE_ANALYTICS_ENABLED`
