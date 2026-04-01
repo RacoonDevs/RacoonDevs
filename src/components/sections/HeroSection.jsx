@@ -12,6 +12,7 @@ import {
   Terminal,
   Sparkles,
 } from "lucide-react";
+import heroBg from "../../assets/jdfuu8.webp";
 
 /* ─── Word-by-word blur reveal ─── */
 const wordContainer = {
@@ -35,14 +36,28 @@ const HeroBackground = () => (
     className="absolute inset-0 overflow-hidden pointer-events-none"
     aria-hidden="true"
   >
-    {/* Large animated mesh gradient orbs */}
+    {/* Background image — LCP element, no lazy loading */}
+    <img
+      src={heroBg}
+      alt=""
+      width={1920}
+      height={600}
+      className="absolute inset-0 w-full h-full object-cover dark:opacity-15 opacity-70"
+      fetchPriority="high"
+      decoding="async"
+    />
+
+    {/* Tint overlay to blend with theme tokens */}
+    <div className="absolute inset-0 bg-surface/40 dark:bg-surface/85" />
+
+    {/* Subtle animated orbs on top of the photo */}
     <motion.div
-      className="absolute -top-[30%] -right-[15%] w-[750px] h-[750px] rounded-full bg-gradient-to-br from-primary/25 via-primary/8 to-transparent blur-3xl"
+      className="absolute -top-[30%] -right-[15%] w-[750px] h-[750px] rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent blur-3xl"
       animate={{ scale: [1, 1.2, 1], rotate: [0, 8, 0] }}
       transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
     />
     <motion.div
-      className="absolute -bottom-[25%] -left-[10%] w-[650px] h-[650px] rounded-full bg-gradient-to-tr from-secondary/20 via-secondary/6 to-transparent blur-3xl"
+      className="absolute -bottom-[25%] -left-[10%] w-[650px] h-[650px] rounded-full bg-gradient-to-tr from-secondary/12 via-secondary/4 to-transparent blur-3xl"
       animate={{ scale: [1, 1.15, 1], rotate: [0, -6, 0] }}
       transition={{
         duration: 11,
@@ -51,17 +66,6 @@ const HeroBackground = () => (
         delay: 2,
       }}
     />
-    <motion.div
-      className="absolute top-[15%] left-[35%] w-[400px] h-[400px] rounded-full bg-gradient-to-br from-accent/12 to-transparent blur-3xl"
-      animate={{ scale: [1, 1.1, 1] }}
-      transition={{
-        duration: 9,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 4,
-      }}
-    />
-
     {/* Dot grid overlay */}
     <div
       className="absolute inset-0 opacity-[0.035] dark:opacity-[0.02]"
@@ -569,7 +573,7 @@ const HeroSection = () => {
     <motion.section
       ref={sectionRef}
       aria-labelledby="hero-heading"
-      className="relative min-h-[calc(100dvh-5rem)] flex flex-col justify-center overflow-hidden"
+      className="relative min-h-dvh -mt-16 sm:-mt-18 lg:-mt-20 pt-16 sm:pt-18 lg:pt-20 flex flex-col justify-center overflow-hidden"
     >
       {/* Hero-specific animated background */}
       <HeroBackground />
