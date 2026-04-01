@@ -17,6 +17,7 @@ const PricingSection = () => {
   return (
     <SectionWrapper id="planes">
       <SectionHeading
+        as="h1"
         badge="Planes"
         title="Planes claros, sin sorpresas"
         gradient="claros"
@@ -34,7 +35,9 @@ const PricingSection = () => {
         {pricingPlans.map((plan) => {
           const Icon = plan.icon;
           const isPopular = plan.popular;
-          const converted = plan.basePriceMXN ? convert(plan.basePriceMXN) : null;
+          const converted = plan.basePriceMXN
+            ? convert(plan.basePriceMXN)
+            : null;
 
           return (
             <motion.div

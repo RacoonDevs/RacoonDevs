@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { MessageCircle, Sparkles } from "lucide-react";
 import SectionWrapper from "../ui/SectionWrapper";
 import Button from "../ui/Button";
 import GradientOrb from "../ui/GradientOrb";
 import { ease } from "../../utils/motion";
+import { WHATSAPP_URL } from "../../utils/constants";
 
 const FinalCTASection = () => (
   <SectionWrapper id="cta-final" noBorder className="relative overflow-hidden">
@@ -66,6 +67,16 @@ const FinalCTASection = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: ease.out, delay: 0.35 }}
       >
+        {/* WhatsApp — primary CTA */}
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-white font-semibold text-base transition-colors shadow-lg shadow-emerald-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+        >
+          <MessageCircle className="w-5 h-5" />
+          Hablar por WhatsApp
+        </a>
         <Button variant="cta" to="/cuentanos-tu-idea">
           Iniciar un Proyecto
         </Button>

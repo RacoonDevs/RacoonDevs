@@ -9,6 +9,7 @@ const NotFoundPage = () => (
     <SEOHead
       title="404 — Página no encontrada | Racoon Devs"
       description="La página que buscas no existe o ha sido movida."
+      noindex
     />
     <div className="min-h-screen flex flex-col items-center justify-center px-6">
       <motion.h1

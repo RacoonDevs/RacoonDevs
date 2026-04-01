@@ -99,8 +99,14 @@ const WizardSection = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { convert, currencyInfo } = useCurrency();
-  const { currentStep, direction, data, stepErrors, isSubmitting, feedbackModal } =
-    state;
+  const {
+    currentStep,
+    direction,
+    data,
+    stepErrors,
+    isSubmitting,
+    feedbackModal,
+  } = state;
 
   const currentErrors = stepErrors[currentStep] || [];
   const isLastStep = currentStep === TOTAL_STEPS - 1;
@@ -213,9 +219,7 @@ const WizardSection = () => {
       case 5:
         return <StepContacto {...stepProps} />;
       case 6:
-        return (
-          <StepResumen data={data} onGoToStep={handleGoToStep} />
-        );
+        return <StepResumen data={data} onGoToStep={handleGoToStep} />;
       default:
         return null;
     }
@@ -223,137 +227,137 @@ const WizardSection = () => {
 
   return (
     <>
-    <SectionWrapper id="wizard" noBorder>
-      <SectionHeading
-        badge="Tu idea, nuestro siguiente proyecto"
-        title="Cuéntanos sobre tu idea"
-        gradient="tu idea"
-        subtitle="Responde unas preguntas sencillas y te ayudamos a darle forma a tu proyecto. Sin compromisos, sin términos complicados."
-      />
+      <SectionWrapper id="wizard" noBorder>
+        <SectionHeading
+          as="h1"
+          badge="Tu idea, nuestro siguiente proyecto"
+          title="Diseña tu proyecto web en Puerto Vallarta"
+          gradient="Puerto Vallarta"
+          subtitle="Responde unas preguntas sencillas y te ayudamos a darle forma a tu proyecto. Sin compromisos, sin términos complicados."
+        />
 
-      {/* Cross-reference to contact */}
-      <motion.div
-        className="flex items-center justify-center gap-2 mb-10"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.5, ease: ease.out }}
-      >
-        <MessageSquare className="w-4 h-4 text-txt-3" />
-        <p className="text-sm text-txt-3">
-          ¿Ya sabes exactamente lo que necesitas?{" "}
-          <Link
-            to="/contacto"
-            className="text-primary font-medium hover:underline"
-          >
-            Contáctanos directamente
-          </Link>
-        </p>
-      </motion.div>
-
-      <div className="max-w-4xl mx-auto">
-        <WizardProgress currentStep={currentStep} />
-
-        {/* Step title */}
-        <motion.h3
-          key={`title-${currentStep}`}
-          initial={{ opacity: 0, y: 10 }}
+        {/* Cross-reference to contact */}
+        <motion.div
+          className="flex items-center justify-center gap-2 mb-10"
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, ease: ease.out }}
-          className="text-2xl sm:text-3xl font-bold text-txt text-center mb-2"
+          transition={{ delay: 0.3, duration: 0.5, ease: ease.out }}
         >
-          {WIZARD_STEPS[currentStep].title}
-        </motion.h3>
-
-        {/* Errors */}
-        <AnimatePresence>
-          {currentErrors.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: ease.out }}
-              className="max-w-2xl mx-auto mt-4"
+          <MessageSquare className="w-4 h-4 text-txt-3" />
+          <p className="text-sm text-txt-3">
+            ¿Ya sabes exactamente lo que necesitas?{" "}
+            <Link
+              to="/contacto"
+              className="text-primary font-medium hover:underline"
             >
-              <div className="flex items-start gap-3 rounded-xl bg-red-500/10 border border-red-500/20 px-4 py-3">
-                <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
-                <ul className="text-sm text-red-300 space-y-1">
-                  {currentErrors.map((err) => (
-                    <li key={err}>{err}</li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              Contáctanos directamente
+            </Link>
+          </p>
+        </motion.div>
 
-        {/* Step content */}
-        <div className="mt-8 mb-8 min-h-[300px]">
-          <AnimatePresence mode="wait" custom={direction}>
-            <WizardStep key={currentStep} direction={direction}>
-              {renderStep()}
-            </WizardStep>
+        <div className="max-w-4xl mx-auto">
+          <WizardProgress currentStep={currentStep} />
+
+          {/* Step title */}
+          <motion.h3
+            key={`title-${currentStep}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: ease.out }}
+            className="text-2xl sm:text-3xl font-bold text-txt text-center mb-2"
+          >
+            {WIZARD_STEPS[currentStep].title}
+          </motion.h3>
+
+          {/* Errors */}
+          <AnimatePresence>
+            {currentErrors.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: ease.out }}
+                className="max-w-2xl mx-auto mt-4"
+              >
+                <div className="flex items-start gap-3 rounded-xl bg-red-500/10 border border-red-500/20 px-4 py-3">
+                  <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
+                  <ul className="text-sm text-red-300 space-y-1">
+                    {currentErrors.map((err) => (
+                      <li key={err}>{err}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
           </AnimatePresence>
-        </div>
 
-        {/* Navigation buttons */}
-        <div className="flex items-center justify-between max-w-2xl mx-auto">
-          <div>
-            {!isFirstStep && (
-              <motion.button
-                type="button"
-                onClick={handlePrev}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-txt-2 hover:text-txt glass-panel border border-white/[0.08] hover:border-primary/20 transition-all duration-200 cursor-pointer"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Anterior
-              </motion.button>
-            )}
+          {/* Step content */}
+          <div className="mt-8 mb-8 min-h-[300px]">
+            <AnimatePresence mode="wait" custom={direction}>
+              <WizardStep key={currentStep} direction={direction}>
+                {renderStep()}
+              </WizardStep>
+            </AnimatePresence>
           </div>
 
-          <div>
-            {isLastStep ? (
-              <motion.button
-                type="button"
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                whileHover={isSubmitting ? {} : { scale: 1.02 }}
-                whileTap={isSubmitting ? {} : { scale: 0.98 }}
-                className={cn(
-                  "flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold gradient-primary text-white shadow-lg shadow-primary/25 transition-all duration-200 cursor-pointer",
-                  isSubmitting && "opacity-70 cursor-not-allowed",
-                )}
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    Enviar propuesta
-                    <Send className="w-4 h-4" />
-                  </>
-                )}
-              </motion.button>
-            ) : (
-              <motion.button
-                type="button"
-                onClick={handleNext}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold gradient-primary text-white shadow-lg shadow-primary/25 transition-all duration-200 cursor-pointer"
-              >
-                Siguiente
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-            )}
+          {/* Navigation buttons */}
+          <div className="flex items-center justify-between max-w-2xl mx-auto">
+            <div>
+              {!isFirstStep && (
+                <motion.button
+                  type="button"
+                  onClick={handlePrev}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-txt-2 hover:text-txt glass-panel border border-white/[0.08] hover:border-primary/20 transition-all duration-200 cursor-pointer"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Anterior
+                </motion.button>
+              )}
+            </div>
+
+            <div>
+              {isLastStep ? (
+                <motion.button
+                  type="button"
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  whileHover={isSubmitting ? {} : { scale: 1.02 }}
+                  whileTap={isSubmitting ? {} : { scale: 0.98 }}
+                  className={cn(
+                    "flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold gradient-primary text-white shadow-lg shadow-primary/25 transition-all duration-200 cursor-pointer",
+                    isSubmitting && "opacity-70 cursor-not-allowed",
+                  )}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      Enviar propuesta
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
+                </motion.button>
+              ) : (
+                <motion.button
+                  type="button"
+                  onClick={handleNext}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold gradient-primary text-white shadow-lg shadow-primary/25 transition-all duration-200 cursor-pointer"
+                >
+                  Siguiente
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-
-    </SectionWrapper>
+      </SectionWrapper>
 
       {/* Feedback Modal - rendered via portal to avoid z-index stacking context issues */}
       {createPortal(

@@ -10,6 +10,7 @@ import {
   allProjects,
   projectCategories,
 } from "../data/portfolioData";
+import { seoConfig } from "../data/seoData";
 import { useNavigateToSection } from "../components/utils/NavigateToSection";
 import { ArrowDown, ArrowRight, ExternalLink } from "lucide-react";
 
@@ -97,13 +98,13 @@ const ProjectDetails = ({ project }) => (
   <div className="space-y-3">
     <div className="pl-3 border-l-2 border-violet-500/30">
       <p className="text-[10px] uppercase tracking-widest text-violet-500 mb-0.5 font-medium">
-        Desafio
+        Desafío
       </p>
       <p className="text-txt-2 text-sm leading-relaxed">{project.challenge}</p>
     </div>
     <div className="pl-3 border-l-2 border-cyan-500/30">
       <p className="text-[10px] uppercase tracking-widest text-cyan-500 mb-0.5 font-medium">
-        Solucion
+        Solución
       </p>
       <p className="text-txt-2 text-sm leading-relaxed">{project.solution}</p>
     </div>
@@ -216,7 +217,7 @@ const FeaturedCard = ({ project, isFeatured }) => (
               <div className="space-y-3 mb-4">
                 <div className="pl-2.5 border-l-2 border-violet-500/30">
                   <p className="text-[10px] uppercase tracking-widest text-violet-500 mb-0.5 font-medium">
-                    Desafio
+                    Desafío
                   </p>
                   <p className="text-txt-2 text-xs leading-relaxed">
                     {project.challenge}
@@ -224,7 +225,7 @@ const FeaturedCard = ({ project, isFeatured }) => (
                 </div>
                 <div className="pl-2.5 border-l-2 border-cyan-500/30">
                   <p className="text-[10px] uppercase tracking-widest text-cyan-500 mb-0.5 font-medium">
-                    Solucion
+                    Solución
                   </p>
                   <p className="text-txt-2 text-xs leading-relaxed">
                     {project.solution}
@@ -286,11 +287,7 @@ const PortfolioPage = () => {
 
   return (
     <PageLayout>
-      <SEOHead
-        title="Portafolio | Racoon Devs"
-        description="Explora nuestros proyectos de desarrollo web, apps moviles y software a la medida. Casos reales de exito."
-        canonical="https://racoondevs.com/portafolio"
-      />
+      <SEOHead {...seoConfig.portfolio} />
 
       {/* ── Hero ── */}
       <section className="relative pt-8 sm:pt-12 pb-20 sm:pb-28 lg:pb-36">
@@ -318,14 +315,16 @@ const PortfolioPage = () => {
               </motion.div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-txt leading-tight mb-6 max-w-4xl">
-                Proyectos que resuelven{" "}
-                <span className="gradient-text">problemas reales.</span>
+                Proyectos reales de{" "}
+                <span className="gradient-text">
+                  desarrollo web en Puerto Vallarta
+                </span>
               </h1>
 
               <p className="text-lg sm:text-xl text-txt-2 max-w-2xl leading-relaxed mb-12">
-                Software a la medida, plataformas web y productos digitales que
-                ayudan a nuestros clientes a operar mejor, crecer mas rapido y
-                escalar con confianza.
+                Páginas web, apps, tiendas en línea y sistemas que ayudan a
+                nuestros clientes a vender más, organizarse mejor y hacer crecer
+                su negocio.
               </p>
             </motion.div>
 
@@ -338,7 +337,7 @@ const PortfolioPage = () => {
               {[
                 { value: "15+", label: "proyectos entregados" },
                 { value: "8+", label: "industrias" },
-                { value: "98%", label: "satisfaccion" },
+                { value: "98%", label: "satisfacción" },
               ].map((stat, i) => (
                 <span key={i} className="flex items-center gap-2">
                   <span className="text-primary font-semibold">
@@ -417,8 +416,8 @@ const PortfolioPage = () => {
                 </span>
               </motion.div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt max-w-3xl leading-tight">
-                Software que{" "}
-                <span className="gradient-text">impulsa negocios.</span>
+                Proyectos que{" "}
+                <span className="gradient-text">transforman negocios</span>
               </h2>
             </motion.div>
 
@@ -461,8 +460,8 @@ const PortfolioPage = () => {
                 </span>
               </motion.div>
               <h2 className="text-3xl sm:text-4xl font-bold text-txt max-w-2xl leading-tight">
-                Cada proyecto,{" "}
-                <span className="gradient-text">una historia.</span>
+                Más proyectos{" "}
+                <span className="gradient-text">que hablan por sí solos</span>
               </h2>
             </motion.div>
 
@@ -509,7 +508,7 @@ const PortfolioPage = () => {
                     <div className="relative aspect-[16/9] overflow-hidden">
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt={`${project.title} — ${project.subtitle}`}
                         className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
                         loading="lazy"
                       />
@@ -575,17 +574,17 @@ const PortfolioPage = () => {
 
               <div className="relative z-10 px-6 sm:px-10 lg:px-16 py-14 sm:py-18 lg:py-20 text-center">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
-                  ¿Listo para construir tu proximo proyecto?
+                  ¿Tienes un proyecto en mente?
                 </h2>
                 <p className="text-white/70 text-lg max-w-xl mx-auto mb-8">
-                  Platicanos tu idea y diseñamos juntos la solucion perfecta
-                  para tu negocio.
+                  Cuéntanos tu idea y diseñamos juntos la mejor solución para tu
+                  negocio.
                 </p>
                 <button
                   onClick={() => navigateToSection("/#contacto")}
                   className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-white text-primary font-semibold text-sm hover:bg-white/90 transition-all duration-300 shadow-lg shadow-primary/30 group cursor-pointer"
                 >
-                  Iniciar conversacion
+                  Iniciar conversación
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
                 </button>
               </div>

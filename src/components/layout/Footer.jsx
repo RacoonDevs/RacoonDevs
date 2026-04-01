@@ -8,7 +8,15 @@ const socialIcons = {
     </svg>
   ),
   instagram: (
-    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      className="w-3.5 h-3.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
@@ -58,7 +66,13 @@ const Footer = () => {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={LogoColor} alt="Racoon Devs" className="w-10 h-10" />
+              <img
+                src={LogoColor}
+                alt="Racoon Devs"
+                width="40"
+                height="40"
+                className="w-10 h-10"
+              />
               <div className="flex flex-col">
                 <span className="text-xl font-bold font-[family-name:var(--font-display)] text-txt leading-tight">
                   Racoon Devs
@@ -91,28 +105,30 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-sm font-semibold text-txt uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-txt uppercase tracking-wider mb-4">
               Navegación
-            </h4>
-            <ul className="space-y-2.5">
-              {footerNav.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    className="text-sm text-txt-3 hover:text-primary transition-colors duration-300"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            </h3>
+            <nav aria-label="Navegación del pie de página">
+              <ul className="space-y-2.5">
+                {footerNav.map((item) => (
+                  <li key={item.path}>
+                    <Link
+                      to={item.path}
+                      className="text-sm text-txt-3 hover:text-primary transition-colors duration-300"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold text-txt uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-txt uppercase tracking-wider mb-4">
               Servicios
-            </h4>
+            </h3>
             <ul className="space-y-2.5">
               {footerServices.map((service) => (
                 <li key={service}>
@@ -124,9 +140,9 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-txt uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-txt uppercase tracking-wider mb-4">
               Contacto
-            </h4>
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a

@@ -20,6 +20,8 @@ import {
   SiVite,
   SiGit,
   SiFigma,
+  SiN8N,
+  SiStripe,
 } from "react-icons/si";
 import { TbApi, TbDeviceMobileCode, TbBrandAws } from "react-icons/tb";
 import { VscVscode } from "react-icons/vsc";
@@ -54,6 +56,8 @@ export const techItems = [
   { name: "Appwrite", color: "#FD366E", icon: SiAppwrite },
   { name: "Vite", color: "#646CFF", icon: SiVite },
   { name: "Git", color: "#F05032", icon: SiGit },
+  { name: "n8n", color: "#EA4B71", icon: SiN8N },
+  { name: "Stripe", color: "#635BFF", icon: SiStripe },
   { name: "Figma", color: "#F24E1E", icon: SiFigma },
   { name: "VS Code", color: "#007ACC", icon: VscVscode },
 ];

@@ -9,6 +9,7 @@ import Button from "../components/ui/Button";
 import { cn } from "../utils/cn";
 import { ease, staggerContainer, staggerChild } from "../utils/motion";
 import { services } from "../data/servicesData";
+import { seoConfig } from "../data/seoData";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 
@@ -84,11 +85,7 @@ const ServicesPage = () => {
 
   return (
     <PageLayout>
-      <SEOHead
-        title="Servicios | Racoon Devs"
-        description="Servicios de desarrollo web, diseño UI/UX, apps móviles, eCommerce, dashboards e integraciones."
-        canonical="https://racoondevs.com/servicios"
-      />
+      <SEOHead {...seoConfig.services} />
 
       {/* Hero */}
       <section className="relative pt-8 sm:pt-12 pb-20 sm:pb-24 lg:pb-32">
@@ -111,15 +108,14 @@ const ServicesPage = () => {
                 </span>
               </motion.div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-txt leading-tight mb-6">
-                Todo lo que necesitas para{" "}
-                <span className="gradient-text">
-                  dominar tu presencia digital.
-                </span>
+                Creamos tu{" "}
+                <span className="gradient-text">página web, app o sistema</span>{" "}
+                en Puerto Vallarta
               </h1>
               <p className="text-txt-2 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl">
-                Desde landing pages hasta plataformas completas. Diseñamos,
-                desarrollamos y optimizamos productos digitales que impulsan tu
-                negocio.
+                Desde páginas web sencillas hasta plataformas completas.
+                Diseñamos y desarrollamos soluciones digitales que ayudan a tu
+                negocio a crecer y vender más.
               </p>
               <Link
                 to="/cuentanos-tu-idea"
@@ -137,9 +133,9 @@ const ServicesPage = () => {
       <SectionWrapper noBorder>
         <SectionHeading
           badge="Nuestros Servicios"
-          title="Soluciones digitales para cada necesidad"
-          gradient="cada necesidad"
-          subtitle="Cada servicio está respaldado por un equipo multidisciplinario que combina diseño, ingeniería y estrategia."
+          title="Páginas web, apps y software a tu medida"
+          gradient="a tu medida"
+          subtitle="Te ayudamos a elegir la solución ideal para tu negocio. Cada proyecto incluye diseño, desarrollo y acompañamiento de inicio a fin."
         />
 
         {/* Featured row — 2 large cards */}
@@ -175,11 +171,11 @@ const ServicesPage = () => {
               transition={{ duration: 0.8, ease: ease.out }}
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-txt mb-4">
-                ¿Listo para empezar?
+                ¿Tienes una idea en mente?
               </h2>
               <p className="text-txt-2 text-lg mb-8 max-w-lg mx-auto">
-                Cuéntanos tu idea y diseñamos la solución perfecta para tu
-                negocio.
+                Cuéntanos qué necesitas y te ayudamos a hacerlo realidad, sin
+                complicaciones.
               </p>
               <Link
                 to="/cuentanos-tu-idea"

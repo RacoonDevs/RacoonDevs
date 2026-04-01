@@ -125,7 +125,7 @@ const ContactSection = () => {
         status: "success",
         message:
           response.message ||
-          "Mensaje enviado con exito. Te contactaremos muy pronto.",
+          "Mensaje enviado con éxito. Te contactaremos muy pronto.",
         details: [],
       });
 
@@ -154,262 +154,267 @@ const ContactSection = () => {
 
   return (
     <>
-    <SectionWrapper id="contacto" noBorder noTopPadding>
-      <SectionHeading
-        badge="Contacto"
-        title="Construyamos algo a tu medida"
-        gradient="a tu medida"
-        subtitle="Cuéntanos tu idea y te ayudamos a convertirla en realidad."
-      />
+      <SectionWrapper id="contacto" noBorder noTopPadding>
+        <SectionHeading
+          as="h1"
+          badge="Contacto"
+          title="Hablemos de tu proyecto en Puerto Vallarta"
+          gradient="Puerto Vallarta"
+          subtitle="Cuéntanos tu idea y te ayudamos a convertirla en realidad. Respondemos en menos de 24 horas."
+        />
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12">
-        {/* Left: Form (3 cols) */}
-        <motion.div
-          className="lg:col-span-3"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.6, ease: ease.out }}
-        >
-          <GlassCard hover={false} className="p-6 sm:p-8">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Nombre */}
-              <div>
-                <label
-                  htmlFor="nombre"
-                  className="block text-sm font-medium text-txt mb-1.5"
-                >
-                  Nombre
-                </label>
-                <input
-                  id="nombre"
-                  name="nombre"
-                  type="text"
-                  required
-                  value={formData.nombre}
-                  onChange={handleChange}
-                  placeholder="Tu nombre completo"
-                  className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-txt mb-1.5"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="tu@email.com"
-                  className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-                />
-              </div>
-
-              {/* Teléfono (opcional) */}
-              <div>
-                <label
-                  htmlFor="telefono"
-                  className="block text-sm font-medium text-txt mb-1.5"
-                >
-                  Teléfono{" "}
-                  <span className="text-txt-3 font-normal">(opcional)</span>
-                </label>
-                <input
-                  id="telefono"
-                  name="telefono"
-                  type="tel"
-                  value={formData.telefono}
-                  onChange={handleChange}
-                  placeholder="+52 55 1234 5678"
-                  className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-                />
-              </div>
-
-              {/* Tipo de Proyecto */}
-              <div>
-                <label
-                  htmlFor="proyecto"
-                  className="block text-sm font-medium text-txt mb-1.5"
-                >
-                  Tipo de proyecto
-                </label>
-                <select
-                  id="proyecto"
-                  name="proyecto"
-                  required
-                  value={formData.proyecto}
-                  onChange={handleChange}
-                  className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all appearance-none cursor-pointer"
-                >
-                  {projectTypes.map((opt) => (
-                    <option
-                      key={opt.value}
-                      value={opt.value}
-                      disabled={!opt.value}
-                    >
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Presupuesto */}
-              <div>
-                <label
-                  htmlFor="presupuesto"
-                  className="block text-sm font-medium text-txt mb-1.5"
-                >
-                  Presupuesto estimado
-                </label>
-                <select
-                  id="presupuesto"
-                  name="presupuesto"
-                  value={formData.presupuesto}
-                  onChange={handleChange}
-                  className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all appearance-none cursor-pointer"
-                >
-                  {budgetRanges.map((opt) => (
-                    <option
-                      key={opt.value}
-                      value={opt.value}
-                      disabled={!opt.value}
-                    >
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Mensaje */}
-              <div>
-                <label
-                  htmlFor="mensaje"
-                  className="block text-sm font-medium text-txt mb-1.5"
-                >
-                  Mensaje
-                </label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  rows={4}
-                  required
-                  value={formData.mensaje}
-                  onChange={handleChange}
-                  placeholder="Cuéntanos sobre tu proyecto, tus objetivos y cualquier detalle relevante..."
-                  className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none"
-                />
-              </div>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full gradient-primary text-white font-semibold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Enviar mensaje
-                  </>
-                )}
-              </button>
-            </form>
-          </GlassCard>
-        </motion.div>
-
-        {/* Right: Contact Cards (2 cols) */}
-        <motion.div
-          className="lg:col-span-2 space-y-4"
-          {...staggerContainer(0.1)}
-        >
-          {contactCards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <motion.a
-                key={card.label}
-                href={card.href}
-                target={card.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  card.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                variants={staggerChild}
-                className="block"
-              >
-                <GlassCard className="flex items-center gap-4 hover:border-primary/20 transition-all duration-300">
-                  <div
-                    className={cn(
-                      "w-12 h-12 rounded-xl flex items-center justify-center border shrink-0",
-                      card.accentBg,
-                    )}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12">
+          {/* Left: Form (3 cols) */}
+          <motion.div
+            className="lg:col-span-3"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, ease: ease.out }}
+          >
+            <GlassCard hover={false} className="p-6 sm:p-8">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Nombre */}
+                <div>
+                  <label
+                    htmlFor="nombre"
+                    className="block text-sm font-medium text-txt mb-1.5"
                   >
-                    <Icon className={cn("w-5 h-5", card.accent)} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-txt-3 font-medium uppercase tracking-wider mb-0.5">
-                      {card.label}
-                    </p>
-                    <p className="text-sm font-medium text-txt">{card.value}</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-txt-3 ml-auto shrink-0" />
-                </GlassCard>
-              </motion.a>
-            );
-          })}
+                    Nombre
+                  </label>
+                  <input
+                    id="nombre"
+                    name="nombre"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    value={formData.nombre}
+                    onChange={handleChange}
+                    placeholder="Tu nombre completo"
+                    className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                  />
+                </div>
 
-          {/* Extra info card */}
-          <motion.div variants={staggerChild}>
-            <GlassCard hover={false} className="mt-2">
-              <p className="text-sm text-txt-2 leading-relaxed">
-                <span className="font-semibold text-txt">
-                  Respuesta rápida:
-                </span>{" "}
-                Contestamos en menos de 24 horas. Si tu proyecto es urgente,
-                escríbenos por WhatsApp para atención inmediata.
-              </p>
+                {/* Email */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-txt mb-1.5"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="tu@email.com"
+                    className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                  />
+                </div>
+
+                {/* Teléfono (opcional) */}
+                <div>
+                  <label
+                    htmlFor="telefono"
+                    className="block text-sm font-medium text-txt mb-1.5"
+                  >
+                    Teléfono{" "}
+                    <span className="text-txt-3 font-normal">(opcional)</span>
+                  </label>
+                  <input
+                    id="telefono"
+                    name="telefono"
+                    type="tel"
+                    autoComplete="tel"
+                    value={formData.telefono}
+                    onChange={handleChange}
+                    placeholder="+52 55 1234 5678"
+                    className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                  />
+                </div>
+
+                {/* Tipo de Proyecto */}
+                <div>
+                  <label
+                    htmlFor="proyecto"
+                    className="block text-sm font-medium text-txt mb-1.5"
+                  >
+                    Tipo de proyecto
+                  </label>
+                  <select
+                    id="proyecto"
+                    name="proyecto"
+                    required
+                    value={formData.proyecto}
+                    onChange={handleChange}
+                    className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all appearance-none cursor-pointer"
+                  >
+                    {projectTypes.map((opt) => (
+                      <option
+                        key={opt.value}
+                        value={opt.value}
+                        disabled={!opt.value}
+                      >
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Presupuesto */}
+                <div>
+                  <label
+                    htmlFor="presupuesto"
+                    className="block text-sm font-medium text-txt mb-1.5"
+                  >
+                    Presupuesto estimado
+                  </label>
+                  <select
+                    id="presupuesto"
+                    name="presupuesto"
+                    value={formData.presupuesto}
+                    onChange={handleChange}
+                    className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all appearance-none cursor-pointer"
+                  >
+                    {budgetRanges.map((opt) => (
+                      <option
+                        key={opt.value}
+                        value={opt.value}
+                        disabled={!opt.value}
+                      >
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Mensaje */}
+                <div>
+                  <label
+                    htmlFor="mensaje"
+                    className="block text-sm font-medium text-txt mb-1.5"
+                  >
+                    Mensaje
+                  </label>
+                  <textarea
+                    id="mensaje"
+                    name="mensaje"
+                    rows={4}
+                    required
+                    value={formData.mensaje}
+                    onChange={handleChange}
+                    placeholder="Cuéntanos sobre tu proyecto, tus objetivos y cualquier detalle relevante..."
+                    className="glass-input w-full px-4 py-3 rounded-xl text-sm text-txt placeholder:text-txt-3 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none"
+                  />
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full gradient-primary text-white font-semibold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Enviar mensaje
+                    </>
+                  )}
+                </button>
+              </form>
             </GlassCard>
           </motion.div>
 
-          {/* Wizard cross-reference */}
-          <motion.div variants={staggerChild}>
-            <Link to="/cuentanos-tu-idea" className="block group">
-              <GlassCard className="mt-2 hover:border-primary/20 transition-all duration-300">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 shrink-0">
-                    <Sparkles className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-txt mb-1">
-                      ¿No sabes por dónde empezar?
-                    </p>
-                    <p className="text-xs text-txt-3 leading-relaxed">
-                      Prueba nuestro asistente de proyectos. Te guiamos paso a
-                      paso para definir lo que necesitas.
-                    </p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-txt-3 mt-1 shrink-0 group-hover:text-primary transition-colors" />
-                </div>
-              </GlassCard>
-            </Link>
-          </motion.div>
-        </motion.div>
-      </div>
+          {/* Right: Contact Cards (2 cols) */}
+          <motion.div
+            className="lg:col-span-2 space-y-4"
+            {...staggerContainer(0.1)}
+          >
+            {contactCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <motion.a
+                  key={card.label}
+                  href={card.href}
+                  target={card.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    card.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  variants={staggerChild}
+                  className="block"
+                >
+                  <GlassCard className="flex items-center gap-4 hover:border-primary/20 transition-all duration-300">
+                    <div
+                      className={cn(
+                        "w-12 h-12 rounded-xl flex items-center justify-center border shrink-0",
+                        card.accentBg,
+                      )}
+                    >
+                      <Icon className={cn("w-5 h-5", card.accent)} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-txt-3 font-medium uppercase tracking-wider mb-0.5">
+                        {card.label}
+                      </p>
+                      <p className="text-sm font-medium text-txt">
+                        {card.value}
+                      </p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-txt-3 ml-auto shrink-0" />
+                  </GlassCard>
+                </motion.a>
+              );
+            })}
 
-    </SectionWrapper>
+            {/* Extra info card */}
+            <motion.div variants={staggerChild}>
+              <GlassCard hover={false} className="mt-2">
+                <p className="text-sm text-txt-2 leading-relaxed">
+                  <span className="font-semibold text-txt">
+                    Respuesta rápida:
+                  </span>{" "}
+                  Contestamos en menos de 24 horas. Si tu proyecto es urgente,
+                  escríbenos por WhatsApp para atención inmediata.
+                </p>
+              </GlassCard>
+            </motion.div>
+
+            {/* Wizard cross-reference */}
+            <motion.div variants={staggerChild}>
+              <Link to="/cuentanos-tu-idea" className="block group">
+                <GlassCard className="mt-2 hover:border-primary/20 transition-all duration-300">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 shrink-0">
+                      <Sparkles className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-txt mb-1">
+                        ¿No sabes por dónde empezar?
+                      </p>
+                      <p className="text-xs text-txt-3 leading-relaxed">
+                        Prueba nuestro asistente de proyectos. Te guiamos paso a
+                        paso para definir lo que necesitas.
+                      </p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-txt-3 mt-1 shrink-0 group-hover:text-primary transition-colors" />
+                  </div>
+                </GlassCard>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </SectionWrapper>
 
       {createPortal(
         <AnimatePresence>

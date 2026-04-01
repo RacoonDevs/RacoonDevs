@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import PageLayout from "../components/layout/PageLayout";
 import SEOHead from "../components/seo/SEOHead";
 import ProcessSection from "../components/sections/ProcessSection";
+import { seoConfig } from "../data/seoData";
 import { cn } from "../utils/cn";
 import { ease, staggerContainer, staggerChild } from "../utils/motion";
 import { useNavigateToSection } from "../components/utils/NavigateToSection";
@@ -193,54 +194,54 @@ const ScalableVisual = () => (
 const differentiators = [
   {
     icon: Fingerprint,
-    title: "Proceso Altamente Personalizado",
+    title: "Proceso Personalizado para Cada Proyecto",
     description:
-      "Cada proyecto se aborda desde cero, entendiendo tu negocio, tus usuarios y tus objetivos antes de escribir una sola linea de codigo.",
+      "Cada proyecto se aborda desde cero, entendiendo tu negocio, tus usuarios y tus objetivos antes de escribir una sola línea de código.",
     className: "md:col-span-2 md:row-span-1",
     visual: PersonalizedVisual,
     accent: "violet",
   },
   {
     icon: Layers,
-    title: "Diseno + Ingenieria Integrados",
+    title: "Diseño y Desarrollo van de la Mano",
     description:
-      "No separamos diseno de desarrollo. Nuestro equipo piensa en UI/UX y arquitectura al mismo tiempo, eliminando friccion y acelerando resultados.",
+      "No separamos diseño de desarrollo. Nuestro equipo piensa en cómo se ve y cómo funciona al mismo tiempo, para entregar más rápido y mejor.",
     className: "md:col-span-1 md:row-span-2",
     visual: DesignEngVisual,
     accent: "pink",
   },
   {
     icon: Smartphone,
-    title: "Mobile-First & Responsivo",
+    title: "Se Ve Bien en Cualquier Dispositivo",
     description:
-      "Disenamos y construimos desde mobile hacia arriba, garantizando que tu producto se vea impecable en cualquier dispositivo.",
+      "Diseñamos y construimos pensando primero en celular, para que tu producto se vea perfecto en cualquier pantalla.",
     className: "md:col-span-1 md:row-span-1",
     visual: ResponsiveVisual,
     accent: "cyan",
   },
   {
     icon: Gauge,
-    title: "Performance-Conscious",
+    title: "Velocidad y Rendimiento Garantizados",
     description:
-      "Codigo optimizado, carga rapida, zero bloat. Tu producto no solo se ve bien, rinde bien.",
+      "Código optimizado, carga rápida, sin elementos innecesarios. Tu producto no solo se ve bien, funciona rápido.",
     className: "md:col-span-1 md:row-span-1",
     visual: PerformanceVisual,
     accent: "emerald",
   },
   {
     icon: Briefcase,
-    title: "Entendemos Negocio",
+    title: "Entendemos tu Negocio",
     description:
-      "No solo escribimos codigo. Entendemos conversion, retencion, flujos de usuario y metricas que importan a tu operacion.",
+      "No solo creamos tu sitio. Entendemos qué necesitas para vender más, retener clientes y medir lo que importa.",
     className: "md:col-span-1 md:row-span-1",
     visual: null,
     accent: "amber",
   },
   {
     icon: ShieldCheck,
-    title: "Sistemas Preparados para el Futuro",
+    title: "Preparado para Crecer Contigo",
     description:
-      "Arquitectura limpia, modular y documentada. Tu producto puede escalar, integrar nuevas features y mantenerse sin dolor.",
+      "Construimos con una base sólida, ordenada y documentada. Tu producto puede crecer, sumar funciones y mantenerse sin complicaciones.",
     className: "md:col-span-2 md:row-span-1",
     visual: ScalableVisual,
     accent: "blue",
@@ -283,54 +284,54 @@ const accentStyles = {
 const techFeatures = [
   {
     icon: Blocks,
-    title: "Arquitectura Modular",
+    title: "Estructura Ordenada y Modular",
     description:
-      "Componentes reutilizables y separacion de responsabilidades que facilitan mantenimiento y evolucion.",
+      "Componentes reutilizables y organización clara que facilitan el mantenimiento y la evolución de tu producto.",
     gradient: "from-violet-500 to-purple-600",
     border: "hover:border-violet-500/20",
     shadow: "hover:shadow-violet-500/10",
   },
   {
     icon: Server,
-    title: "Backend Escalable",
+    title: "Servidor Listo para Crecer",
     description:
-      "APIs RESTful robustas, bases de datos optimizadas y servicios que crecen con tu demanda.",
+      "Conexiones robustas entre sistemas, bases de datos optimizadas y servicios que crecen con tu demanda.",
     gradient: "from-cyan-500 to-teal-600",
     border: "hover:border-cyan-500/20",
     shadow: "hover:shadow-cyan-500/10",
   },
   {
     icon: Smartphone,
-    title: "Frontend Responsivo",
+    title: "Se Adapta a Cualquier Pantalla",
     description:
-      "Interfaces que se adaptan a cada dispositivo con rendimiento optimo y carga progresiva.",
+      "Tu sitio se ve y funciona perfecto en celular, tablet y computadora, con carga rápida en todos.",
     gradient: "from-pink-500 to-rose-600",
     border: "hover:border-pink-500/20",
     shadow: "hover:shadow-pink-500/10",
   },
   {
     icon: Plug,
-    title: "Integraciones & APIs",
+    title: "Conectamos tus Herramientas",
     description:
-      "Conectamos tu producto con pasarelas de pago, CRMs, ERPs, servicios de terceros y herramientas internas.",
+      "Integramos tu producto con pagos en línea, sistemas de gestión, herramientas de terceros y más.",
     gradient: "from-amber-500 to-orange-600",
     border: "hover:border-amber-500/20",
     shadow: "hover:shadow-amber-500/10",
   },
   {
     icon: Cloud,
-    title: "Cloud-Ready",
+    title: "Listo para la Nube",
     description:
-      "Deploys automatizados, contenedores y configuraciones listas para escalar en la nube.",
+      "Publicación automática y configuraciones listas para que tu producto crezca sin límites.",
     gradient: "from-emerald-500 to-green-600",
     border: "hover:border-emerald-500/20",
     shadow: "hover:shadow-emerald-500/10",
   },
   {
     icon: RefreshCw,
-    title: "Codigo Mantenible",
+    title: "Código Fácil de Mantener",
     description:
-      "Testing, documentacion, CI/CD y buenas practicas para que tu equipo pueda continuar el desarrollo.",
+      "Pruebas, documentación y buenas prácticas para que cualquier equipo pueda continuar el desarrollo.",
     gradient: "from-blue-500 to-indigo-600",
     border: "hover:border-blue-500/20",
     shadow: "hover:shadow-blue-500/10",
@@ -382,11 +383,7 @@ const ProcessPage = () => {
 
   return (
     <PageLayout>
-      <SEOHead
-        title="Nuestro Proceso | Racoon Devs"
-        description="Conoce nuestro proceso de desarrollo: descubrimiento, estrategia, diseno, desarrollo y lanzamiento."
-        canonical="https://racoondevs.com/proceso"
-      />
+      <SEOHead {...seoConfig.process} />
 
       {/* ── Hero ── */}
       <section className="relative pt-8 sm:pt-12 pb-20 sm:pb-24 lg:pb-32">
@@ -409,15 +406,15 @@ const ProcessPage = () => {
                 </span>
               </motion.div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-txt leading-tight mb-6">
-                Como convertimos{" "}
+                Así creamos tu{" "}
                 <span className="gradient-text">
-                  ideas en productos digitales.
+                  página web o app en Puerto Vallarta
                 </span>
               </h1>
               <p className="text-txt-2 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl">
-                Nuestro proceso combina estrategia, diseno y tecnologia para
-                crear productos que realmente funcionan. Cada decision tiene un
-                proposito.
+                Nuestro proceso combina una estrategia clara, diseño profesional
+                y tecnología moderna para crear productos que realmente
+                funcionan. Cada decisión tiene un propósito.
               </p>
               <motion.button
                 onClick={() => navigateToSection("/#contacto")}
@@ -455,13 +452,13 @@ const ProcessPage = () => {
                 transition={{ duration: 0.6, ease: ease.out }}
               >
                 <span className="text-sm tracking-widest uppercase text-primary font-medium">
-                  Por que Racoon Devs
+                  Por qué Racoon Devs
                 </span>
               </motion.div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt max-w-2xl leading-tight">
-                No somos una fabrica de codigo.{" "}
+                No somos una fábrica de código.{" "}
                 <span className="gradient-text">
-                  Somos tu equipo de producto digital.
+                  Somos tu equipo de desarrollo web.
                 </span>
               </h2>
             </motion.div>
@@ -531,16 +528,16 @@ const ProcessPage = () => {
                 transition={{ duration: 0.6, ease: ease.out }}
               >
                 <span className="text-sm tracking-widest uppercase text-secondary font-medium">
-                  Tecnologia & Escalabilidad
+                  Tecnología y Escalabilidad
                 </span>
               </motion.div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-txt mb-6 max-w-3xl mx-auto leading-tight">
                 Construimos productos que{" "}
-                <span className="gradient-text">escalan con tu negocio</span>
+                <span className="gradient-text">crecen con tu negocio</span>
               </h2>
               <p className="text-txt-2 text-lg max-w-2xl mx-auto leading-relaxed">
-                Cada decision tecnica esta orientada a que tu producto sea
-                rapido, mantenible y preparado para crecer.
+                Cada decisión técnica está orientada a que tu producto sea
+                rápido, fácil de mantener y preparado para crecer.
               </p>
             </motion.div>
 
@@ -646,11 +643,11 @@ const ProcessPage = () => {
               transition={{ duration: 0.8, ease: ease.out }}
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-txt mb-4">
-                ¿Listo para empezar?
+                ¿Tienes una idea en mente?
               </h2>
               <p className="text-txt-2 text-lg mb-8 max-w-lg mx-auto">
-                Cuentanos tu idea y diseñamos la solucion perfecta para tu
-                negocio.
+                Cuéntanos qué necesitas y diseñamos juntos la mejor solución
+                para tu negocio.
               </p>
               <motion.button
                 onClick={() => navigateToSection("/#contacto")}

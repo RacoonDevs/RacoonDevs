@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import SectionWrapper from "../ui/SectionWrapper";
 import SectionHeading from "../ui/SectionHeading";
-import GlassCard from "../ui/GlassCard";
 import AnimatedCounter from "../ui/AnimatedCounter";
 import { staggerContainer, staggerChild } from "../../utils/motion";
 
@@ -27,55 +26,55 @@ const ResultsSection = () => (
       badge="Resultados"
       title="El impacto que generamos"
       gradient="impacto"
-      subtitle="Números reales que respaldan nuestro compromiso con la calidad y los resultados."
+      subtitle="Números reales que respaldan nuestro trabajo."
     />
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-      {/* Left: Stats Grid */}
-      <motion.div
-        className="grid grid-cols-2 gap-4 sm:gap-6"
-        {...staggerContainer(0.12)}
-      >
-        {stats.map((stat) => (
-          <motion.div key={stat.label} variants={staggerChild}>
-            <GlassCard className="text-center" hover={false}>
-              <AnimatedCounter
-                value={stat.value}
-                suffix={stat.suffix}
-                prefix={stat.prefix || ""}
-                className="gradient-text"
-              />
-              <p className="text-sm sm:text-base text-txt-2 mt-2 leading-snug">
-                {stat.label}
-              </p>
-            </GlassCard>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Right: Value Propositions */}
-      <motion.div className="space-y-5" {...staggerContainer(0.08)}>
-        <motion.h3
+    {/* Big horizontal stats row */}
+    <motion.div
+      className="grid grid-cols-2 lg:grid-cols-4 gap-0"
+      {...staggerContainer(0.1)}
+    >
+      {stats.map((stat, i) => (
+        <motion.div
+          key={stat.label}
           variants={staggerChild}
-          className="text-xl sm:text-2xl font-semibold text-txt font-[family-name:var(--font-display)] mb-6"
+          className={[
+            "flex flex-col items-center py-10 px-6 text-center",
+            i < stats.length - 1 ? "border-b lg:border-b-0 lg:border-r border-primary/8" : "",
+            i % 2 === 0 && i < 2 ? "border-r lg:border-r-0" : "",
+          ].join(" ")}
         >
-          Lo que logras al trabajar con nosotros
-        </motion.h3>
+          <AnimatedCounter
+            value={stat.value}
+            suffix={stat.suffix}
+            prefix={stat.prefix || ""}
+            className="gradient-text text-5xl sm:text-6xl lg:text-7xl"
+          />
+          <p className="text-sm text-txt-3 mt-3 leading-snug tracking-wide uppercase font-medium">
+            {stat.label}
+          </p>
+        </motion.div>
+      ))}
+    </motion.div>
 
-        {valuePoints.map((point) => (
-          <motion.div
-            key={point}
-            variants={staggerChild}
-            className="flex items-start gap-3"
-          >
-            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-            <span className="text-base sm:text-lg text-txt-2 leading-relaxed">
-              {point}
-            </span>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+    {/* Value proposition chips */}
+    <motion.div
+      className="flex flex-wrap justify-center gap-2.5 mt-12"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+    >
+      {valuePoints.map((point) => (
+        <span
+          key={point}
+          className="flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-primary/8 text-sm text-txt-2"
+        >
+          <CheckCircle className="w-3.5 h-3.5 text-primary shrink-0" />
+          {point}
+        </span>
+      ))}
+    </motion.div>
   </SectionWrapper>
 );
 

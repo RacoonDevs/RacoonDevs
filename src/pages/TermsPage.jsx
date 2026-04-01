@@ -1,13 +1,10 @@
 import PageLayout from "../components/layout/PageLayout";
 import SEOHead from "../components/seo/SEOHead";
+import { seoConfig } from "../data/seoData";
 
 const TermsPage = () => (
   <PageLayout>
-    <SEOHead
-      title="Términos | Racoon Devs"
-      description="Términos y condiciones de uso de los servicios de Racoon Devs."
-      canonical="https://racoondevs.com/terminos"
-    />
+    <SEOHead {...seoConfig.terms} />
     <div className="min-h-screen py-32 px-6">
       <div className="max-w-3xl mx-auto text-center">
         <h1 className="text-4xl font-bold font-[family-name:var(--font-display)] text-txt mb-8">

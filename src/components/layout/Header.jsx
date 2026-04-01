@@ -90,6 +90,8 @@ const Header = () => {
               <img
                 src={isDark ? LogoWhite : LogoBlack}
                 alt="Racoon Devs"
+                width="24"
+                height="24"
                 className="w-6 h-6"
               />
             </div>
@@ -104,7 +106,10 @@ const Header = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-0.5 flex-shrink-0">
+          <nav
+            aria-label="Navegación principal"
+            className="hidden xl:flex items-center gap-0.5 flex-shrink-0"
+          >
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -186,6 +191,8 @@ const Header = () => {
                     <img
                       src={isDark ? LogoWhite : LogoBlack}
                       alt="Racoon Devs"
+                      width="24"
+                      height="24"
                       className="w-6 h-6"
                     />
                   </div>

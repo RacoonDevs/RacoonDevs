@@ -1,6 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
   <head>
+    <!-- ═══ Critical: charset + viewport + theme flash prevention ═══ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       (function () {
         var t = localStorage.getItem("theme");
@@ -12,25 +15,14 @@
         }
       })();
     </script>
-    <meta charset="UTF-8" />
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Racoon Devs" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <!-- ═══ Title ═══ -->
+    <title>Desarrollo Web y Apps en Puerto Vallarta | Racoon Devs</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Primary Meta Tags (defaults, overridden per-page by react-helmet-async) -->
-    <title>
-      Racoon Devs | Desarrollo Web y Software a la Medida en Puerto Vallarta
-    </title>
+    <!-- ═══ Primary Meta Tags ═══ -->
     <meta
       name="description"
-      content="Racoon Devs — Desarrollo web, desarrollo de software, creación de aplicaciones móviles y diseño digital en Puerto Vallarta, Jalisco. Creamos apps, páginas web, eCommerce y sistemas a la medida para empresas."
+      content="Desarrollo web, software a la medida y apps móviles en Puerto Vallarta, Jalisco. Creamos páginas web, apps, eCommerce y sistemas personalizados para empresas."
     />
     <meta
       name="keywords"
@@ -42,12 +34,14 @@
     />
     <meta name="language" content="Spanish" />
     <meta name="author" content="Racoon Devs" />
+
+    <!-- ═══ Geo Meta Tags ═══ -->
     <meta name="geo.region" content="MX-JAL" />
     <meta name="geo.placename" content="Puerto Vallarta" />
     <meta name="geo.position" content="20.6597;-105.2253" />
     <meta name="ICBM" content="20.6597, -105.2253" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- ═══ Open Graph / Facebook ═══ -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://racoondevs.com/" />
     <meta
@@ -60,11 +54,11 @@
     />
     <meta
       property="og:image"
-      content="https://racoondevs.com/hero_raconodevs.webp"
+      content="https://racoondevs.com/hero_raconodevs_v2.webp"
     />
     <meta
       property="og:image:secure_url"
-      content="https://racoondevs.com/hero_raconodevs.webp"
+      content="https://racoondevs.com/hero_raconodevs_v2.webp"
     />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
@@ -76,24 +70,7 @@
     <meta property="og:site_name" content="Racoon Devs" />
     <meta property="og:locale" content="es_MX" />
 
-    <!-- Schema.org / Google+ (fallback para algunos servicios) -->
-    <meta
-      itemprop="name"
-      content="Racoon Devs | Desarrollo Web y Software a la Medida en Puerto Vallarta"
-    />
-    <meta
-      itemprop="description"
-      content="Desarrollo web, software a la medida y creación de aplicaciones móviles en Puerto Vallarta, Jalisco. Apps, eCommerce y sistemas para empresas."
-    />
-    <meta
-      itemprop="image"
-      content="https://racoondevs.com/hero_raconodevs.webp"
-    />
-
-    <!-- WhatsApp / Telegram (usan OG pero estos ayudan) -->
-    <link rel="image_src" href="https://racoondevs.com/hero_raconodevs.webp" />
-
-    <!-- Twitter -->
+    <!-- ═══ Twitter Cards ═══ -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://racoondevs.com/" />
     <meta
@@ -106,7 +83,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://racoondevs.com/hero_raconodevs.webp"
+      content="https://racoondevs.com/hero_raconodevs_v2.webp"
     />
     <meta
       property="twitter:image:alt"
@@ -115,22 +92,66 @@
     <meta property="twitter:creator" content="@Raul_BellosoM" />
     <meta property="twitter:site" content="@RacoonDevs" />
 
-    <!-- Additional Meta Tags -->
+    <!-- ═══ Schema.org Microdata (fallback) ═══ -->
+    <meta
+      itemprop="name"
+      content="Racoon Devs | Desarrollo Web y Software a la Medida en Puerto Vallarta"
+    />
+    <meta
+      itemprop="description"
+      content="Desarrollo web, software a la medida y creación de aplicaciones móviles en Puerto Vallarta, Jalisco. Apps, eCommerce y sistemas para empresas."
+    />
+    <meta
+      itemprop="image"
+      content="https://racoondevs.com/hero_raconodevs_v2.webp"
+    />
+
+    <!-- ═══ App / Theme Meta ═══ -->
     <meta name="theme-color" content="#06b6d4" />
     <meta name="msapplication-TileColor" content="#06b6d4" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+    <meta name="apple-mobile-web-app-title" content="Racoon Devs" />
 
-    <!-- Canonical URL -->
+    <!-- ═══ Links: Canonical + Favicons + Manifest ═══ -->
     <link rel="canonical" href="https://racoondevs.com/" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="image_src"
+      href="https://racoondevs.com/hero_raconodevs_v2.webp"
+    />
 
-    <!-- Preconnect to external domains -->
+    <!-- ═══ Links: Resource Hints + Fonts ═══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+    <link rel="dns-prefetch" href="https://www.gstatic.com" />
+    <link rel="dns-prefetch" href="https://cloud.appwrite.io" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap"
+      />
+    </noscript>
 
-    <!-- Structured Data: Organization -->
+    <!-- ═══ Structured Data ═══ -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -218,7 +239,7 @@
         "@type": "ProfessionalService",
         "name": "Racoon Devs",
         "alternateName": "Racoon Devs",
-        "image": "https://racoondevs.com/og-image.jpg",
+        "image": "https://racoondevs.com/hero_raconodevs_v2.webp",
         "url": "https://racoondevs.com",
         "telephone": "+52-322-135-8808",
         "email": "admin@racoondevs.com",
@@ -295,7 +316,73 @@
         "@type": "WebSite",
         "name": "Racoon Devs",
         "alternateName": "Racoon Devs",
-        "url": "https://racoondevs.com"
+        "url": "https://racoondevs.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://racoondevs.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Solo hacen páginas web?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Además de sitios web, creamos aplicaciones web, apps para celular, sistemas internos, paneles de control, tiendas en línea, páginas de venta y software hecho a la medida."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Pueden construir sistemas personalizados para mi negocio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Por supuesto. Diseñamos y desarrollamos software que se adapta exactamente a los procesos y necesidades de tu empresa — desde sistemas de control de clientes hasta gestión de inventario."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tiempo toma un proyecto?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende del alcance. Una página de venta puede estar lista en 1-2 semanas. Un sitio web corporativo en 3-4 semanas. Aplicaciones y sistemas más completos pueden tomar de 6 a 12 semanas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuál es el costo de un proyecto?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cada proyecto es diferente. Tenemos planes desde $8,000 MXN para páginas de venta hasta proyectos empresariales personalizados. Contáctanos para una cotización sin compromiso."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Trabajan con clientes fuera de Puerto Vallarta?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Aunque estamos en Puerto Vallarta, trabajamos con clientes en toda la región de Bahía de Banderas, Riviera Nayarit y más allá. Nuestro flujo de trabajo es completamente digital."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Ofrecen soporte después del lanzamiento?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. No desaparecemos después de entregar tu proyecto. Te damos soporte continuo, actualizaciones de seguridad, mejoras basadas en resultados reales y acompañamiento para que tu producto digital siga creciendo."
+            }
+          }
+        ]
       }
     </script>
   </head>

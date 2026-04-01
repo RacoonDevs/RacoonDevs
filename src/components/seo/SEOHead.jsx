@@ -1,12 +1,23 @@
 import { Helmet } from "react-helmet-async";
 
-const SEOHead = ({ title, description, canonical, ogImage, jsonLd }) => (
+const SEOHead = ({
+  title,
+  description,
+  canonical,
+  ogImage,
+  jsonLd,
+  noindex,
+}) => (
   <Helmet>
     {title && <title>{title}</title>}
     {description && <meta name="description" content={description} />}
     {canonical && <link rel="canonical" href={canonical} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     {/* Open Graph / Facebook / WhatsApp / LinkedIn */}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Racoon Devs" />
     {title && <meta property="og:title" content={title} />}
     {description && <meta property="og:description" content={description} />}
     {canonical && <meta property="og:url" content={canonical} />}
@@ -24,6 +35,7 @@ const SEOHead = ({ title, description, canonical, ogImage, jsonLd }) => (
 
     {/* Twitter */}
     <meta property="twitter:card" content="summary_large_image" />
+    {canonical && <meta property="twitter:url" content={canonical} />}
     {title && <meta property="twitter:title" content={title} />}
     {description && (
       <meta property="twitter:description" content={description} />
@@ -44,9 +56,15 @@ const SEOHead = ({ title, description, canonical, ogImage, jsonLd }) => (
     {/* WhatsApp / Telegram fallback */}
     {ogImage && <link rel="image_src" href={ogImage} />}
 
-    {jsonLd && (
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-    )}
+    {jsonLd && Array.isArray(jsonLd)
+      ? jsonLd.map((schema, i) => (
+          <script key={i} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))
+      : jsonLd && (
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        )}
   </Helmet>
 );
 

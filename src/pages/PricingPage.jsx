@@ -1,15 +1,17 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import PageLayout from "../components/layout/PageLayout";
+import SEOHead from "../components/seo/SEOHead";
+import { seoConfig } from "../data/seoData";
+import PricingSection from "../components/sections/PricingSection";
+import FAQSection from "../components/sections/FAQSection";
+import FinalCTASection from "../components/sections/FinalCTASection";
 
-const PricingPage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Redirige a la homepage con el hash de la seccion de planes
-    navigate("/#planes", { replace: true });
-  }, [navigate]);
-
-  return null;
-};
+const PricingPage = () => (
+  <PageLayout>
+    <SEOHead {...seoConfig.pricing} />
+    <PricingSection />
+    <FAQSection />
+    <FinalCTASection />
+  </PageLayout>
+);
 
 export default PricingPage;

@@ -9,7 +9,10 @@ const SectionHeading = ({
   subtitle,
   gradient,
   align = "center",
+  as: Tag = "h2",
 }) => {
+  const MotionHeading = motion[Tag];
+
   const renderTitle = () => {
     if (!gradient) return title;
     const parts = title.split(gradient);
@@ -35,7 +38,7 @@ const SectionHeading = ({
           <SectionBadge>{badge}</SectionBadge>
         </div>
       )}
-      <motion.h2
+      <MotionHeading
         className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-display)] text-txt leading-tight"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +46,7 @@ const SectionHeading = ({
         transition={{ duration: 0.6, ease: ease.out, delay: 0.1 }}
       >
         {renderTitle()}
-      </motion.h2>
+      </MotionHeading>
       {subtitle && (
         <motion.p
           className={cn(
