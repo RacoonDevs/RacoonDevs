@@ -592,37 +592,17 @@ const HeroSection = () => {
               <SectionBadge>Puerto Vallarta, Jalisco · México</SectionBadge>
             </motion.div>
 
-            {/* H1 — word-blur reveal */}
+            {/* H1 — Plain text rendering for maximum SEO safety */}
             <motion.h1
               id="hero-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] 2xl:text-6xl font-bold font-[family-name:var(--font-display)] leading-[1.08] mt-4"
-              variants={wordContainer}
-              initial="hidden"
-              animate="visible"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] 2xl:text-6xl font-bold font-[family-name:var(--font-display)] leading-[1.08] mt-4 text-txt"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.7, ease: ease.out }}
             >
-              {headlineNormal.split(" ").map((word, i, arr) => (
-                <Fragment key={`n-${i}`}>
-                  <motion.span
-                    className="inline-block text-txt"
-                    variants={wordVariant}
-                  >
-                    {word}
-                  </motion.span>
-                  {i < arr.length - 1 && " "}
-                </Fragment>
-              ))}
-              <br className="hidden sm:block" />{" "}
-              {headlineGradient.split(" ").map((word, i, arr) => (
-                <Fragment key={`g-${i}`}>
-                  <motion.span
-                    className="inline-block gradient-text"
-                    variants={wordVariant}
-                  >
-                    {word}
-                  </motion.span>
-                  {i < arr.length - 1 && " "}
-                </Fragment>
-              ))}
+              Crear páginas web, apps y{" "}
+              <br className="hidden sm:block" />
+              <span className="gradient-text">marketing digital en Puerto Vallarta</span>
             </motion.h1>
 
             {/* Subtitle */}
