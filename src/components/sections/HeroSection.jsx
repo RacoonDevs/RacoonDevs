@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, Fragment } from "react";
 import { motion, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ease } from "../../utils/motion";
 import SectionBadge from "../ui/SectionBadge";
@@ -39,7 +39,7 @@ const HeroBackground = () => (
     {/* Background image — LCP element, no lazy loading */}
     <img
       src={heroBg}
-      alt=""
+      alt="Fondo animado de servicios de desarrollo y creación de páginas web en Puerto Vallarta"
       width={1920}
       height={600}
       className="absolute inset-0 w-full h-full object-cover dark:opacity-15 opacity-70"
@@ -566,8 +566,8 @@ const HeroSection = () => {
     return () => window.removeEventListener("mousemove", handleMove);
   }, [mouseX, mouseY, ctaX, ctaY]);
 
-  const headlineNormal = "Tu negocio en Puerto Vallarta merece un";
-  const headlineGradient = "software que funcione de verdad.";
+  const headlineNormal = "Haz crecer tu negocio en Puerto Vallarta con una";
+  const headlineGradient = "página web, app y marketing que venda.";
 
   return (
     <motion.section
@@ -600,24 +600,28 @@ const HeroSection = () => {
               initial="hidden"
               animate="visible"
             >
-              {headlineNormal.split(" ").map((word, i) => (
-                <motion.span
-                  key={`n-${i}`}
-                  className="inline-block text-txt mr-[0.28em]"
-                  variants={wordVariant}
-                >
-                  {word}
-                </motion.span>
+              {headlineNormal.split(" ").map((word, i, arr) => (
+                <Fragment key={`n-${i}`}>
+                  <motion.span
+                    className="inline-block text-txt"
+                    variants={wordVariant}
+                  >
+                    {word}
+                  </motion.span>
+                  {i < arr.length - 1 && " "}
+                </Fragment>
               ))}
               <br className="hidden sm:block" />{" "}
-              {headlineGradient.split(" ").map((word, i) => (
-                <motion.span
-                  key={`g-${i}`}
-                  className="inline-block gradient-text mr-[0.28em]"
-                  variants={wordVariant}
-                >
-                  {word}
-                </motion.span>
+              {headlineGradient.split(" ").map((word, i, arr) => (
+                <Fragment key={`g-${i}`}>
+                  <motion.span
+                    className="inline-block gradient-text"
+                    variants={wordVariant}
+                  >
+                    {word}
+                  </motion.span>
+                  {i < arr.length - 1 && " "}
+                </Fragment>
               ))}
             </motion.h1>
 
@@ -628,9 +632,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 0.7, ease: ease.out }}
             >
-              Diseñamos y desarrollamos software, apps y plataformas web en
-              Puerto Vallarta que impulsan negocios reales. Sin plantillas. Sin
-              atajos.
+              Diseñamos y desarrollamos páginas web, aplicaciones móviles y estrategias de marketing digital que atraen clientes reales en Bahía de Banderas. Sin plantillas. Sin atajos.
             </motion.p>
 
             {/* Mobile visual — condensed workspace preview */}

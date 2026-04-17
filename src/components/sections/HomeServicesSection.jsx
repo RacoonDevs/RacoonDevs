@@ -139,9 +139,9 @@ const HomeServicesSection = () => {
     <SectionWrapper id="servicios">
       <SectionHeading
         badge="Servicios"
-        title="Lo que construimos para tu negocio"
-        gradient="construimos"
-        subtitle="Diseño y desarrollo a la medida — sin atajos, sin plantillas genéricas."
+        title="Diseño web y marketing para tu negocio"
+        gradient="marketing"
+        subtitle="Diseño y desarrollo a la medida en Puerto Vallarta — sin atajos, sin plantillas genéricas."
       />
 
       <motion.div
