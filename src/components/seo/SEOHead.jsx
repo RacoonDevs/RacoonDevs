@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 const SEOHead = ({
   title,
   description,
+  keywords,
   canonical,
   ogImage,
   jsonLd,
@@ -11,6 +12,7 @@ const SEOHead = ({
   <Helmet>
     {title && <title>{title}</title>}
     {description && <meta name="description" content={description} />}
+    {keywords && <meta name="keywords" content={keywords} />}
     {canonical && <link rel="canonical" href={canonical} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 

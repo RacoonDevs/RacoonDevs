@@ -1,8 +1,9 @@
 export const seoConfig = {
   home: {
-    title: "Desarrollo Web y Apps en Puerto Vallarta | Racoon Devs",
+    title: "Crear Página Web, Apps y Marketing Digital en Puerto Vallarta",
     description:
-      "Desarrollo web, software a la medida y apps móviles en Puerto Vallarta, Jalisco. Creamos páginas web, apps, eCommerce y sistemas personalizados para empresas.",
+      "Agencia para crear páginas web, hacer aplicaciones móviles (apps) y marketing digital en Puerto Vallarta y Bahía de Banderas. Haz crecer tu negocio hoy.",
+    keywords: "crear pagina web puerto vallarta, hacer app puerto vallarta, marketing digital puerto vallarta, aplicaciones moviles jalisco, diseño de paginas web, agencia de publicidad, hacer ecommerce, desarrollo web bahia de banderas, paginas web para negocios, crear aplicaciones, apps mobiles, tiendas en linea, desarrollo de software, Racoon Devs",
     canonical: "https://racoondevs.com/",
     ogImage: "https://racoondevs.com/hero_raconodevs_v2.webp",
     jsonLd: {
@@ -131,9 +132,10 @@ export const seoConfig = {
     },
   },
   services: {
-    title: "Servicios de Desarrollo Web Puerto Vallarta | Racoon Devs",
+    title: "Creación de Páginas Web y Marketing en Puerto Vallarta | Servicios",
     description:
-      "Creamos páginas web, tiendas en línea, apps y sistemas a la medida en Puerto Vallarta. Diseño profesional, desarrollo rápido y soporte a tu negocio.",
+      "Hacemos páginas web, tiendas en línea, apps móviles y marketing digital en Puerto Vallarta. Te ayudamos a conseguir más clientes por internet.",
+    keywords: "servicios crear pagina web, hacer app bahia de banderas, marketing digital puerto vallarta, agencia de publicidad, diseño web, desarrollo de paginas web",
     canonical: "https://racoondevs.com/servicios",
     ogImage: "https://racoondevs.com/hero_raconodevs_v2.webp",
     jsonLd: {
@@ -452,9 +454,10 @@ export const seoConfig = {
     },
   },
   pricing: {
-    title: "Precios de Desarrollo Web en Puerto Vallarta | Racoon Devs",
+    title: "Precios para Crear tu Página Web en Puerto Vallarta | Racoon Devs",
     description:
-      "Planes y precios de desarrollo web, apps y software a la medida en Puerto Vallarta. Desde $8,000 MXN. Elige el plan ideal para tu negocio. Sin sorpresas.",
+      "Conoce cuánto cuesta hacer una página web, app o tienda en línea en Puerto Vallarta. Planes accesibles para negocios desde $8,000 MXN. Sin sorpresas.",
+    keywords: "precio pagina web, cuanto cuesta hacer una app, cotizar pagina web puerto vallarta, costo tienda en linea, precios desarrollo web",
     canonical: "https://racoondevs.com/precios",
     ogImage: "https://racoondevs.com/hero_raconodevs_v2.webp",
     jsonLd: [
